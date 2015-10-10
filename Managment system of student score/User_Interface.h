@@ -1,12 +1,12 @@
-//Í·ÎÄ¼şUser_Interface.h´æ·Å¸÷ÖÖ½çÃæºÍ¼üÅÌ²Ù×÷º¯Êı
+ï»¿//å¤´æ–‡ä»¶User_Interface.hå­˜æ”¾å„ç§ç•Œé¢å’Œé”®ç›˜æ“ä½œå‡½æ•°
 #pragma once
 #include <iostream>
 #include <iomanip>
 using namespace std;
-void Display_Interface()                                                                                   //´òÓ¡¿ªÊ¼½çÃæ
+void Display_Interface()                                                                                   //æ‰“å°å¼€å§‹ç•Œé¢
 {
 	cout.fill('*');
-	cout <<setw(50)<< "»¶Ó­½øÈëÑ§Éú³É¼¨¹ÜÀíÏµÍ³" <<setw(30)<<'*'<< endl;
+	cout <<setw(50)<< "æ¬¢è¿è¿›å…¥å­¦ç”Ÿæˆç»©ç®¡ç†ç³»ç»Ÿ" <<setw(30)<<'*'<< endl;
 	cout.fill(' ');
 	cout << setw(30) << "*" << setw(3) << "*" << setw(2) << "*" << setw(6) << "*" << setw(2) << "*" << setw(3) << "*" << endl;
 	cout << setw(28) << "*" << setw(9) << "*" << setw(2) << "*" << setw(9) << "*" << endl;
@@ -21,47 +21,47 @@ void Display_Interface()                                                        
 	cout << setw(36) << "*" << setw(4) << "*" << endl;
 	cout << setw(38) << "*" << endl << endl;
 }
-void SetColor()                                                                                               //ÉèÖÃ±³¾°É«¼°Ç°¾°É«
+void SetColor()                                                                                               //è®¾ç½®èƒŒæ™¯è‰²åŠå‰æ™¯è‰²
 {
-	char choose_background_color[2];                                                             //Ñ¡Ôñ±³¾°É«
-	char choose_foreground_color[2];                                                              //Ñ¡ÔñÇ°¾°É«
-	bool Judge_background_color = true;                                                        //ÅĞ¶ÏÊäÈëÕıÈ·Óë·ñ
-	bool Judge_foreground_color = true;                                                         //ÅĞ¶ÏÊäÈëÕıÈ·Óë·ñ
-	cout << "ÇëÑ¡ÔñÄúÏ²»¶µÄ±³¾°É«¼°Ç°¾°É« ^o^ "<<endl;
-	cout << "ÇëÑ¡Ôñ±³¾°É«" << endl; 
-	cout<<"0--ºÚÉ«£¬1--À¶É«£¬2--ÂÌÉ«£¬3--ºşÀ¶É«£¬4--ºìÉ«£¬5--×ÏÉ«£¬6--»ÆÉ«£¬7--°×É«£¬8--»ÒÉ«£¬9--µ­À¶É«£º";
+	char choose_background_color[2];                                                             //é€‰æ‹©èƒŒæ™¯è‰²
+	char choose_foreground_color[2];                                                              //é€‰æ‹©å‰æ™¯è‰²
+	bool Judge_background_color = true;                                                        //åˆ¤æ–­è¾“å…¥æ­£ç¡®ä¸å¦
+	bool Judge_foreground_color = true;                                                         //åˆ¤æ–­è¾“å…¥æ­£ç¡®ä¸å¦
+	cout << "è¯·é€‰æ‹©æ‚¨å–œæ¬¢çš„èƒŒæ™¯è‰²åŠå‰æ™¯è‰² ^o^ "<<endl;
+	cout << "è¯·é€‰æ‹©èƒŒæ™¯è‰²" << endl; 
+	cout<<"0--é»‘è‰²ï¼Œ1--è“è‰²ï¼Œ2--ç»¿è‰²ï¼Œ3--æ¹–è“è‰²ï¼Œ4--çº¢è‰²ï¼Œ5--ç´«è‰²ï¼Œ6--é»„è‰²ï¼Œ7--ç™½è‰²ï¼Œ8--ç°è‰²ï¼Œ9--æ·¡è“è‰²ï¼š";
 	for (int i = 0; Judge_background_color; i++)
 	{
 		cin >> choose_background_color;
-		if (choose_background_color[0] < '0'|| choose_background_color[0]>'9') //ÊäÈëÓĞÎó£¬ÖØ¸´ÊäÈë
+		if (choose_background_color[0] < '0'|| choose_background_color[0]>'9') //è¾“å…¥æœ‰è¯¯ï¼Œé‡å¤è¾“å…¥
 		{
-			cout << "¶Ô²»Æğ >o< ÊäÈëÓĞÎó£¬ÇëÊäÈë0~9µÄÕûÊı£º";
+			cout << "å¯¹ä¸èµ· >o< è¾“å…¥æœ‰è¯¯ï¼Œè¯·è¾“å…¥0~9çš„æ•´æ•°ï¼š";
 		}
-		else                                                                                                        //ÊäÈëÕıÈ·£¬Ìø³öÑ­»·
+		else                                                                                                        //è¾“å…¥æ­£ç¡®ï¼Œè·³å‡ºå¾ªç¯
 			Judge_background_color = false;
 	}
-	cout << "ÇëÑ¡ÔñÇ°¾°É«" << endl;
-	cout<<"A--µ­ÂÌÉ«£¬B--µ­Ç³ÂÌÉ«£¬C--µ­ºìÉ«£¬D--µ­×ÏÉ«£¬E--µ­»ÆÉ«£¬F--ÁÁ°×É«£º";
+	cout << "è¯·é€‰æ‹©å‰æ™¯è‰²" << endl;
+	cout<<"A--æ·¡ç»¿è‰²ï¼ŒB--æ·¡æµ…ç»¿è‰²ï¼ŒC--æ·¡çº¢è‰²ï¼ŒD--æ·¡ç´«è‰²ï¼ŒE--æ·¡é»„è‰²ï¼ŒF--äº®ç™½è‰²ï¼š";
 	for (int i = 0; Judge_foreground_color; i++)
 	{
 		cin >> choose_foreground_color;
-		if (choose_foreground_color[0] < 'A' || choose_foreground_color[0]>'F')   //ÊäÈëÓĞÎó£¬ÖØ¸´ÊäÈë
+		if (choose_foreground_color[0] < 'A' || choose_foreground_color[0]>'F')   //è¾“å…¥æœ‰è¯¯ï¼Œé‡å¤è¾“å…¥
 		{
-			cout << "¶Ô²»Æğ >o< ÊäÈëÓĞÎó£¬ÇëÊäÈëA~FµÄ×ÖÄ¸£º";
+			cout << "å¯¹ä¸èµ· >o< è¾“å…¥æœ‰è¯¯ï¼Œè¯·è¾“å…¥A~Fçš„å­—æ¯ï¼š";
 		}
-		else                                                                                                       //ÊäÈëÕıÈ·£¬Ìø³öÑ­»·
+		else                                                                                                       //è¾“å…¥æ­£ç¡®ï¼Œè·³å‡ºå¾ªç¯
 			Judge_foreground_color = false;
 	}
-	char *color_num_word = new char[10];                                                      //¶¯Ì¬ÉêÇë¿Õ¼ä
-	memset(color_num_word, 0, sizeof(color_num_word));                               //³õÊ¼»¯
-	char *num_word = new char[2];                                                                //¶¯Ì¬ÉêÇë¿Õ¼ä
-	memset(num_word, 0, sizeof(num_word));                                                 //³õÊ¼»¯
+	char *color_num_word = new char[10];                                                      //åŠ¨æ€ç”³è¯·ç©ºé—´
+	memset(color_num_word, 0, sizeof(color_num_word));                               //åˆå§‹åŒ–
+	char *num_word = new char[2];                                                                //åŠ¨æ€ç”³è¯·ç©ºé—´
+	memset(num_word, 0, sizeof(num_word));                                                 //åˆå§‹åŒ–
 	num_word[0] = choose_background_color[0];
 	num_word[1] = choose_foreground_color[0];
 	char *color="color ";
-	strcat_s(color_num_word, strlen(color) + 1, color);                                       //Á¬½Ó×Ö·û´®
+	strcat_s(color_num_word, strlen(color) + 1, color);                                       //è¿æ¥å­—ç¬¦ä¸²
 	strcat_s(color_num_word, strlen(color_num_word)+strlen(num_word) + 1, num_word);
-	system(color_num_word);                                                                          //ÊµÏÖ±³¾°É«¼°Ç°¾°É«µÄ¸Ä±ä
+	system(color_num_word);                                                                          //å®ç°èƒŒæ™¯è‰²åŠå‰æ™¯è‰²çš„æ”¹å˜
 }
-//Ö÷º¯ÊıÓÃµ½µÄº¯ÊıµÄÉùÃ÷
+//ä¸»å‡½æ•°ç”¨åˆ°çš„å‡½æ•°çš„å£°æ˜
 void Choose_Function();

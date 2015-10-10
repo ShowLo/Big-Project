@@ -1,49 +1,49 @@
-//Score_Managment.cpp´æ·Å¸÷Àà·½·¨µÄÊµÏÖ¼°¸÷ÖÖº¯ÊıµÄ¶¨Òå
+ï»¿//Score_Managment.cppå­˜æ”¾å„ç±»æ–¹æ³•çš„å®ç°åŠå„ç§å‡½æ•°çš„å®šä¹‰
 #include <iostream>
 #include <iomanip>
 #include<fstream>
 #include "Score_Managment.h"
 using namespace std;
-//³éÏó»ùÀàCourseÀà¹¹Ôìº¯Êı¶¨Òå
+//æŠ½è±¡åŸºç±»Courseç±»æ„é€ å‡½æ•°å®šä¹‰
 Course::Course(char *cour, int c,int c_n, int c_t) :credit(c),course_number(c_n),course_time(c_t)
-{                                                                                  //²ÎÊı³õÊ¼»¯±í³õÊ¼»¯Êı¾İ³ÉÔ±
+{                                                                                  //å‚æ•°åˆå§‹åŒ–è¡¨åˆå§‹åŒ–æ•°æ®æˆå‘˜
 	strcpy_s(course_title, strlen(cour)+1,cour);
 }
-void Course::SetCourse_title(char *cour_nam)                                       //ÖØĞÂÉèÖÃ¿Î³ÌÃû³Æ£¬cour_namÎªĞÂ¿Î³ÌÃû³Æ
+void Course::SetCourse_title(char *cour_nam)                                       //é‡æ–°è®¾ç½®è¯¾ç¨‹åç§°ï¼Œcour_namä¸ºæ–°è¯¾ç¨‹åç§°
 {
 	strcpy_s(course_title, strlen(cour_nam)+1,cour_nam);
 }
-void Course::SetCredit(int cred)                                                   //ÖØĞÂÉèÖÃ¿Î³ÌÑ§·Ö£¬credÎªĞÂÑ§·Ö
+void Course::SetCredit(int cred)                                                   //é‡æ–°è®¾ç½®è¯¾ç¨‹å­¦åˆ†ï¼Œcredä¸ºæ–°å­¦åˆ†
 {
 	credit = cred;
 }
-void Course::SetCourse_number(int c_n)                                             //ÖØĞÂÉèÖÃ¿Î³ÌĞòºÅ£¬c_nÎªĞÂĞòºÅ
+void Course::SetCourse_number(int c_n)                                             //é‡æ–°è®¾ç½®è¯¾ç¨‹åºå·ï¼Œc_nä¸ºæ–°åºå·
 {
 	course_number=c_n;
 }
-void Course::SetCourse_time(int c_t)                                               //ÖØĞÂÉèÖÃ¿Î³ÌÑ§Ê±£¬c_tÎªĞÂÑ§Ê±
+void Course::SetCourse_time(int c_t)                                               //é‡æ–°è®¾ç½®è¯¾ç¨‹å­¦æ—¶ï¼Œc_tä¸ºæ–°å­¦æ—¶
 {
 	course_time=c_t;
 }
-char* Course::GetCourse_title()                                                    //·µ»Ø¿Î³ÌÃû³Æ
+char* Course::GetCourse_title()                                                    //è¿”å›è¯¾ç¨‹åç§°
 {
 	return course_title;
 }
-int Course::GetCredit()                                                            //·µ»Ø¿Î³ÌÑ§·Ö
+int Course::GetCredit()                                                            //è¿”å›è¯¾ç¨‹å­¦åˆ†
 {
 	return credit;
 }
-int Course::GetCourse_number()                                                     //·µ»Ø¿Î³ÌĞòºÅ
+int Course::GetCourse_number()                                                     //è¿”å›è¯¾ç¨‹åºå·
 {
 	return course_number;
 }
-int Course::GetCourse_time()                                                        //·µ»ØÑ§Ê±
+int Course::GetCourse_time()                                                        //è¿”å›å­¦æ—¶
 {
 	return course_time;
 }
 
-//ÅÉÉúÀàScoreÀà¹¹Ôìº¯Êı¶¨Òå
-Score::Score(float s,char *cour, int c, int c_n, int c_t) : score(s), Course(cour, c, c_n, c_t) //ÓÃ²ÎÊıµÄ³õÊ¼»¯±í¶ÔÊı¾İ³ÉÔ±³õÊ¼»¯
+//æ´¾ç”Ÿç±»Scoreç±»æ„é€ å‡½æ•°å®šä¹‰
+Score::Score(float s,char *cour, int c, int c_n, int c_t) : score(s), Course(cour, c, c_n, c_t) //ç”¨å‚æ•°çš„åˆå§‹åŒ–è¡¨å¯¹æ•°æ®æˆå‘˜åˆå§‹åŒ–
 {                                                                                                                               
 	if (s >= 90)
 		rank = 'A';
@@ -58,7 +58,7 @@ void Score::display() const
 {   
 	cout << "|" << setw(4) << score << setw(3)<<"|" <<setw(4)<<rank <<setw(3)<<"|" <<setw(4)<<score_ranking<<setw(3)<<"|"<< endl;
 }
-void Score::SetScore(float ss)                        //ÖØĞÂÉèÖÃ·ÖÊı£¬ssÎªĞÂ·ÖÊı
+void Score::SetScore(float ss)                        //é‡æ–°è®¾ç½®åˆ†æ•°ï¼Œssä¸ºæ–°åˆ†æ•°
 {
 	score = ss;
 	if (ss >= 90)
@@ -82,11 +82,11 @@ void Score::SetScore(float ss)                        //ÖØĞÂÉèÖÃ·ÖÊı£¬ssÎªĞÂ·ÖÊı
 		pass_or_not = 'N';
 	}
 }
-float Score::GetScore()                            //·µ»Ø·ÖÊı
+float Score::GetScore()                            //è¿”å›åˆ†æ•°
 {
 	return score;
 }
-char Score::GetRank()                             //·µ»Ø·ÖÊıµÈ¼¶
+char Score::GetRank()                             //è¿”å›åˆ†æ•°ç­‰çº§
 {
 	return rank;
 }
@@ -94,33 +94,33 @@ char Score::GetPass_or_not()
 {
 	return pass_or_not;
 }
-void Score::SetScore_ranking(int ranking)         //ÉèÖÃ·ÖÊıÅÅÃû
+void Score::SetScore_ranking(int ranking)         //è®¾ç½®åˆ†æ•°æ’å
 {
 	score_ranking = ranking;
 }
-int Score::GetScore_ranking()                     //·µ»Ø·ÖÊıÅÅÃû
+int Score::GetScore_ranking()                     //è¿”å›åˆ†æ•°æ’å
 {
 	return score_ranking;
 }
 
-//ÅÉÉúÀàStudentÀà¹¹Ôìº¯Êı¶¨Òå
+//æ´¾ç”Ÿç±»Studentç±»æ„é€ å‡½æ•°å®šä¹‰
 Student::Student(char *nam, long long num, char *cour, int c , int c_n, int c_t) :number(num), Course(cour, c, c_n, c_t)  
-{                                                 //²ÎÊı³õÊ¼»¯±í³õÊ¼»¯Êı¾İ³ÉÔ±
+{                                                 //å‚æ•°åˆå§‹åŒ–è¡¨åˆå§‹åŒ–æ•°æ®æˆå‘˜
 	strcpy_s(name, strlen(nam) + 1, nam);
 }
-void Student::display() const                     //¶ÔĞéº¯Êı½øĞĞÔÙ¶¨Òå£¬ÎªÊä³öº¯Êı
+void Student::display() const                     //å¯¹è™šå‡½æ•°è¿›è¡Œå†å®šä¹‰ï¼Œä¸ºè¾“å‡ºå‡½æ•°
 {
 	cout<<"|" <<setw(7)<< name <<setw(4)<<"|"<<setw(11)<< number<<" ";
 }
-void Student::SetName(char *nam)                  //ÖØĞÂÉèÖÃĞÕÃû£¬namÎªĞÂĞÕÃû
+void Student::SetName(char *nam)                  //é‡æ–°è®¾ç½®å§“åï¼Œnamä¸ºæ–°å§“å
 {
 	strcpy_s(name, strlen(nam) + 1, nam);
 }
-void Student::SetNumber(long long num)            //ÖØĞÂÉèÖÃÑ§ºÅ£¬numÎªĞÂÑ§ºÅ
+void Student::SetNumber(long long num)            //é‡æ–°è®¾ç½®å­¦å·ï¼Œnumä¸ºæ–°å­¦å·
 {
 	number = num;
 }
-void Student::SetGPA_ranking(int ranking)         //ÉèÖÃGPAÅÅÃû
+void Student::SetGPA_ranking(int ranking)         //è®¾ç½®GPAæ’å
 {
 	GPA_ranking = ranking;
 }
@@ -128,132 +128,132 @@ void Student::SetFall_num(int f_n)
 {
 	fall_num = f_n;
 }
-char* Student::GetName()                         //·µ»ØÑ§ÉúĞÕÃû
+char* Student::GetName()                         //è¿”å›å­¦ç”Ÿå§“å
 {
 	return name;
 }
-long long Student::GetNumber()                   //·µ»ØÑ§ºÅ
+long long Student::GetNumber()                   //è¿”å›å­¦å·
 {
 	return number;
 }
-int Student::GetGPA_ranking()                    //·µ»ØGPAÅÅÃû
+int Student::GetGPA_ranking()                    //è¿”å›GPAæ’å
 {
 	return GPA_ranking;
 }
-int Student::GetFall_num()                       //·µ»Ø¹Ò¿ÆÊı
+int Student::GetFall_num()                       //è¿”å›æŒ‚ç§‘æ•°
 {
 	return fall_num;
 }
 
-//¶àÖØ¼Ì³ĞµÄÅÉÉúÀàInformationÀà¹¹Ôìº¯Êı¶¨Òå
+//å¤šé‡ç»§æ‰¿çš„æ´¾ç”Ÿç±»Informationç±»æ„é€ å‡½æ•°å®šä¹‰
 Information::Information(char *nam, long long num, char *cour, int c_n, int c_t, float s, int c) :
-Student(nam, num, cour, c, c_n, c_t), Score(s, cour, c, c_n, c_t), Course(cour, c, c_n, c_t)      //²ÎÊı³õÊ¼»¯±í³õÊ¼»¯Êı¾İ³ÉÔ±
+Student(nam, num, cour, c, c_n, c_t), Score(s, cour, c, c_n, c_t), Course(cour, c, c_n, c_t)      //å‚æ•°åˆå§‹åŒ–è¡¨åˆå§‹åŒ–æ•°æ®æˆå‘˜
 {
 	fall_num = 0;
 }
-void Information::display() const                                                                 //¶ÔĞéº¯Êı½øĞĞÔÙ¶¨Òå£¬ÎªÊä³öº¯Êı
+void Information::display() const                                                                 //å¯¹è™šå‡½æ•°è¿›è¡Œå†å®šä¹‰ï¼Œä¸ºè¾“å‡ºå‡½æ•°
 {
 	cout << "|" << setw(7) << name << setw(3)<<"|" << setw(11) << number << setw(2)<<"|" << setw(9) << course_title << setw(4)<<"|"
 		<< setw(10) << course_number << setw(4)<<"|" << setw(3) << course_time << setw(2)<<"|" << setw(4) << score <<setw(3)<< "|" << setw(3) << credit <<setw(3)<<"|"<< endl;
 }
-void Information::Set_GPA(float gpa)                                                              //ÉèÖÃGPA
+void Information::Set_GPA(float gpa)                                                              //è®¾ç½®GPA
 {
 	GPA = gpa;
 }
-float Information::GetGPA()                                                                       //·µ»ØGPA
+float Information::GetGPA()                                                                       //è¿”å›GPA
 {
 	return GPA;
 }
-void Information::Set_bool(bool s_g)                                                              //ÉèÖÃ²¼¶û±äÁ¿
+void Information::Set_bool(bool s_g)                                                              //è®¾ç½®å¸ƒå°”å˜é‡
 {
 	Set_GPA_or_not = s_g;
 }
-bool Information::Get_bool()                                                                      //·µ»Ø²¼¶û±äÁ¿
+bool Information::Get_bool()                                                                      //è¿”å›å¸ƒå°”å˜é‡
 {
 	return Set_GPA_or_not;
 }
-void Information::SetFall_course(int f_c)                                                         //ÉèÖÃ¿Î³Ì¹Ò¿ÆÈËÊı
+void Information::SetFall_course(int f_c)                                                         //è®¾ç½®è¯¾ç¨‹æŒ‚ç§‘äººæ•°
 {
 	fall_course = f_c;
 }
-int Information::GetFall_course()                                                                 //·µ»Ø¿Î³Ì¹Ò¿ÆÈËÊı
+int Information::GetFall_course()                                                                 //è¿”å›è¯¾ç¨‹æŒ‚ç§‘äººæ•°
 {
 	return fall_course;
 }
-void Information::SetAverage_score(float a_s)                                                     //ÉèÖÃ¿Î³ÌÆ½¾ù·Ö
+void Information::SetAverage_score(float a_s)                                                     //è®¾ç½®è¯¾ç¨‹å¹³å‡åˆ†
 {
 	average_score = a_s;
 }
-float Information::GetAverage_score()                                                             //·µ»Ø¿Î³ÌÆ½¾ù·Ö
+float Information::GetAverage_score()                                                             //è¿”å›è¯¾ç¨‹å¹³å‡åˆ†
 {
 	return average_score;
 }
-//¶¨ÒåÖØÔØÔËËã·û¡±>>"º¯Êı
+//å®šä¹‰é‡è½½è¿ç®—ç¬¦â€>>"å‡½æ•°
 istream& operator >>(istream& input, Information& Info)
 {
-	char nam[20];                                                                                 //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈëÑ§ÉúĞÅÏ¢²¢×÷ÎªÊµ²Î£¬½«Ñ§ÉúĞÅÏ¢´«¸øÀàÖĞ³ÉÔ±
+	char nam[20];                                                                                 //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥å­¦ç”Ÿä¿¡æ¯å¹¶ä½œä¸ºå®å‚ï¼Œå°†å­¦ç”Ÿä¿¡æ¯ä¼ ç»™ç±»ä¸­æˆå‘˜
 	long long num;
 	char cour[10];
 	int cour_num;
 	int cour_tim;
 	float sco;
 	int cred;
-	cout << "ÇëÊäÈëÑ§ÉúĞÕÃû£º";                                                                     //ÊäÈë²¿·Ö
+	cout << "è¯·è¾“å…¥å­¦ç”Ÿå§“åï¼š";                                                                     //è¾“å…¥éƒ¨åˆ†
 	input >> nam;
 	Info.SetName(nam);
-	cout << "ÇëÊäÈëÑ§ÉúÑ§ºÅ£º";
+	cout << "è¯·è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š";
 	input >> num;
 	Info.SetNumber(num);
-	cout << "ÇëÊäÈë¿Î³ÌÃû³Æ£º";
+	cout << "è¯·è¾“å…¥è¯¾ç¨‹åç§°ï¼š";
 	input >> cour;
 	Info.SetCourse_title(cour);
-	cout << "ÇëÊäÈë¿Î³ÌĞòºÅ£º";
+	cout << "è¯·è¾“å…¥è¯¾ç¨‹åºå·ï¼š";
 	input >> cour_num;
 	Info.SetCourse_number(cour_num);
-	cout << "ÇëÊäÈë¿Î³ÌÑ§Ê±£º";
+	cout << "è¯·è¾“å…¥è¯¾ç¨‹å­¦æ—¶ï¼š";
 	input >> cour_tim;
 	Info.SetCourse_time(cour_tim);
-	cout << "ÇëÊäÈëÑ§Éú·ÖÊı£º";
+	cout << "è¯·è¾“å…¥å­¦ç”Ÿåˆ†æ•°ï¼š";
 	input >> sco;
 	Info.SetScore(sco);
-	cout << "ÇëÊäÈë¿Î³ÌÑ§·Ö£º";
+	cout << "è¯·è¾“å…¥è¯¾ç¨‹å­¦åˆ†ï¼š";
 	input >> cred;
 	Info.SetCredit(cred);
 	return input;
 }
 
-//Ö÷º¯ÊıÌåÖĞ¸÷¸öº¯ÊıµÄ¶¨Òå
-//´òÓ¡Êä³ö±íÍ·
+//ä¸»å‡½æ•°ä½“ä¸­å„ä¸ªå‡½æ•°çš„å®šä¹‰
+//æ‰“å°è¾“å‡ºè¡¨å¤´
 void Display_title()
 {
-	cout << "|" << setw(6) << "Ñ§ÉúĞÕÃû" << setw(2) << "|" << setw(8) << "Ñ§ºÅ" << setw(5) << "|" << setw(10) << "¿Î³ÌÃû³Æ" << setw(3) << "|" << setw(11)
-		<< "¿Î³ÌĞòºÅ" << setw(3) << "|" << setw(3) << "Ñ§Ê±" << setw(1) << "|" << setw(5) << "·ÖÊı" << setw(2) << "|" << setw(3) << "Ñ§·Ö" << setw(2) << "|" << endl;
+	cout << "|" << setw(6) << "å­¦ç”Ÿå§“å" << setw(2) << "|" << setw(8) << "å­¦å·" << setw(5) << "|" << setw(10) << "è¯¾ç¨‹åç§°" << setw(3) << "|" << setw(11)
+		<< "è¯¾ç¨‹åºå·" << setw(3) << "|" << setw(3) << "å­¦æ—¶" << setw(1) << "|" << setw(5) << "åˆ†æ•°" << setw(2) << "|" << setw(3) << "å­¦åˆ†" << setw(2) << "|" << endl;
 }
-//´òÓ¡¹¦ÄÜº¯Êı
+//æ‰“å°åŠŸèƒ½å‡½æ•°
 void Display_Function()
 {
 	cout.width(47);
-	cout << "Ñ§Éú³É¼¨¹ÜÀíÏµÍ³" << endl;
+	cout << "å­¦ç”Ÿæˆç»©ç®¡ç†ç³»ç»Ÿ" << endl;
 	cout.width(47);
-	cout << "1¡¢Â¼ÈëÑ§Éú³É¼¨ĞÅÏ¢" << endl;
+	cout << "1ã€å½•å…¥å­¦ç”Ÿæˆç»©ä¿¡æ¯" << endl;
 	cout.width(47);
-	cout << "2¡¢ĞŞ¸ÄÑ§Éú³É¼¨ĞÅÏ¢" << endl;
+	cout << "2ã€ä¿®æ”¹å­¦ç”Ÿæˆç»©ä¿¡æ¯" << endl;
 	cout.width(47);
-	cout << "3¡¢²éÑ¯Ñ§Éú³É¼¨ĞÅÏ¢" << endl;
+	cout << "3ã€æŸ¥è¯¢å­¦ç”Ÿæˆç»©ä¿¡æ¯" << endl;
 	cout.width(51);
-	cout << "4¡¢Í³¼ÆÄ³¸ö¿ÆÄ¿³É¼¨Çé¿ö" << endl;
+	cout << "4ã€ç»Ÿè®¡æŸä¸ªç§‘ç›®æˆç»©æƒ…å†µ" << endl;
 	cout.width(46);
-	cout << "5¡¢²éÑ¯Ä³¸öÑ§ÉúGPA" << endl;
+	cout << "5ã€æŸ¥è¯¢æŸä¸ªå­¦ç”ŸGPA" << endl;
 	cout.width(50);
-	cout << "6¡¢Í³¼ÆËùÓĞÑ§ÉúGPAÅÅÃû" << endl;
+	cout << "6ã€ç»Ÿè®¡æ‰€æœ‰å­¦ç”ŸGPAæ’å" << endl;
 	cout.width(57);
-	cout << "7¡¢²éÑ¯Ä³¸öÑ§Éú¿Î³ÌÎ´Í¨¹ıÇé¿ö" << endl;
+	cout << "7ã€æŸ¥è¯¢æŸä¸ªå­¦ç”Ÿè¯¾ç¨‹æœªé€šè¿‡æƒ…å†µ" << endl;
 	cout.width(63);
-	cout << "8¡¢²é¿´Ä³ÃÅ¿Î³ÌµÄÆ½¾ù·Ö¼°Î´Í¨¹ıÇé¿ö" << endl;
+	cout << "8ã€æŸ¥çœ‹æŸé—¨è¯¾ç¨‹çš„å¹³å‡åˆ†åŠæœªé€šè¿‡æƒ…å†µ" << endl;
 	cout.width(39);
-	cout << "9¡¢ÍË³öÏµÍ³" << endl;
+	cout << "9ã€é€€å‡ºç³»ç»Ÿ" << endl;
 }
-//ÌáÇ°ÒıÓÃÉùÃ÷
+//æå‰å¼•ç”¨å£°æ˜
 void Input();
 void Modify();
 void Search();
@@ -262,14 +262,14 @@ void Search_GPA();
 void Statistics_GPA();
 void Fall_of_stu();
 void Search_aver_fall();
-//Ñ¡Ôñ¹¦ÄÜº¯Êı
+//é€‰æ‹©åŠŸèƒ½å‡½æ•°
 void Choose_Function()                                                                                
 {
 	Display_Function();
 	int choose_fun;
-	cout << "ÇëÊäÈë1~9µÄÒ»¸öÊı×ÖÒÔÑ¡ÔñÒ»Ïî¹¦ÄÜ£º";
+	cout << "è¯·è¾“å…¥1~9çš„ä¸€ä¸ªæ•°å­—ä»¥é€‰æ‹©ä¸€é¡¹åŠŸèƒ½ï¼š";
 	cin >> choose_fun;
-	switch (choose_fun)                                                    //¸ù¾İÓÃ»§ÊäÈëÊı×Öµ÷ÓÃÏàÓ¦µÄº¯Êı
+	switch (choose_fun)                                                    //æ ¹æ®ç”¨æˆ·è¾“å…¥æ•°å­—è°ƒç”¨ç›¸åº”çš„å‡½æ•°
 	{
 	case 1:Input(); break;
 	case 2:Modify(); break;
@@ -279,80 +279,80 @@ void Choose_Function()
 	case 6:Statistics_GPA(); break;
 	case 7:Fall_of_stu(); break;
 	case 8:Search_aver_fall(); break;
-	case 9:cout << "Ğ»Ğ»Ê¹ÓÃ£¡»¶Ó­ÄúÔÙ´ÎÊ¹ÓÃ¡£" << endl; break;
-	default:cout << "ÊäÈëÓĞÎó£¡ÇëÊäÈë1~9µÄÕûÊı!" << endl; Choose_Function();  //ÓÃ»§ÊäÈëÓĞÎó£¬ÖØĞÂÊäÈë
+	case 9:cout << "è°¢è°¢ä½¿ç”¨ï¼æ¬¢è¿æ‚¨å†æ¬¡ä½¿ç”¨ã€‚" << endl; break;
+	default:cout << "è¾“å…¥æœ‰è¯¯ï¼è¯·è¾“å…¥1~9çš„æ•´æ•°!" << endl; Choose_Function();  //ç”¨æˆ·è¾“å…¥æœ‰è¯¯ï¼Œé‡æ–°è¾“å…¥
 	}
 }
-//Â¼Èëº¯Êı
+//å½•å…¥å‡½æ•°
 void Input()                                                                                                                       
 {
-	int stu_num=0;                                                          //´æ·ÅÊäÈëÑ§ÉúµÄÈË´Î
-	Information *p = new Information;                                       //¶¯Ì¬ÉêÇë¿Õ¼ä´æ·ÅÑ§Éú³É¼¨ĞÅÏ¢
-	ofstream outfile("Information.dat", ios::out | ios::app);               //½«Ñ§ÉúĞÅÏ¢±£´æÔÚÎÄ¼şÀï
-	if (!outfile)                                                           //Èç¹û´ò¿ªÊ§°Ü
+	int stu_num=0;                                                          //å­˜æ”¾è¾“å…¥å­¦ç”Ÿçš„äººæ¬¡
+	Information *p = new Information;                                       //åŠ¨æ€ç”³è¯·ç©ºé—´å­˜æ”¾å­¦ç”Ÿæˆç»©ä¿¡æ¯
+	ofstream outfile("Information.dat", ios::out | ios::app);               //å°†å­¦ç”Ÿä¿¡æ¯ä¿å­˜åœ¨æ–‡ä»¶é‡Œ
+	if (!outfile)                                                           //å¦‚æœæ‰“å¼€å¤±è´¥
 	{
-		cerr << "ÊäÈëÊ±ÎÄ¼ş´ò¿ª³ö´í£¡" << endl;
+		cerr << "è¾“å…¥æ—¶æ–‡ä»¶æ‰“å¼€å‡ºé”™ï¼" << endl;
 		exit(0);
 	}
-	bool continue_or_not = true;                                            //²¼¶û±äÁ¿ÅĞ¶ÏÊÇ·ñ¼ÌĞøÊäÈë
-	for (int i = 0; continue_or_not; i++)                                   //ÊäÈë²¿·Ö
+	bool continue_or_not = true;                                            //å¸ƒå°”å˜é‡åˆ¤æ–­æ˜¯å¦ç»§ç»­è¾“å…¥
+	for (int i = 0; continue_or_not; i++)                                   //è¾“å…¥éƒ¨åˆ†
 	{
-		stu_num++;                                                          //Ã¿Ö´ĞĞÒ»´ÎÊäÈëÔòÑ§ÉúÈË´Î¼Ó1
+		stu_num++;                                                          //æ¯æ‰§è¡Œä¸€æ¬¡è¾“å…¥åˆ™å­¦ç”Ÿäººæ¬¡åŠ 1
 		cin >> *p;
 		outfile << p->GetName() << " " << p->GetNumber() << " " << p->GetCourse_title() << " " << p->GetCourse_number() << " "
 			<< p->GetCourse_time() << " " << p->GetScore() << " " << p->GetRank() << " " << p->GetCredit() << " ";
 		outfile.clear();
-		int choice_input;                                                   //ÓÃ»§ÊäÈëÊı×ÖÒÔÑ¡Ôñ¼ÌĞø»òÕß·µ»Ø
-		cout << "ÊÇ·ñ¼ÌĞøÊäÈë£¿ÊäÈë0·µ»ØÖ÷²Ëµ¥£¬ÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë~^=^~" << endl;
+		int choice_input;                                                   //ç”¨æˆ·è¾“å…¥æ•°å­—ä»¥é€‰æ‹©ç»§ç»­æˆ–è€…è¿”å›
+		cout << "æ˜¯å¦ç»§ç»­è¾“å…¥ï¼Ÿè¾“å…¥0è¿”å›ä¸»èœå•ï¼Œå…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥~^=^~" << endl;
 		cin >> choice_input;
 		if (choice_input != 0)
-			continue_or_not = true;                                         //¼ÌĞøÊäÈë
+			continue_or_not = true;                                         //ç»§ç»­è¾“å…¥
 		else
-			continue_or_not = false;                                        //·µ»ØÖ÷²Ëµ¥
+			continue_or_not = false;                                        //è¿”å›ä¸»èœå•
 	}
 	outfile.close();
-	delete p;                                                               //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-	int former_num;                                                         //Ç°Ò»´ÎÊäÈëÊ±µÄÑ§ÉúÈË´Î£¬ÒªÇóµÚÒ»´ÎÊ¹ÓÃÊ±ÒÑ¾­´æÔÚÕâ¸öÎÄ¼şÇÒÆäÖĞ±£´æµÄÊı×ÖÎª0
+	delete p;                                                               //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+	int former_num;                                                         //å‰ä¸€æ¬¡è¾“å…¥æ—¶çš„å­¦ç”Ÿäººæ¬¡ï¼Œè¦æ±‚ç¬¬ä¸€æ¬¡ä½¿ç”¨æ—¶å·²ç»å­˜åœ¨è¿™ä¸ªæ–‡ä»¶ä¸”å…¶ä¸­ä¿å­˜çš„æ•°å­—ä¸º0
 	ifstream infiles("Stu_num.dat", ios::in);
-	if (!infiles)                                                           //Èç¹û´ò¿ªÊ§°Ü
+	if (!infiles)                                                           //å¦‚æœæ‰“å¼€å¤±è´¥
 	{
-		cerr << "ÊäÈëÊ±´ò¿ªStu_num.datÎÄ¼şÒÔÊä³öÔ­À´Ñ§ÉúÈË´Î³ö´í£¡" << endl;
+		cerr << "è¾“å…¥æ—¶æ‰“å¼€Stu_num.datæ–‡ä»¶ä»¥è¾“å‡ºåŸæ¥å­¦ç”Ÿäººæ¬¡å‡ºé”™ï¼" << endl;
 		exit(0);
 	}
-	infiles >> former_num;                                                  //½«Ç°Ò»´ÎÊäÈëÊ±µÄÑ§ÉúÈË´Î¸³¸ø±äÁ¿
+	infiles >> former_num;                                                  //å°†å‰ä¸€æ¬¡è¾“å…¥æ—¶çš„å­¦ç”Ÿäººæ¬¡èµ‹ç»™å˜é‡
 	infiles.close();
-	ofstream outfiles("Stu_num.dat", ios::out);                             //½«×ÜµÄÑ§ÉúÈË´Î±£´æÔÚÎÄ¼şÀï
-	if (!outfiles)                                                          //Èç¹û´ò¿ªÊ§°Ü
+	ofstream outfiles("Stu_num.dat", ios::out);                             //å°†æ€»çš„å­¦ç”Ÿäººæ¬¡ä¿å­˜åœ¨æ–‡ä»¶é‡Œ
+	if (!outfiles)                                                          //å¦‚æœæ‰“å¼€å¤±è´¥
 	{
-		cerr << "ÊäÈëÊ±ÎÄ¼ş´ò¿ª³ö´í£¡" << endl;
+		cerr << "è¾“å…¥æ—¶æ–‡ä»¶æ‰“å¼€å‡ºé”™ï¼" << endl;
 		exit(0);
 	}
-	outfiles << (stu_num + former_num);                                     //Çå¿ÕÎÄ¼şÖĞÔ­ÓĞµÄÄÚÈİ£¬½«ĞÂµÄ×ÜÈË´Î±£´æÔÚÎÄ¼şÀï
+	outfiles << (stu_num + former_num);                                     //æ¸…ç©ºæ–‡ä»¶ä¸­åŸæœ‰çš„å†…å®¹ï¼Œå°†æ–°çš„æ€»äººæ¬¡ä¿å­˜åœ¨æ–‡ä»¶é‡Œ
 	outfiles.close();
-	Choose_Function();                                                      //·µ»ØÖ÷²Ëµ¥
+	Choose_Function();                                                      //è¿”å›ä¸»èœå•
 }
-//¶ÁÈ¡Ñ§ÉúÈË´Îº¯Êı
+//è¯»å–å­¦ç”Ÿäººæ¬¡å‡½æ•°
 void Read_Stu_num(char *process, int &stu_num)
 {
-	ifstream infiles("Stu_num.dat", ios::in);                               //´ÓÎÄ¼şÖĞ¶ÁÈ¡Ñ§ÉúÈË´Î
-	if (!infiles)                                                           //Èç¹û´ò¿ªÊ§°Ü
+	ifstream infiles("Stu_num.dat", ios::in);                               //ä»æ–‡ä»¶ä¸­è¯»å–å­¦ç”Ÿäººæ¬¡
+	if (!infiles)                                                           //å¦‚æœæ‰“å¼€å¤±è´¥
 	{
-		cerr << process<<"Ê±´ò¿ªÎÄ¼ş¶ÁÈëÑ§ÉúÈË´ÎÊ±³ö´í£¡" << endl;
+		cerr << process<<"æ—¶æ‰“å¼€æ–‡ä»¶è¯»å…¥å­¦ç”Ÿäººæ¬¡æ—¶å‡ºé”™ï¼" << endl;
 		exit(0);
 	}
-	infiles >> stu_num;                                                     //¶ÁÈëÑ§ÉúÈË´Î
+	infiles >> stu_num;                                                     //è¯»å…¥å­¦ç”Ÿäººæ¬¡
 	infiles.close();
 }
-//±£´æĞÅÏ¢ÖÁÁÙÊ±ÉêÇë¿Õ¼äº¯Êı
+//ä¿å­˜ä¿¡æ¯è‡³ä¸´æ—¶ç”³è¯·ç©ºé—´å‡½æ•°
 void Save_to_dynamic(char *process,int stu_num,Information *p)
 {
-	ifstream infile("Information.dat", ios::in);                            //´ÓÎÄ¼şÖĞ¶ÁÈ¡Ñ§ÉúĞÅÏ¢
-	if (!infile)                                                            //Èç¹û´ò¿ªÊ§°Ü
+	ifstream infile("Information.dat", ios::in);                            //ä»æ–‡ä»¶ä¸­è¯»å–å­¦ç”Ÿä¿¡æ¯
+	if (!infile)                                                            //å¦‚æœæ‰“å¼€å¤±è´¥
 	{
-		cerr << process<<"Ê±ÎÄ¼ş´ò¿ª³ö´í£¡" << endl;
+		cerr << process<<"æ—¶æ–‡ä»¶æ‰“å¼€å‡ºé”™ï¼" << endl;
 		exit(0);
 	}
-	char nam[20];                                                           //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈëÑ§ÉúĞÅÏ¢
+	char nam[20];                                                           //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥å­¦ç”Ÿä¿¡æ¯
 	long long num;
 	char cour[10];
 	int cour_num;
@@ -360,7 +360,7 @@ void Save_to_dynamic(char *process,int stu_num,Information *p)
 	float sco;
 	char rank;
 	int cred;
-	for (int i = 0; i < stu_num; i++)                                       //½«ÎÄ¼şÖĞ±£´æµÄÑ§ÉúĞÅÏ¢ÏÈ±£´æµ½ÁÙÊ±ÉêÇëµÄ¿Õ¼äÖĞ
+	for (int i = 0; i < stu_num; i++)                                       //å°†æ–‡ä»¶ä¸­ä¿å­˜çš„å­¦ç”Ÿä¿¡æ¯å…ˆä¿å­˜åˆ°ä¸´æ—¶ç”³è¯·çš„ç©ºé—´ä¸­
 	{
 		infile >> nam;
 		p[i].SetName(nam);
@@ -380,338 +380,338 @@ void Save_to_dynamic(char *process,int stu_num,Information *p)
 	}
 	infile.close();
 }
-//ÅĞ¶Ï¼ÌĞøÓë·ñº¯Êı
+//åˆ¤æ–­ç»§ç»­ä¸å¦å‡½æ•°
 void Continue_or_not(char *process, int &input)
 {
-	char Yes_or_Not;                                                        //ÓÃ»§Ñ¡ÔñÕıÈ·Óë·ñÊ±ÊäÈëµÄ×Ö·û
-	bool Judge_Yes_or_Not = true;                                           //²¼¶û±äÁ¿ÅĞ¶ÏÓÃ»§ÊäÈëÕıÈ·Óë·ñ
+	char Yes_or_Not;                                                        //ç”¨æˆ·é€‰æ‹©æ­£ç¡®ä¸å¦æ—¶è¾“å…¥çš„å­—ç¬¦
+	bool Judge_Yes_or_Not = true;                                           //å¸ƒå°”å˜é‡åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ­£ç¡®ä¸å¦
 
 	for (int i = 0; Judge_Yes_or_Not; i++)
 	{
-		cout << "ÊÇ·ñ¼ÌĞø" << process << "£¿°´Y¼ÌĞø£¬°´N·µ»ØÖ÷²Ëµ¥£º";
+		cout << "æ˜¯å¦ç»§ç»­" << process << "ï¼ŸæŒ‰Yç»§ç»­ï¼ŒæŒ‰Nè¿”å›ä¸»èœå•ï¼š";
 		cin >> Yes_or_Not;
-		if (Yes_or_Not == 'Y' || Yes_or_Not == 'y')                         //¼ÌĞø
+		if (Yes_or_Not == 'Y' || Yes_or_Not == 'y')                         //ç»§ç»­
 		{
 			Judge_Yes_or_Not = false;
 		}
-		else if (Yes_or_Not == 'N' || Yes_or_Not == 'n')                    //·µ»ØÖ÷²Ëµ¥
+		else if (Yes_or_Not == 'N' || Yes_or_Not == 'n')                    //è¿”å›ä¸»èœå•
 		{
 			input = 0;
 			Judge_Yes_or_Not = false;
 		}
-		else                                                                //ÖØĞÂÊäÈë
+		else                                                                //é‡æ–°è¾“å…¥
 		{
 			Judge_Yes_or_Not = true;
 		}
 	}
 }
-//ĞŞ¸Äº¯Êı
+//ä¿®æ”¹å‡½æ•°
 void Modify()
 {
 	int stu_num;
-	Read_Stu_num("ĞŞ¸Ä", stu_num);
-	Information *p = new Information[stu_num];                              //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("ĞŞ¸Ä", stu_num, p);                                    //¶ÁÈ¡Ñ§ÉúĞÅÏ¢µ½¶¯Ì¬ÉêÇë¿Õ¼äÖĞ
-	int choose_nam_or_num;                                                  //´æ·ÅÓÃ»§ÊäÈëÊı×ÖÑ¡Ïî
-	bool Input_judge = true;                                                //²¼¶û±äÁ¿£¬ÅĞ¶ÏÊäÈëÕıÈ·Óë·ñ
-	cout << "ÇëÑ¡ÔñĞÕÃû»òÑ§ºÅÒÔĞŞ¸ÄÑ§ÉúĞÅÏ¢£¬ÊäÈë1´ú±íĞÕÃû£¬2´ú±íÑ§ºÅ£º";
-	for (int i = 0; Input_judge; i++)                                       //ÓÃ»§ÊäÈëÊı×ÖÑ¡Ôñ²¢ÅĞ¶ÏÊäÈëºÏ·¨Óë·ñ
+	Read_Stu_num("ä¿®æ”¹", stu_num);
+	Information *p = new Information[stu_num];                              //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("ä¿®æ”¹", stu_num, p);                                    //è¯»å–å­¦ç”Ÿä¿¡æ¯åˆ°åŠ¨æ€ç”³è¯·ç©ºé—´ä¸­
+	int choose_nam_or_num;                                                  //å­˜æ”¾ç”¨æˆ·è¾“å…¥æ•°å­—é€‰é¡¹
+	bool Input_judge = true;                                                //å¸ƒå°”å˜é‡ï¼Œåˆ¤æ–­è¾“å…¥æ­£ç¡®ä¸å¦
+	cout << "è¯·é€‰æ‹©å§“åæˆ–å­¦å·ä»¥ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯ï¼Œè¾“å…¥1ä»£è¡¨å§“åï¼Œ2ä»£è¡¨å­¦å·ï¼š";
+	for (int i = 0; Input_judge; i++)                                       //ç”¨æˆ·è¾“å…¥æ•°å­—é€‰æ‹©å¹¶åˆ¤æ–­è¾“å…¥åˆæ³•ä¸å¦
 	{
 		cin >> choose_nam_or_num;
 		if (!(choose_nam_or_num == 1 || choose_nam_or_num == 2))
-			cout << "ÊäÈëÓĞÎó£¬ÇëÊäÈëÊı×Ö1»ò2Å¶=^-^=" << endl;
+			cout << "è¾“å…¥æœ‰è¯¯ï¼Œè¯·è¾“å…¥æ•°å­—1æˆ–2å“¦=^-^=" << endl;
 		else
 			Input_judge = false;
 	}
-	if (choose_nam_or_num == 1)                                             //°´Ñ§ÉúĞÕÃûÎª²»±äÁ¿ĞŞ¸Ä
+	if (choose_nam_or_num == 1)                                             //æŒ‰å­¦ç”Ÿå§“åä¸ºä¸å˜é‡ä¿®æ”¹
 	{
-		char nam[20];                                                       //ÁÙÊ±ÊäÈëÑ§ÉúĞÅÏ¢
+		char nam[20];                                                       //ä¸´æ—¶è¾“å…¥å­¦ç”Ÿä¿¡æ¯
 		long long num;
 		char cour[10];
 		int cour_num;
 		int cour_tim;
 		float sco;
 		int cred;
-		int choose_input_name = 1;                                          //ÏµÍ³ÖĞÎŞ¸ÃĞÕÃûµÄÑ§ÉúÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈëÑ§ÉúĞÕÃû
+		int choose_input_name = 1;                                          //ç³»ç»Ÿä¸­æ— è¯¥å§“åçš„å­¦ç”Ÿæ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥å­¦ç”Ÿå§“å
 		for (int i = 0; choose_input_name; i++)
 		{
-			cout << "ÇëÊäÈëÑ§ÉúĞÕÃû£º" << endl;
+			cout << "è¯·è¾“å…¥å­¦ç”Ÿå§“åï¼š" << endl;
 			cin >> nam;
-			int Judge_existence = 0;                                        //±äÁ¿Judge_existenceÅĞ¶Ï¸ÃÑ§ÉúÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                        //å˜é‡Judge_existenceåˆ¤æ–­è¯¥å­¦ç”Ÿæ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (strcmp(p[j].GetName(), nam) == 0)                       //²éÕÒµ½¸ÃÑ§ÉúÈ»ºóĞŞ¸ÄĞÅÏ¢
+				if (strcmp(p[j].GetName(), nam) == 0)                       //æŸ¥æ‰¾åˆ°è¯¥å­¦ç”Ÿç„¶åä¿®æ”¹ä¿¡æ¯
 				{
-					Judge_existence++;                                      //´æÔÚ¸ÃÑ§ÉúÔò±äÁ¿Judge_existence+1
-					cout << "ÄúËùÒªĞŞ¸ÄµÄÑ§ÉúÔ­À´µÄĞÅÏ¢Îª£º" << endl;
+					Judge_existence++;                                      //å­˜åœ¨è¯¥å­¦ç”Ÿåˆ™å˜é‡Judge_existence+1
+					cout << "æ‚¨æ‰€è¦ä¿®æ”¹çš„å­¦ç”ŸåŸæ¥çš„ä¿¡æ¯ä¸ºï¼š" << endl;
 					Display_title();
-					p[j].display();                                         //ÏÔÊ¾ËùÒªĞŞ¸ÄÑ§ÉúÔ­À´µÄĞÅÏ¢
-					int choose_of_modify;                                   //ÓÃ»§ÊäÈëÊı×ÖÒÔÑ¡ÔñËùÒªĞŞ¸ÄµÄĞÅÏ¢
-					bool Judge_choose_modify = true;                        //²¼¶û±äÁ¿ÅĞ¶ÏÓÃ»§ÊäÈëÕıÈ·Óë·ñ
-					bool Judge_output = true;                               //²¼¶û±äÁ¿ÅĞ¶ÏÊÇ·ñÊä³öĞŞ¸ÄºóµÄĞÅÏ¢
+					p[j].display();                                         //æ˜¾ç¤ºæ‰€è¦ä¿®æ”¹å­¦ç”ŸåŸæ¥çš„ä¿¡æ¯
+					int choose_of_modify;                                   //ç”¨æˆ·è¾“å…¥æ•°å­—ä»¥é€‰æ‹©æ‰€è¦ä¿®æ”¹çš„ä¿¡æ¯
+					bool Judge_choose_modify = true;                        //å¸ƒå°”å˜é‡åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ­£ç¡®ä¸å¦
+					bool Judge_output = true;                               //å¸ƒå°”å˜é‡åˆ¤æ–­æ˜¯å¦è¾“å‡ºä¿®æ”¹åçš„ä¿¡æ¯
 					for (int k = 0; Judge_choose_modify; k++)
 					{
-						cout << "ÇëÑ¡ÔñÄúÒªĞŞ¸ÄµÄÑ§ÉúĞÅÏ¢£¬1´ú±íÑ§ºÅ£¬2´ú±í¿Î³ÌÃû³Æ£¬3´ú±í¿Î³ÌĞòºÅ£¬4´ú±íÑ§Ê±£¬5´ú±í·ÖÊı£¬6´ú±íÑ§·Ö£¬0´ú±í²»ĞŞ¸Ä´ËÌõĞÅÏ¢£º";
+						cout << "è¯·é€‰æ‹©æ‚¨è¦ä¿®æ”¹çš„å­¦ç”Ÿä¿¡æ¯ï¼Œ1ä»£è¡¨å­¦å·ï¼Œ2ä»£è¡¨è¯¾ç¨‹åç§°ï¼Œ3ä»£è¡¨è¯¾ç¨‹åºå·ï¼Œ4ä»£è¡¨å­¦æ—¶ï¼Œ5ä»£è¡¨åˆ†æ•°ï¼Œ6ä»£è¡¨å­¦åˆ†ï¼Œ0ä»£è¡¨ä¸ä¿®æ”¹æ­¤æ¡ä¿¡æ¯ï¼š";
 						cin >> choose_of_modify;
-						if (choose_of_modify == 0)                          //²»ĞŞ¸Ä´ËÌõĞÅÏ¢£¬²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						if (choose_of_modify == 0)                          //ä¸ä¿®æ”¹æ­¤æ¡ä¿¡æ¯ï¼Œå¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							Judge_output = false;                           //²¼¶û±äÁ¿Îª¼Ù£¬²»Êä³öĞŞ¸ÄºóµÄĞÅÏ¢£¬ÒòÎª²¢Ã»ÓĞĞŞ¸Ä
+							Judge_output = false;                           //å¸ƒå°”å˜é‡ä¸ºå‡ï¼Œä¸è¾“å‡ºä¿®æ”¹åçš„ä¿¡æ¯ï¼Œå› ä¸ºå¹¶æ²¡æœ‰ä¿®æ”¹
 						}
-						else if (choose_of_modify == 1)                     //ĞŞ¸ÄÑ§ºÅ£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 1)                     //ä¿®æ”¹å­¦å·ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸ÄÑ§ºÅ£º";
+							cout << "è¯·ä¿®æ”¹å­¦å·ï¼š";
 							cin >> num;
 							p[j].SetNumber(num);
 						}
-						else if (choose_of_modify == 2)                     //ĞŞ¸Ä¿Î³ÌÃû³Æ£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 2)                     //ä¿®æ”¹è¯¾ç¨‹åç§°ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä¿Î³ÌÃû³Æ£º";
+							cout << "è¯·ä¿®æ”¹è¯¾ç¨‹åç§°ï¼š";
 							cin >> cour;
 							p[j].SetCourse_title(cour);
 						}
-						else if (choose_of_modify == 3)                     //ĞŞ¸Ä¿Î³ÌĞòºÅ£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 3)                     //ä¿®æ”¹è¯¾ç¨‹åºå·ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä¿Î³ÌĞòºÅ£º";
+							cout << "è¯·ä¿®æ”¹è¯¾ç¨‹åºå·ï¼š";
 							cin >> cour_num;
 							p[j].SetCourse_number(cour_num);
 						}
-						else if (choose_of_modify == 4)                     //ĞŞ¸Ä¿Î³ÌÑ§Ê±£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 4)                     //ä¿®æ”¹è¯¾ç¨‹å­¦æ—¶ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä¿Î³ÌÑ§Ê±£º";
+							cout << "è¯·ä¿®æ”¹è¯¾ç¨‹å­¦æ—¶ï¼š";
 							cin >> cour_tim;
 							p[j].SetCourse_time(cour_tim);
 						}
-						else if (choose_of_modify == 5)                     //ĞŞ¸Ä·ÖÊı£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 5)                     //ä¿®æ”¹åˆ†æ•°ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä·ÖÊı£º";
+							cout << "è¯·ä¿®æ”¹åˆ†æ•°ï¼š";
 							cin >> sco;
 							p[j].SetScore(sco);
 						}
-						else if (choose_of_modify == 6)                     //ĞŞ¸Ä¿Î³ÌÑ§·Ö£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 6)                     //ä¿®æ”¹è¯¾ç¨‹å­¦åˆ†ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸ÄÏàÓ¦¿Î³ÌÑ§·Ö£º";
+							cout << "è¯·ä¿®æ”¹ç›¸åº”è¯¾ç¨‹å­¦åˆ†ï¼š";
 							cin >> cred;
 							p[j].SetCredit(cred);
 						}
-						else                                                //ÊäÈë´íÎó£¬¹Ê²¼¶û±äÁ¿Îªtrue£¬ÖØ¸´ÊäÈë¹ı³Ì
+						else                                                //è¾“å…¥é”™è¯¯ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºtrueï¼Œé‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = true;
-							cout << "¶Ô²»ÆğÊäÈëÓĞÎó>o<ÇëÖØĞÂÊäÈë1~6µÄÕûÊı£º"<<endl;
+							cout << "å¯¹ä¸èµ·è¾“å…¥æœ‰è¯¯>o<è¯·é‡æ–°è¾“å…¥1~6çš„æ•´æ•°ï¼š"<<endl;
 						}
 					}
-					if (Judge_output)                                       //ÅĞ¶ÏÊÇ·ñÊä³öĞŞ¸ÄºóµÄĞÅÏ¢
+					if (Judge_output)                                       //åˆ¤æ–­æ˜¯å¦è¾“å‡ºä¿®æ”¹åçš„ä¿¡æ¯
 					{
-						cout << "ĞŞ¸ÄºóµÄÑ§ÉúĞÅÏ¢Îª£º" << endl;
+						cout << "ä¿®æ”¹åçš„å­¦ç”Ÿä¿¡æ¯ä¸ºï¼š" << endl;
 						Display_title();
 						p[j].display();
 					}
 				}
 			}
-			if (Judge_existence == 0)                                       //²»´æÔÚ¸ÃÑ§Éú
+			if (Judge_existence == 0)                                       //ä¸å­˜åœ¨è¯¥å­¦ç”Ÿ
 			{
-				cout << "¶Ô²»Æğ>~<²»´æÔÚ¸ÃÑ§Éú£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈëÑ§ÉúĞÕÃû£º";
+				cout << "å¯¹ä¸èµ·>~<ä¸å­˜åœ¨è¯¥å­¦ç”Ÿï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥å­¦ç”Ÿå§“åï¼š";
 				cin >> choose_input_name;
 			}
 			else
 			{
-				ofstream outfile("Information.dat", ios::out);             //½«ÎÄ¼şÖĞÔ­À´±£´æµÄĞÅÏ¢ÇéÇå¿ÕºóÔÙ½«ĞŞ¸ÄºóµÄÑ§ÉúĞÅÏ¢±£´æÔÚÎÄ¼şÀï
-				if (!outfile)                                              //Èç¹û´ò¿ªÊ§°Ü
+				ofstream outfile("Information.dat", ios::out);             //å°†æ–‡ä»¶ä¸­åŸæ¥ä¿å­˜çš„ä¿¡æ¯æƒ…æ¸…ç©ºåå†å°†ä¿®æ”¹åçš„å­¦ç”Ÿä¿¡æ¯ä¿å­˜åœ¨æ–‡ä»¶é‡Œ
+				if (!outfile)                                              //å¦‚æœæ‰“å¼€å¤±è´¥
 				{
-					cerr << "ĞŞ¸ÄÍê³Éºó±£´æÊ±ÎÄ¼ş´ò¿ª³ö´í£¡" << endl;
+					cerr << "ä¿®æ”¹å®Œæˆåä¿å­˜æ—¶æ–‡ä»¶æ‰“å¼€å‡ºé”™ï¼" << endl;
 					exit(0);
 				}
-				for (int i = 0; i < stu_num; i++)                          //ÖğÌõ±£´æ
+				for (int i = 0; i < stu_num; i++)                          //é€æ¡ä¿å­˜
 				{
 					outfile << p[i].GetName() << " " << p[i].GetNumber() << " " << p[i].GetCourse_title() << " " << p[i].GetCourse_number() << " "
 						<< p[i].GetCourse_time() << " " << p[i].GetScore() << " " << p[i].GetRank() << " " << p[i].GetCredit() << " ";
 					outfile.clear();
 				}
-				outfile.close();                                           //¹Ø±ÕÎÄ¼ş
-				Continue_or_not("ĞŞ¸Ä", choose_input_name);                //ÅĞ¶ÏÊÇ·ñ¼ÌĞøĞŞ¸Ä
+				outfile.close();                                           //å…³é—­æ–‡ä»¶
+				Continue_or_not("ä¿®æ”¹", choose_input_name);                //åˆ¤æ–­æ˜¯å¦ç»§ç»­ä¿®æ”¹
 			}
 		}
-		delete p;                                                          //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		if (choose_input_name == 0)                                        //·µ»ØÖ÷²Ëµ¥
+		delete p;                                                          //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		if (choose_input_name == 0)                                        //è¿”å›ä¸»èœå•
 			Choose_Function();
 	}
-	else if (choose_nam_or_num == 2)                                       //°´Ñ§ÉúÑ§ºÅÎª²»±äÁ¿ĞŞ¸Ä
+	else if (choose_nam_or_num == 2)                                       //æŒ‰å­¦ç”Ÿå­¦å·ä¸ºä¸å˜é‡ä¿®æ”¹
 	{
-		char nam[20];                                                      //ÁÙÊ±ÊäÈëÑ§ÉúĞÅÏ¢
+		char nam[20];                                                      //ä¸´æ—¶è¾“å…¥å­¦ç”Ÿä¿¡æ¯
 		long long num;
 		char cour[10];
 		int cour_num;
 		int cour_tim;
 		float sco;
 		int cred;
-		int choose_input_number = 1;                                       //ÏµÍ³ÖĞÎŞ¸ÃÑ§ºÅµÄÑ§ÉúÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈëÑ§ÉúÑ§ºÅ
+		int choose_input_number = 1;                                       //ç³»ç»Ÿä¸­æ— è¯¥å­¦å·çš„å­¦ç”Ÿæ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥å­¦ç”Ÿå­¦å·
 		for (int i = 0; choose_input_number; i++)
 		{
-			cout << "ÇëÊäÈëÑ§ÉúÑ§ºÅ£º" << endl;
+			cout << "è¯·è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š" << endl;
 			cin >> num;
-			int Judge_existence = 0;                                       //±äÁ¿Judge_existenceÅĞ¶Ï¸ÃÑ§ÉúÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                       //å˜é‡Judge_existenceåˆ¤æ–­è¯¥å­¦ç”Ÿæ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (p[j].GetNumber()== num)                                //²éÕÒµ½¸ÃÑ§ÉúÈ»ºóĞŞ¸ÄĞÅÏ¢
+				if (p[j].GetNumber()== num)                                //æŸ¥æ‰¾åˆ°è¯¥å­¦ç”Ÿç„¶åä¿®æ”¹ä¿¡æ¯
 				{
-					Judge_existence++;                                     //´æÔÚ¸ÃÑ§ÉúÔò±äÁ¿Judge_existence+1
-					cout << "ÄúËùÒªĞŞ¸ÄµÄÑ§ÉúÔ­À´µÄĞÅÏ¢Îª£º" << endl;
+					Judge_existence++;                                     //å­˜åœ¨è¯¥å­¦ç”Ÿåˆ™å˜é‡Judge_existence+1
+					cout << "æ‚¨æ‰€è¦ä¿®æ”¹çš„å­¦ç”ŸåŸæ¥çš„ä¿¡æ¯ä¸ºï¼š" << endl;
 					Display_title();
-					p[j].display();                                        //ÏÔÊ¾ËùÒªĞŞ¸ÄÑ§ÉúÔ­À´µÄĞÅÏ¢
-					int choose_of_modify;                                  //ÓÃ»§ÊäÈëÊı×ÖÒÔÑ¡ÔñËùÒªĞŞ¸ÄµÄĞÅÏ¢
-					bool Judge_choose_modify = true;                       //²¼¶û±äÁ¿ÅĞ¶ÏÓÃ»§ÊäÈëÕıÈ·Óë·ñ
-					bool Judge_output=true;                                //²¼¶û±äÁ¿ÅĞ¶ÏÊÇ·ñÊä³öĞŞ¸ÄºóµÄĞÅÏ¢
+					p[j].display();                                        //æ˜¾ç¤ºæ‰€è¦ä¿®æ”¹å­¦ç”ŸåŸæ¥çš„ä¿¡æ¯
+					int choose_of_modify;                                  //ç”¨æˆ·è¾“å…¥æ•°å­—ä»¥é€‰æ‹©æ‰€è¦ä¿®æ”¹çš„ä¿¡æ¯
+					bool Judge_choose_modify = true;                       //å¸ƒå°”å˜é‡åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ­£ç¡®ä¸å¦
+					bool Judge_output=true;                                //å¸ƒå°”å˜é‡åˆ¤æ–­æ˜¯å¦è¾“å‡ºä¿®æ”¹åçš„ä¿¡æ¯
 					for (int k = 0; Judge_choose_modify; k++)
 					{
-						cout << "ÇëÑ¡ÔñÄúÒªĞŞ¸ÄµÄÑ§ÉúĞÅÏ¢£¬1´ú±íĞÕÃû£¬2´ú±í¿Î³ÌÃû³Æ£¬3´ú±í¿Î³ÌĞòºÅ£¬4´ú±íÑ§Ê±£¬5´ú±í·ÖÊı£¬6´ú±íÑ§·Ö£¬0´ú±í²»ĞŞ¸Ä£º";
+						cout << "è¯·é€‰æ‹©æ‚¨è¦ä¿®æ”¹çš„å­¦ç”Ÿä¿¡æ¯ï¼Œ1ä»£è¡¨å§“åï¼Œ2ä»£è¡¨è¯¾ç¨‹åç§°ï¼Œ3ä»£è¡¨è¯¾ç¨‹åºå·ï¼Œ4ä»£è¡¨å­¦æ—¶ï¼Œ5ä»£è¡¨åˆ†æ•°ï¼Œ6ä»£è¡¨å­¦åˆ†ï¼Œ0ä»£è¡¨ä¸ä¿®æ”¹ï¼š";
 						cin >> choose_of_modify;
-						if (choose_of_modify == 0)                         //²»ĞŞ¸Ä´ËÌõĞÅÏ¢£¬²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						if (choose_of_modify == 0)                         //ä¸ä¿®æ”¹æ­¤æ¡ä¿¡æ¯ï¼Œå¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							Judge_output = false;                          //²¼¶û±äÁ¿Îª¼Ù£¬²»Êä³öĞŞ¸ÄºóµÄĞÅÏ¢£¬ÒòÎª²¢Ã»ÓĞĞŞ¸Ä
+							Judge_output = false;                          //å¸ƒå°”å˜é‡ä¸ºå‡ï¼Œä¸è¾“å‡ºä¿®æ”¹åçš„ä¿¡æ¯ï¼Œå› ä¸ºå¹¶æ²¡æœ‰ä¿®æ”¹
 						}
-						else if (choose_of_modify == 1)                    //ĞŞ¸ÄĞÕÃû£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 1)                    //ä¿®æ”¹å§“åï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸ÄĞÕÃû£º";
+							cout << "è¯·ä¿®æ”¹å§“åï¼š";
 							cin >> nam;
 							p[j].SetName(nam);
 						}
-						else if (choose_of_modify == 2)                    //ĞŞ¸Ä¿Î³ÌÃû³Æ£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 2)                    //ä¿®æ”¹è¯¾ç¨‹åç§°ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä¿Î³ÌÃû³Æ£º";
+							cout << "è¯·ä¿®æ”¹è¯¾ç¨‹åç§°ï¼š";
 							cin >> cour;
 							p[j].SetCourse_title(cour);
 						}
-						else if (choose_of_modify == 3)                    //ĞŞ¸Ä¿Î³ÌĞòºÅ£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 3)                    //ä¿®æ”¹è¯¾ç¨‹åºå·ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä¿Î³ÌĞòºÅ£º";
+							cout << "è¯·ä¿®æ”¹è¯¾ç¨‹åºå·ï¼š";
 							cin >> cour_num;
 							p[j].SetCourse_number(cour_num);
 						}
-						else if (choose_of_modify == 4)                    //ĞŞ¸Ä¿Î³ÌÑ§Ê±£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 4)                    //ä¿®æ”¹è¯¾ç¨‹å­¦æ—¶ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä¿Î³ÌÑ§Ê±£º";
+							cout << "è¯·ä¿®æ”¹è¯¾ç¨‹å­¦æ—¶ï¼š";
 							cin >> cour_tim;
 							p[j].SetCourse_time(cour_tim);
 						}
-						else if (choose_of_modify == 5)                   //ĞŞ¸Ä·ÖÊı£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 5)                   //ä¿®æ”¹åˆ†æ•°ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸Ä·ÖÊı£º";
+							cout << "è¯·ä¿®æ”¹åˆ†æ•°ï¼š";
 							cin >> sco;
 							p[j].SetScore(sco);
 						}
-						else if (choose_of_modify == 6)                   //ĞŞ¸Ä¿Î³ÌÑ§·Ö£¬ÊäÈëÕıÈ·£¬¹Ê²¼¶û±äÁ¿Îªfalse£¬²»ÓÃÖØ¸´ÊäÈë¹ı³Ì
+						else if (choose_of_modify == 6)                   //ä¿®æ”¹è¯¾ç¨‹å­¦åˆ†ï¼Œè¾“å…¥æ­£ç¡®ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºfalseï¼Œä¸ç”¨é‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = false;
-							cout << "ÇëĞŞ¸ÄÏàÓ¦¿Î³ÌÑ§·Ö£º";
+							cout << "è¯·ä¿®æ”¹ç›¸åº”è¯¾ç¨‹å­¦åˆ†ï¼š";
 							cin >> cred;
 							p[j].SetCredit(cred);
 						}
-						else                                              //ÊäÈë´íÎó£¬¹Ê²¼¶û±äÁ¿Îªtrue£¬ÖØ¸´ÊäÈë¹ı³Ì
+						else                                              //è¾“å…¥é”™è¯¯ï¼Œæ•…å¸ƒå°”å˜é‡ä¸ºtrueï¼Œé‡å¤è¾“å…¥è¿‡ç¨‹
 						{
 							Judge_choose_modify = true;
-							cout << "¶Ô²»Æğ£¬ÊäÈëÓĞÎó >o< ÇëÖØĞÂÊäÈë1~6µÄÕûÊı£º" << endl;
+							cout << "å¯¹ä¸èµ·ï¼Œè¾“å…¥æœ‰è¯¯ >o< è¯·é‡æ–°è¾“å…¥1~6çš„æ•´æ•°ï¼š" << endl;
 						}
 					}
-					if (Judge_output)                                     //ÅĞ¶ÏÊÇ·ñÊä³öĞŞ¸ÄºóµÄĞÅÏ¢
+					if (Judge_output)                                     //åˆ¤æ–­æ˜¯å¦è¾“å‡ºä¿®æ”¹åçš„ä¿¡æ¯
 					{
-						cout << "ĞŞ¸ÄºóµÄÑ§ÉúĞÅÏ¢Îª£º" << endl;
+						cout << "ä¿®æ”¹åçš„å­¦ç”Ÿä¿¡æ¯ä¸ºï¼š" << endl;
 						Display_title();
 						p[j].display();
 					}
 				}
 			}
-			if (Judge_existence == 0)                                    //²»´æÔÚ¸ÃÑ§Éú
+			if (Judge_existence == 0)                                    //ä¸å­˜åœ¨è¯¥å­¦ç”Ÿ
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸ÃÑ§Éú£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈëÑ§ÉúÑ§ºÅ£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥å­¦ç”Ÿï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š";
 				cin >> choose_input_number;
 			}
 			else
 			{
-				ofstream outfile("Information.dat", ios::out);          //½«ÎÄ¼şÖĞÔ­À´±£´æµÄĞÅÏ¢Çå¿ÕºóÔÙ½«ĞŞ¸ÄºóµÄÑ§ÉúĞÅÏ¢±£´æÔÚÎÄ¼şÀï
-				if (!outfile)                                           //Èç¹û´ò¿ªÊ§°Ü
+				ofstream outfile("Information.dat", ios::out);          //å°†æ–‡ä»¶ä¸­åŸæ¥ä¿å­˜çš„ä¿¡æ¯æ¸…ç©ºåå†å°†ä¿®æ”¹åçš„å­¦ç”Ÿä¿¡æ¯ä¿å­˜åœ¨æ–‡ä»¶é‡Œ
+				if (!outfile)                                           //å¦‚æœæ‰“å¼€å¤±è´¥
 				{
-					cerr << "ĞŞ¸ÄÍê³Éºó±£´æÊ±ÎÄ¼ş´ò¿ª³ö´í£¡" << endl;
+					cerr << "ä¿®æ”¹å®Œæˆåä¿å­˜æ—¶æ–‡ä»¶æ‰“å¼€å‡ºé”™ï¼" << endl;
 					exit(0);
 				}
-				for (int i = 0; i < stu_num; i++)                       //ÖğÌõ±£´æ
+				for (int i = 0; i < stu_num; i++)                       //é€æ¡ä¿å­˜
 				{
 					outfile << p[i].GetName() << " " << p[i].GetNumber() << " " << p[i].GetCourse_title() << " " << p[i].GetCourse_number() << " "
 						<< p[i].GetCourse_time() << " " << p[i].GetScore() << " " << p[i].GetRank() << " " << p[i].GetCredit() << " ";
 					outfile.clear();
 				}
-				outfile.close();                                        //¹Ø±ÕÎÄ¼ş
-				Continue_or_not("ĞŞ¸Ä", choose_input_number);           //ÅĞ¶ÏÊÇ·ñ¼ÌĞøĞŞ¸Ä
+				outfile.close();                                        //å…³é—­æ–‡ä»¶
+				Continue_or_not("ä¿®æ”¹", choose_input_number);           //åˆ¤æ–­æ˜¯å¦ç»§ç»­ä¿®æ”¹
 			}
 		}
-		delete p;                                                       //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		if (choose_input_number == 0)                                   //·µ»ØÖ÷²Ëµ¥
+		delete p;                                                       //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		if (choose_input_number == 0)                                   //è¿”å›ä¸»èœå•
 			Choose_Function();
 	}
 }
-//²éÑ¯º¯Êı
+//æŸ¥è¯¢å‡½æ•°
 void Search()
 {
 	int stu_num;
-	Read_Stu_num("²éÑ¯", stu_num);                                      //¶ÁÈ¡Ñ§ÉúÈË´Î
-	Information *p = new Information[stu_num];                          //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("²éÑ¯", stu_num, p);                                //¶ÁÈ¡Ñ§ÉúĞÅÏ¢µ½¶¯Ì¬ÉêÇë¿Õ¼ä
-	int choose_of_search;                                               //´æ·ÅÓÃ»§ÊäÈëÊı×ÖÑ¡Ïî
-	bool Input_judge = true;                                            //²¼¶û±äÁ¿£¬ÅĞ¶ÏÊäÈëÕıÈ·Óë·ñ
-	cout << "ÇëÑ¡ÔñĞÕÃû»òÑ§ºÅÒÔ²éÑ¯Ñ§ÉúĞÅÏ¢£¬ÊäÈë1´ú±íĞÕÃû£¬2´ú±íÑ§ºÅ£º";
-	for (int i = 0; Input_judge; i++)                                   //ÓÃ»§ÊäÈëÊı×ÖÑ¡Ôñ²¢ÅĞ¶ÏÊäÈëºÏ·¨Óë·ñ
+	Read_Stu_num("æŸ¥è¯¢", stu_num);                                      //è¯»å–å­¦ç”Ÿäººæ¬¡
+	Information *p = new Information[stu_num];                          //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("æŸ¥è¯¢", stu_num, p);                                //è¯»å–å­¦ç”Ÿä¿¡æ¯åˆ°åŠ¨æ€ç”³è¯·ç©ºé—´
+	int choose_of_search;                                               //å­˜æ”¾ç”¨æˆ·è¾“å…¥æ•°å­—é€‰é¡¹
+	bool Input_judge = true;                                            //å¸ƒå°”å˜é‡ï¼Œåˆ¤æ–­è¾“å…¥æ­£ç¡®ä¸å¦
+	cout << "è¯·é€‰æ‹©å§“åæˆ–å­¦å·ä»¥æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯ï¼Œè¾“å…¥1ä»£è¡¨å§“åï¼Œ2ä»£è¡¨å­¦å·ï¼š";
+	for (int i = 0; Input_judge; i++)                                   //ç”¨æˆ·è¾“å…¥æ•°å­—é€‰æ‹©å¹¶åˆ¤æ–­è¾“å…¥åˆæ³•ä¸å¦
 	{
 		cin >> choose_of_search;
-		if (!(choose_of_search == 1 || choose_of_search == 2))          //ÊäÈë´íÎó£¬ÖØ¸´ÊäÈë
-			cout << "ÊäÈëÓĞÎó£¬ÇëÊäÈëÊı×Ö1»ò2Å¶ =^-^= " << endl;
-		else                                                            //ÊäÈëÕıÈ·Ìø³öÑ­»·
+		if (!(choose_of_search == 1 || choose_of_search == 2))          //è¾“å…¥é”™è¯¯ï¼Œé‡å¤è¾“å…¥
+			cout << "è¾“å…¥æœ‰è¯¯ï¼Œè¯·è¾“å…¥æ•°å­—1æˆ–2å“¦ =^-^= " << endl;
+		else                                                            //è¾“å…¥æ­£ç¡®è·³å‡ºå¾ªç¯
 			Input_judge = false;
 	}
-	if (choose_of_search == 1)                                          //°´Ñ§ÉúĞÕÃû²éÑ¯
+	if (choose_of_search == 1)                                          //æŒ‰å­¦ç”Ÿå§“åæŸ¥è¯¢
 	{
-		char nam[20];                                                   //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈëÑ§ÉúĞÕÃû
-		int *pp = new int[stu_num];                                     //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·Å²éÕÒµ½µÄÑ§ÉúÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
-		int choose_input_name = 1;                                      //ÏµÍ³ÖĞÎŞ¸ÃĞÕÃûµÄÑ§ÉúÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈëÑ§ÉúĞÕÃû
+		char nam[20];                                                   //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥å­¦ç”Ÿå§“å
+		int *pp = new int[stu_num];                                     //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾æŸ¥æ‰¾åˆ°çš„å­¦ç”Ÿåœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
+		int choose_input_name = 1;                                      //ç³»ç»Ÿä¸­æ— è¯¥å§“åçš„å­¦ç”Ÿæ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥å­¦ç”Ÿå§“å
 		for (int i = 0; choose_input_name; i++)
 		{
-			cout << "ÇëÊäÈëÑ§ÉúĞÕÃû£º" << endl;
+			cout << "è¯·è¾“å…¥å­¦ç”Ÿå§“åï¼š" << endl;
 			cin >> nam;
-			int Judge_existence = 0;                                    //±äÁ¿Judge_existenceÅĞ¶Ï¸ÃÑ§ÉúÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                    //å˜é‡Judge_existenceåˆ¤æ–­è¯¥å­¦ç”Ÿæ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (strcmp(p[j].GetName(), nam) == 0)                   //²éÕÒµ½¸ÃÑ§ÉúÈ»ºóÊä³öĞÅÏ¢
+				if (strcmp(p[j].GetName(), nam) == 0)                   //æŸ¥æ‰¾åˆ°è¯¥å­¦ç”Ÿç„¶åè¾“å‡ºä¿¡æ¯
 				{
-					Judge_existence++;                                  //´æÔÚ¸ÃÑ§ÉúÔò±äÁ¿Judge_existence+1
-					pp[Judge_existence - 1] = j;                        //´æ·Å²éÕÒµ½µÄÑ§ÉúÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+					Judge_existence++;                                  //å­˜åœ¨è¯¥å­¦ç”Ÿåˆ™å˜é‡Judge_existence+1
+					pp[Judge_existence - 1] = j;                        //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„å­¦ç”Ÿåœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 				}
 			}
-			if (Judge_existence == 0)                                   //²»´æÔÚ¸ÃÑ§Éú
+			if (Judge_existence == 0)                                   //ä¸å­˜åœ¨è¯¥å­¦ç”Ÿ
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸ÃÑ§Éú£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈëÑ§ÉúĞÕÃû£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥å­¦ç”Ÿï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥å­¦ç”Ÿå§“åï¼š";
 				cin >> choose_input_name;
 			}
 			else
 			{
 				int i, j, k, t;
-				for (i = 0; i < Judge_existence - 1; i++)               //ÓÃÑ¡Ôñ·¨ÅÅĞò
+				for (i = 0; i < Judge_existence - 1; i++)               //ç”¨é€‰æ‹©æ³•æ’åº
 				{
 					k = i;
 					for (j = i + 1; j < Judge_existence; j++)
 					{
-						if (p[pp[j]].GetScore() < p[pp[k]].GetScore())  //°´·ÖÊı´Ó¸ßµ½µÍÅÅĞò
+						if (p[pp[j]].GetScore() < p[pp[k]].GetScore())  //æŒ‰åˆ†æ•°ä»é«˜åˆ°ä½æ’åº
 							k = j;
-						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())   //·ÖÊıÏàÍ¬Ê±°´¿Î³ÌĞòºÅ´ÓĞ¡µ½´óÅÅĞò
+						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())   //åˆ†æ•°ç›¸åŒæ—¶æŒ‰è¯¾ç¨‹åºå·ä»å°åˆ°å¤§æ’åº
 							if (p[pp[j]].GetCourse_number() < p[pp[k]].GetCourse_number())
 								k = j;
 					}
@@ -719,52 +719,52 @@ void Search()
 					pp[k] = pp[i];
 					pp[i] = t;
 				}
-				cout << "ÄúËùÒª²éÑ¯µÄÑ§ÉúµÄĞÅÏ¢Îª£º" << endl;
+				cout << "æ‚¨æ‰€è¦æŸ¥è¯¢çš„å­¦ç”Ÿçš„ä¿¡æ¯ä¸ºï¼š" << endl;
 				Display_title();
 				for (int i = 0; i < Judge_existence; i++)
-					p[pp[i]].display();                                  //Êä³öÑ§ÉúĞÅÏ¢
-				Continue_or_not("²éÑ¯", choose_input_name);              //ÅĞ¶ÏÊÇ·ñ¼ÌĞø²éÑ¯
+					p[pp[i]].display();                                  //è¾“å‡ºå­¦ç”Ÿä¿¡æ¯
+				Continue_or_not("æŸ¥è¯¢", choose_input_name);              //åˆ¤æ–­æ˜¯å¦ç»§ç»­æŸ¥è¯¢
 			}
 		}
-		delete pp;                                                       //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		delete p;                                                        //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
+		delete pp;                                                       //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		delete p;                                                        //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
 		if (choose_input_name == 0)
-			Choose_Function();                                           //·µ»ØÖ÷²Ëµ¥
+			Choose_Function();                                           //è¿”å›ä¸»èœå•
 	}
-	else if (choose_of_search == 2)                                      //°´Ñ§ÉúÑ§ºÅ²éÑ¯
+	else if (choose_of_search == 2)                                      //æŒ‰å­¦ç”Ÿå­¦å·æŸ¥è¯¢
 	{
-       	long long num;                                                   //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈëÑ§ÉúÑ§ºÅ
-		int *pp = new int[stu_num];                                      //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·Å²éÕÒµ½µÄÑ§ÉúÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
-		int choose_input_number = 1;                                     //ÏµÍ³ÖĞÎŞ¸ÃÑ§ºÅµÄÑ§ÉúÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈëÑ§ÉúÑ§ºÅ
+       	long long num;                                                   //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥å­¦ç”Ÿå­¦å·
+		int *pp = new int[stu_num];                                      //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾æŸ¥æ‰¾åˆ°çš„å­¦ç”Ÿåœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
+		int choose_input_number = 1;                                     //ç³»ç»Ÿä¸­æ— è¯¥å­¦å·çš„å­¦ç”Ÿæ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥å­¦ç”Ÿå­¦å·
 		for (int i = 0; choose_input_number; i++)
 		{
-			cout << "ÇëÊäÈëÑ§ÉúÑ§ºÅ£º" << endl;
+			cout << "è¯·è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š" << endl;
 			cin >> num;
-			int Judge_existence = 0;                                     //±äÁ¿Judge_existenceÅĞ¶Ï¸ÃÑ§ÉúÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                     //å˜é‡Judge_existenceåˆ¤æ–­è¯¥å­¦ç”Ÿæ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (p[j].GetNumber() == num)                             //²éÕÒµ½¸ÃÑ§Éú
+				if (p[j].GetNumber() == num)                             //æŸ¥æ‰¾åˆ°è¯¥å­¦ç”Ÿ
 				{
-					Judge_existence++;                                   //´æÔÚ¸ÃÑ§ÉúÔò±äÁ¿Judge_existence+1
-					pp[Judge_existence - 1] = j;                         //´æ·Å²éÕÒµ½µÄÑ§ÉúÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+					Judge_existence++;                                   //å­˜åœ¨è¯¥å­¦ç”Ÿåˆ™å˜é‡Judge_existence+1
+					pp[Judge_existence - 1] = j;                         //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„å­¦ç”Ÿåœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 				}
 			}
-			if (Judge_existence == 0)                                    //²»´æÔÚ¸ÃÑ§Éú
+			if (Judge_existence == 0)                                    //ä¸å­˜åœ¨è¯¥å­¦ç”Ÿ
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸ÃÑ§Éú£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈëÑ§ÉúÑ§ºÅ£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥å­¦ç”Ÿï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š";
 				cin >> choose_input_number;
 			}
 			else
 			{
 				int i, j, k, t;
-				for (i = 0; i < Judge_existence - 1; i++)                //ÓÃÑ¡Ôñ·¨ÅÅĞò
+				for (i = 0; i < Judge_existence - 1; i++)                //ç”¨é€‰æ‹©æ³•æ’åº
 				{
 					k = i;
 					for (j = i + 1; j < Judge_existence; j++)
 					{
-						if (p[pp[j]].GetScore() < p[pp[k]].GetScore())   //°´·ÖÊı´ÓµÍµ½¸ßÅÅĞò
+						if (p[pp[j]].GetScore() < p[pp[k]].GetScore())   //æŒ‰åˆ†æ•°ä»ä½åˆ°é«˜æ’åº
 							k = j;
-						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())    //·ÖÊıÏàÍ¬µÄ°´¿Î³ÌºÅ´ÓĞ¡µ½´óÅÅĞò
+						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())    //åˆ†æ•°ç›¸åŒçš„æŒ‰è¯¾ç¨‹å·ä»å°åˆ°å¤§æ’åº
 							if (p[pp[j]].GetCourse_number() < p[pp[k]].GetCourse_number())
 								k = j;
 					}
@@ -772,74 +772,74 @@ void Search()
 					pp[k] = pp[i];
 					pp[i] = t;
 				}
-				cout << "ÄúËùÒª²éÑ¯µÄÑ§ÉúµÄĞÅÏ¢Îª£º" << endl;
+				cout << "æ‚¨æ‰€è¦æŸ¥è¯¢çš„å­¦ç”Ÿçš„ä¿¡æ¯ä¸ºï¼š" << endl;
 				Display_title();
 				for (int i = 0; i < Judge_existence; i++)
-					p[pp[i]].display();                                  //Êä³öÑ§ÉúĞÅÏ¢
-				Continue_or_not("²éÑ¯", choose_input_number);            //ÅĞ¶ÏÊÇ·ñ¼ÌĞø²éÑ¯
+					p[pp[i]].display();                                  //è¾“å‡ºå­¦ç”Ÿä¿¡æ¯
+				Continue_or_not("æŸ¥è¯¢", choose_input_number);            //åˆ¤æ–­æ˜¯å¦ç»§ç»­æŸ¥è¯¢
 			}
 		}
-		delete pp;                                                       //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		delete p;                                                        //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		if (choose_input_number == 0)                                    //·µ»ØÖ÷²Ëµ¥
+		delete pp;                                                       //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		delete p;                                                        //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		if (choose_input_number == 0)                                    //è¿”å›ä¸»èœå•
 			Choose_Function();
 	}
 }
-//Í³¼Æ¿ÆÄ¿³É¼¨Çé¿öº¯Êı
+//ç»Ÿè®¡ç§‘ç›®æˆç»©æƒ…å†µå‡½æ•°
 void Statistics_subject()
 {
 	int stu_num;
-	Read_Stu_num("Í³¼Æ¿ÆÄ¿³É¼¨Çé¿ö", stu_num);                             //¶ÁÈ¡Ñ§ÉúÈË´Î
-	Information *p = new Information[stu_num];                           //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("Í³¼Æ¿ÆÄ¿³É¼¨Çé¿ö", stu_num, p);                      //±£´æÑ§ÉúĞÅÏ¢µ½¶¯Ì¬ÉêÇë¿Õ¼ä
-	int choose_title_number;                                             //´æ·ÅÓÃ»§Ñ¡ÔñµÄÊı×Ö
-	bool Judge_title_number = true;                                      //ÅĞ¶ÏÓÃ»§ÊäÈëµÄÕıÈ·ĞÔ
-	cout << "ÇëÎÊÄúÏëÍ¨¹ı¿Î³ÌÃû³Æ»¹ÊÇ¿Î³ÌĞòºÅÀ´Í³¼Æ¿ÆÄ¿µÄ³É¼¨Çé¿ö£¿" << endl;
+	Read_Stu_num("ç»Ÿè®¡ç§‘ç›®æˆç»©æƒ…å†µ", stu_num);                             //è¯»å–å­¦ç”Ÿäººæ¬¡
+	Information *p = new Information[stu_num];                           //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("ç»Ÿè®¡ç§‘ç›®æˆç»©æƒ…å†µ", stu_num, p);                      //ä¿å­˜å­¦ç”Ÿä¿¡æ¯åˆ°åŠ¨æ€ç”³è¯·ç©ºé—´
+	int choose_title_number;                                             //å­˜æ”¾ç”¨æˆ·é€‰æ‹©çš„æ•°å­—
+	bool Judge_title_number = true;                                      //åˆ¤æ–­ç”¨æˆ·è¾“å…¥çš„æ­£ç¡®æ€§
+	cout << "è¯·é—®æ‚¨æƒ³é€šè¿‡è¯¾ç¨‹åç§°è¿˜æ˜¯è¯¾ç¨‹åºå·æ¥ç»Ÿè®¡ç§‘ç›®çš„æˆç»©æƒ…å†µï¼Ÿ" << endl;
 	for (int i = 0; Judge_title_number; i++)
 	{
-		cout << "°´1´ú±í¿Î³ÌÃû³Æ£¬°´2´ú±í¿Î³ÌĞòºÅ£¬ÇëÊäÈë£º";
+		cout << "æŒ‰1ä»£è¡¨è¯¾ç¨‹åç§°ï¼ŒæŒ‰2ä»£è¡¨è¯¾ç¨‹åºå·ï¼Œè¯·è¾“å…¥ï¼š";
 		cin >> choose_title_number;
-		if (choose_title_number == 1 || choose_title_number == 2)       //ÊäÈëÕıÈ·£¬Ìø³öÑ­»·
+		if (choose_title_number == 1 || choose_title_number == 2)       //è¾“å…¥æ­£ç¡®ï¼Œè·³å‡ºå¾ªç¯
 			Judge_title_number = false;
-		else                                                            //ÊäÈëÓĞÎó£¬¼ÌĞøÊäÈë
+		else                                                            //è¾“å…¥æœ‰è¯¯ï¼Œç»§ç»­è¾“å…¥
 		{
-			cout << "ÊäÈëÓĞÎó >o< ÇëÖØĞÂÊäÈëÅ¶" << endl;
+			cout << "è¾“å…¥æœ‰è¯¯ >o< è¯·é‡æ–°è¾“å…¥å“¦" << endl;
 		}
 	}
 	if (choose_title_number == 1)
 	{
-		int *pp = new int[stu_num];                                    //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·Å²éÕÒµ½µÄ¿Î³ÌÃû³Æ¶ÔÓ¦µÄÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
-		int choose_input_title = 1;                                    //ÏµÍ³ÖĞÎŞ¸Ã¿Î³ÌÃû³ÆÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈë¿Î³ÌÃû³Æ
+		int *pp = new int[stu_num];                                    //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åç§°å¯¹åº”çš„åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
+		int choose_input_title = 1;                                    //ç³»ç»Ÿä¸­æ— è¯¥è¯¾ç¨‹åç§°æ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥è¯¾ç¨‹åç§°
 		for (int i = 0; choose_input_title; i++)
 		{
 			char cour[10];
-			cout << "ÇëÊäÈëÄúÒªÍ³¼ÆµÄ¿ÆÄ¿£º";
+			cout << "è¯·è¾“å…¥æ‚¨è¦ç»Ÿè®¡çš„ç§‘ç›®ï¼š";
 			cin >> cour;
-			int Judge_existence = 0;                                   //±äÁ¿Judge_existenceÅĞ¶Ï¸Ã¿Î³ÌÃû³ÆÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                   //å˜é‡Judge_existenceåˆ¤æ–­è¯¥è¯¾ç¨‹åç§°æ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (strcmp(p[j].GetCourse_title(), cour) == 0)         //²éÕÒµ½¸Ã¿Î³ÌÃû³Æ
+				if (strcmp(p[j].GetCourse_title(), cour) == 0)         //æŸ¥æ‰¾åˆ°è¯¥è¯¾ç¨‹åç§°
 				{
-					Judge_existence++;                                 //´æÔÚ¸Ã¿Î³ÌÃû³ÆÔò±äÁ¿Judge_existence+1
-					pp[Judge_existence - 1] = j;                       //´æ·Å²éÕÒµ½µÄ¿Î³ÌÃû³Æ¶ÔÓ¦µÄÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+					Judge_existence++;                                 //å­˜åœ¨è¯¥è¯¾ç¨‹åç§°åˆ™å˜é‡Judge_existence+1
+					pp[Judge_existence - 1] = j;                       //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åç§°å¯¹åº”çš„åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 				}
 			}
-			if (Judge_existence == 0)                                  //²»´æÔÚ¸Ã¿Î³ÌÃû³Æ
+			if (Judge_existence == 0)                                  //ä¸å­˜åœ¨è¯¥è¯¾ç¨‹åç§°
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸Ã¿Î³ÌÃû³Æ£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë¿Î³ÌÃû³Æ£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥è¯¾ç¨‹åç§°ï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥è¯¾ç¨‹åç§°ï¼š";
 				cin >> choose_input_title;
 			}
 			else
 			{
 				int i, j, k, t;
-				for (i = 0; i < Judge_existence - 1; i++)              //ÓÃÑ¡Ôñ·¨ÅÅĞò
+				for (i = 0; i < Judge_existence - 1; i++)              //ç”¨é€‰æ‹©æ³•æ’åº
 				{
 					k = i;
 					for (j = i + 1; j < Judge_existence; j++)
 					{
-						if (p[pp[j]].GetScore() > p[pp[k]].GetScore()) //°´·ÖÊı´Ó¸ßµ½µÍÅÅĞò
+						if (p[pp[j]].GetScore() > p[pp[k]].GetScore()) //æŒ‰åˆ†æ•°ä»é«˜åˆ°ä½æ’åº
 							k = j;
-						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())      //·ÖÊıÏàÍ¬Ôò°´Ñ§ºÅ´ÓĞ¡µ½´óÅÅĞò
+						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())      //åˆ†æ•°ç›¸åŒåˆ™æŒ‰å­¦å·ä»å°åˆ°å¤§æ’åº
 							if (p[pp[j]].GetNumber() < p[pp[k]].GetNumber())
 								k = j;
 					}
@@ -847,94 +847,94 @@ void Statistics_subject()
 					pp[k] = pp[i];
 					pp[i] = t;
 				}
-				for (i = 0; i < Judge_existence; i++)                  //ÉèÖÃ·ÖÊıÅÅÃû
+				for (i = 0; i < Judge_existence; i++)                  //è®¾ç½®åˆ†æ•°æ’å
 				{
-					p[pp[0]].SetScore_ranking(1);                      //µÚÒ»¸ö·ÖÊı×î¸ß£¬ÅÅÃûÉèÖÃÎª1
+					p[pp[0]].SetScore_ranking(1);                      //ç¬¬ä¸€ä¸ªåˆ†æ•°æœ€é«˜ï¼Œæ’åè®¾ç½®ä¸º1
 					if (i >= 1)
 					{
-						if (p[pp[i]].GetScore() == p[pp[i - 1]].GetScore())       //·ÖÊıÏàÍ¬ÔòÅÅÃûÏàÍ¬
+						if (p[pp[i]].GetScore() == p[pp[i - 1]].GetScore())       //åˆ†æ•°ç›¸åŒåˆ™æ’åç›¸åŒ
 							p[pp[i]].SetScore_ranking(p[pp[i - 1]].GetScore_ranking());
 						else
 							p[pp[i]].SetScore_ranking(i + 1);
 					}
 				}
-				int choose_output;                                      //´æ·ÅÓÃ»§Ñ¡ÔñµÄÊä³ö·½Ê½
-				bool Judge_choose_output = true;                        //²¼¶û±äÁ¿ÅĞ¶ÏÓÃ»§ÊäÈëÕıÈ·Óë·ñ
+				int choose_output;                                      //å­˜æ”¾ç”¨æˆ·é€‰æ‹©çš„è¾“å‡ºæ–¹å¼
+				bool Judge_choose_output = true;                        //å¸ƒå°”å˜é‡åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ­£ç¡®ä¸å¦
 				for (i = 0; Judge_choose_output; i++)
 				{
-					cout << "ÇëÎÊÄúÏëÒªÄÄÖÖÊä³ö·½Ê½£¬1´ú±íÖ»Êä³ö·ÖÊı¡¢µÈ¼¶¼°ÅÅÃû£¬2´ú±íÍ¬Ê±»¹Êä³öÑ§ÉúĞÕÃû¼°Ñ§ºÅ£º";
+					cout << "è¯·é—®æ‚¨æƒ³è¦å“ªç§è¾“å‡ºæ–¹å¼ï¼Œ1ä»£è¡¨åªè¾“å‡ºåˆ†æ•°ã€ç­‰çº§åŠæ’åï¼Œ2ä»£è¡¨åŒæ—¶è¿˜è¾“å‡ºå­¦ç”Ÿå§“ååŠå­¦å·ï¼š";
 					cin >> choose_output;
-					if (choose_output == 1 || choose_output == 2)      //ÊäÈëÕıÈ·£¬Ìø³öÑ­»·
+					if (choose_output == 1 || choose_output == 2)      //è¾“å…¥æ­£ç¡®ï¼Œè·³å‡ºå¾ªç¯
 						Judge_choose_output = false;
 					else
-						cout << "ÊäÈëÓĞÎó >o< ÇëÖØĞÂÊäÈëÊı×Ö1»ò2Å¶" << endl;
+						cout << "è¾“å…¥æœ‰è¯¯ >o< è¯·é‡æ–°è¾“å…¥æ•°å­—1æˆ–2å“¦" << endl;
 				}
 				if (choose_output == 1)
 				{
-					Score *output_score = new Score[Judge_existence];  //¶¯Ì¬ÉêÇë¿Õ¼ä£¬·µ»ØScoreÀàÖ¸Õë
-					cout << "| " << setw(3) << "·ÖÊı" << " | " << setw(2) << "µÈ¼¶" << " | " << setw(3) << "ÅÅÃû |" << endl;
+					Score *output_score = new Score[Judge_existence];  //åŠ¨æ€ç”³è¯·ç©ºé—´ï¼Œè¿”å›Scoreç±»æŒ‡é’ˆ
+					cout << "| " << setw(3) << "åˆ†æ•°" << " | " << setw(2) << "ç­‰çº§" << " | " << setw(3) << "æ’å |" << endl;
 					for (i = 0; i < Judge_existence; i++)
 					{
 						output_score[i] = p[pp[i]];
-						output_score[i].display();                     //µ÷ÓÃScoreÀàµÄdisplay()º¯Êı
+						output_score[i].display();                     //è°ƒç”¨Scoreç±»çš„display()å‡½æ•°
 					}
-					delete output_score;                               //É¾³ıÉêÇëµÄ¿Õ¼ä
+					delete output_score;                               //åˆ é™¤ç”³è¯·çš„ç©ºé—´
 				}
 				else if (choose_output == 2)
 				{
-					Score *output_score = new Score[Judge_existence];  //¶¯Ì¬ÉêÇë¿Õ¼ä£¬·µ»ØScoreÀàÖ¸Õë
-					Student *output_student = new Student[Judge_existence];      //¶¯Ì¬ÉêÇë¿Õ¼ä£¬·µ»ØStudentÀàÖ¸Õë
-					cout << "| Ñ§ÉúĞÕÃû |" << "    Ñ§ºÅ    | " << setw(3) << "·ÖÊı" << " | " << setw(2) << "µÈ¼¶" << " | " << setw(3) << "ÅÅÃû |" << endl;
+					Score *output_score = new Score[Judge_existence];  //åŠ¨æ€ç”³è¯·ç©ºé—´ï¼Œè¿”å›Scoreç±»æŒ‡é’ˆ
+					Student *output_student = new Student[Judge_existence];      //åŠ¨æ€ç”³è¯·ç©ºé—´ï¼Œè¿”å›Studentç±»æŒ‡é’ˆ
+					cout << "| å­¦ç”Ÿå§“å |" << "    å­¦å·    | " << setw(3) << "åˆ†æ•°" << " | " << setw(2) << "ç­‰çº§" << " | " << setw(3) << "æ’å |" << endl;
 					for (i = 0; i < Judge_existence; i++)
 					{
 						output_score[i] = p[pp[i]];
 						output_student[i] = p[pp[i]];
-						output_student[i].display();                   //µ÷ÓÃScoreÀàµÄdisplay()º¯Êı
-						output_score[i].display();                     //µ÷ÓÃStudentÀàµÄdisplay()º¯Êı
+						output_student[i].display();                   //è°ƒç”¨Scoreç±»çš„display()å‡½æ•°
+						output_score[i].display();                     //è°ƒç”¨Studentç±»çš„display()å‡½æ•°
 					}
 				}
-				Continue_or_not("Í³¼Æ", choose_input_title);           //ÅĞ¶ÏÊÇ·ñ¼ÌĞøÍ³¼Æ
+				Continue_or_not("ç»Ÿè®¡", choose_input_title);           //åˆ¤æ–­æ˜¯å¦ç»§ç»­ç»Ÿè®¡
 			}
 		}
-		delete pp;                                                     //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		delete p;                                                      //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
+		delete pp;                                                     //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		delete p;                                                      //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
 		if (choose_input_title == 0)
-			Choose_Function();                                         //·µ»ØÖ÷²Ëµ¥
+			Choose_Function();                                         //è¿”å›ä¸»èœå•
 	}
 	if (choose_title_number == 2)
 	{
-		int *pp = new int[stu_num];                                    //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·Å²éÕÒµ½µÄ¿Î³ÌĞòºÅ¶ÔÓ¦µÄÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
-		int choose_input_number = 1;                                   //ÏµÍ³ÖĞÎŞ¸Ã¿Î³ÌĞòºÅÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈë¿Î³ÌĞòºÅ
+		int *pp = new int[stu_num];                                    //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åºå·å¯¹åº”çš„åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
+		int choose_input_number = 1;                                   //ç³»ç»Ÿä¸­æ— è¯¥è¯¾ç¨‹åºå·æ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥è¯¾ç¨‹åºå·
 		for (int i = 0; choose_input_number; i++)
 		{
 			int cour_num;
-			cout << "ÇëÊäÈëÄúÒªÍ³¼ÆµÄ¿ÆÄ¿µÄ¿Î³ÌĞòºÅ£º";
+			cout << "è¯·è¾“å…¥æ‚¨è¦ç»Ÿè®¡çš„ç§‘ç›®çš„è¯¾ç¨‹åºå·ï¼š";
 			cin >> cour_num;
-			int Judge_existence = 0;                                  //±äÁ¿Judge_existenceÅĞ¶Ï¸Ã¿Î³ÌĞòºÅÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                  //å˜é‡Judge_existenceåˆ¤æ–­è¯¥è¯¾ç¨‹åºå·æ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (p[j].GetCourse_number() == cour_num)              //²éÕÒµ½¸Ã¿Î³ÌĞòºÅ
+				if (p[j].GetCourse_number() == cour_num)              //æŸ¥æ‰¾åˆ°è¯¥è¯¾ç¨‹åºå·
 				{
-					Judge_existence++;                                //´æÔÚ¸Ã¿Î³ÌÃû³ÆÔò±äÁ¿Judge_existence+1
-					pp[Judge_existence - 1] = j;                      //´æ·Å²éÕÒµ½µÄ¿Î³ÌĞòºÅ¶ÔÓ¦µÄÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+					Judge_existence++;                                //å­˜åœ¨è¯¥è¯¾ç¨‹åç§°åˆ™å˜é‡Judge_existence+1
+					pp[Judge_existence - 1] = j;                      //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åºå·å¯¹åº”çš„åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 				}
 			}
-			if (Judge_existence == 0)                                 //²»´æÔÚ¸Ã¿Î³ÌĞòºÅ
+			if (Judge_existence == 0)                                 //ä¸å­˜åœ¨è¯¥è¯¾ç¨‹åºå·
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸Ã¿Î³ÌĞòºÅ£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë¿Î³ÌĞòºÅ£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥è¯¾ç¨‹åºå·ï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥è¯¾ç¨‹åºå·ï¼š";
 				cin >> choose_input_number;
 			}
 			else
 			{
 				int i, j, k, t;
-				for (i = 0; i < Judge_existence - 1; i++)             //ÓÃÑ¡Ôñ·¨ÅÅĞò
+				for (i = 0; i < Judge_existence - 1; i++)             //ç”¨é€‰æ‹©æ³•æ’åº
 				{
 					k = i;
 					for (j = i + 1; j < Judge_existence; j++)
 					{
-						if (p[pp[j]].GetScore() > p[pp[k]].GetScore())       //°´·ÖÊı´Ó¸ßµ½µÍÅÅĞò
+						if (p[pp[j]].GetScore() > p[pp[k]].GetScore())       //æŒ‰åˆ†æ•°ä»é«˜åˆ°ä½æ’åº
 							k = j;
-						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore()) //·ÖÊıÏàÍ¬µÄ°´Ñ§ºÅ´ÓĞ¡µ½´óÅÅĞò
+						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore()) //åˆ†æ•°ç›¸åŒçš„æŒ‰å­¦å·ä»å°åˆ°å¤§æ’åº
 							if (p[pp[j]].GetNumber() < p[pp[k]].GetNumber())
 								k = j;
 					}
@@ -942,164 +942,164 @@ void Statistics_subject()
 					pp[k] = pp[i];
 					pp[i] = t;
 				}
-				for (i = 0; i < Judge_existence; i++)                        //ÉèÖÃ·ÖÊıÅÅÃû
+				for (i = 0; i < Judge_existence; i++)                        //è®¾ç½®åˆ†æ•°æ’å
 				{
-					p[pp[0]].SetScore_ranking(1);                            //µÚÒ»¸ö·ÖÊı×î¸ß£¬ÅÅÃûÉèÖÃÎª1
+					p[pp[0]].SetScore_ranking(1);                            //ç¬¬ä¸€ä¸ªåˆ†æ•°æœ€é«˜ï¼Œæ’åè®¾ç½®ä¸º1
 					if (i >= 1)
 					{
-						if (p[pp[i]].GetScore() == p[pp[i - 1]].GetScore())  //·ÖÊıÏàÍ¬ÔòÅÅÃûÏàÍ¬
+						if (p[pp[i]].GetScore() == p[pp[i - 1]].GetScore())  //åˆ†æ•°ç›¸åŒåˆ™æ’åç›¸åŒ
 							p[pp[i]].SetScore_ranking(p[pp[i - 1]].GetScore_ranking());
 						else
 							p[pp[i]].SetScore_ranking(i + 1);
 					}
 				}
-				int choose_output;                                           //´æ·ÅÓÃ»§Ñ¡ÔñµÄÊä³ö·½Ê½
-				bool Judge_choose_output = true;                             //²¼¶û±äÁ¿ÅĞ¶ÏÓÃ»§ÊäÈëÕıÈ·Óë·ñ
+				int choose_output;                                           //å­˜æ”¾ç”¨æˆ·é€‰æ‹©çš„è¾“å‡ºæ–¹å¼
+				bool Judge_choose_output = true;                             //å¸ƒå°”å˜é‡åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ­£ç¡®ä¸å¦
 				for (i = 0; Judge_choose_output; i++)
 				{
-					cout << "ÇëÎÊÄúÏëÒªÄÄÖÖÊä³ö·½Ê½£¬1´ú±íÖ»Êä³ö·ÖÊı¡¢µÈ¼¶¼°ÅÅÃû£¬2´ú±íÍ¬Ê±»¹Êä³öÑ§ÉúĞÕÃû¼°Ñ§ºÅ£º";
+					cout << "è¯·é—®æ‚¨æƒ³è¦å“ªç§è¾“å‡ºæ–¹å¼ï¼Œ1ä»£è¡¨åªè¾“å‡ºåˆ†æ•°ã€ç­‰çº§åŠæ’åï¼Œ2ä»£è¡¨åŒæ—¶è¿˜è¾“å‡ºå­¦ç”Ÿå§“ååŠå­¦å·ï¼š";
 					cin >> choose_output;
-					if (choose_output == 1 || choose_output == 2)            //ÊäÈëÕıÈ·£¬Ìø³öÑ­»·
+					if (choose_output == 1 || choose_output == 2)            //è¾“å…¥æ­£ç¡®ï¼Œè·³å‡ºå¾ªç¯
 						Judge_choose_output = false;
 					else
-						cout << "ÊäÈëÓĞÎó >o< ÇëÖØĞÂÊäÈëÊı×Ö1»ò2Å¶" << endl;
+						cout << "è¾“å…¥æœ‰è¯¯ >o< è¯·é‡æ–°è¾“å…¥æ•°å­—1æˆ–2å“¦" << endl;
 				}
 				if (choose_output == 1)
 				{
-					Score *output_score = new Score[Judge_existence];        //¶¯Ì¬ÉêÇë¿Õ¼ä£¬·µ»ØScoreÀàÖ¸Õë
-					cout << "| " << setw(3) << "·ÖÊı" << " | " << setw(2) << "µÈ¼¶" << " | " << setw(3) << "ÅÅÃû |" << endl;
+					Score *output_score = new Score[Judge_existence];        //åŠ¨æ€ç”³è¯·ç©ºé—´ï¼Œè¿”å›Scoreç±»æŒ‡é’ˆ
+					cout << "| " << setw(3) << "åˆ†æ•°" << " | " << setw(2) << "ç­‰çº§" << " | " << setw(3) << "æ’å |" << endl;
 					for (i = 0; i < Judge_existence; i++)
 					{
 						output_score[i] = p[pp[i]];
-						output_score[i].display();                           //µ÷ÓÃScoreÀàµÄdisplay()º¯Êı
+						output_score[i].display();                           //è°ƒç”¨Scoreç±»çš„display()å‡½æ•°
 					}
-					delete output_score;                                     //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
+					delete output_score;                                     //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
 				}
 				else if (choose_output == 2)
 				{
-					Score *output_score = new Score[Judge_existence];        //¶¯Ì¬ÉêÇë¿Õ¼ä£¬·µ»ØScoreÀàÖ¸Õë
-					Student *output_student = new Student[Judge_existence];  //¶¯Ì¬ÉêÇë¿Õ¼ä£¬·µ»ØStudentÀàÖ¸Õë
-					cout << "| Ñ§ÉúĞÕÃû |" << "    Ñ§ºÅ    | " << setw(3) << "·ÖÊı" << " | " << setw(2) << "µÈ¼¶" << " | " << setw(3) << "ÅÅÃû |" << endl;
+					Score *output_score = new Score[Judge_existence];        //åŠ¨æ€ç”³è¯·ç©ºé—´ï¼Œè¿”å›Scoreç±»æŒ‡é’ˆ
+					Student *output_student = new Student[Judge_existence];  //åŠ¨æ€ç”³è¯·ç©ºé—´ï¼Œè¿”å›Studentç±»æŒ‡é’ˆ
+					cout << "| å­¦ç”Ÿå§“å |" << "    å­¦å·    | " << setw(3) << "åˆ†æ•°" << " | " << setw(2) << "ç­‰çº§" << " | " << setw(3) << "æ’å |" << endl;
 					for (i = 0; i < Judge_existence; i++)
 					{
 						output_score[i] = p[pp[i]];
 						output_student[i] = p[pp[i]];
-						output_student[i].display();                        //µ÷ÓÃScoreÀàµÄdisplay()º¯Êı
-						output_score[i].display();                          //µ÷ÓÃStudentÀàµÄdisplay()º¯Êı
+						output_student[i].display();                        //è°ƒç”¨Scoreç±»çš„display()å‡½æ•°
+						output_score[i].display();                          //è°ƒç”¨Studentç±»çš„display()å‡½æ•°
 					}
 				}
-				Continue_or_not("Í³¼Æ", choose_input_number);               //ÅĞ¶Ï¼ÌĞøÍ³¼ÆÓë·ñ
+				Continue_or_not("ç»Ÿè®¡", choose_input_number);               //åˆ¤æ–­ç»§ç»­ç»Ÿè®¡ä¸å¦
 			}
 		}
-		delete pp;                                                         //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		delete p;                                                          //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
+		delete pp;                                                         //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		delete p;                                                          //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
 		if (choose_input_number == 0)
-			Choose_Function();                                             //·µ»ØÖ÷²Ëµ¥
+			Choose_Function();                                             //è¿”å›ä¸»èœå•
 	}
 }
-//¼ÆËãGPAº¯Êı
+//è®¡ç®—GPAå‡½æ•°
 int Calculate_GPA(int stu_num, Information *p)
 {
-	int *n = new int[stu_num];                                            //¶¯Ì¬ÉêÇë¿Õ¼ä
-	int time = 0;                                                         //´ËÑ§ºÅ³öÏÖ´ÎÊı
-	int num_of_stu = 0;                                                   //Ñ§ÉúÈËÊı
+	int *n = new int[stu_num];                                            //åŠ¨æ€ç”³è¯·ç©ºé—´
+	int time = 0;                                                         //æ­¤å­¦å·å‡ºç°æ¬¡æ•°
+	int num_of_stu = 0;                                                   //å­¦ç”Ÿäººæ•°
 	for (int i = 0; i < stu_num; i++)
 	{
-		time = 0;                                                         //Ã¿´Î¶¼Òª³õÊ¼»¯Îª0
-		float total_score = 0;                                            //×Ü³É¼¨³õÊ¼»¯Îª0
-		int total_credit = 0;                                             //×ÜÑ§·Ö³õÊ¼Îª0
-		if (p[i].Get_bool())                                              //Èç¹û´ËÑ§ºÅÖ®Ç°Ã»ÓĞ¼ÆËã¹ıGPA
+		time = 0;                                                         //æ¯æ¬¡éƒ½è¦åˆå§‹åŒ–ä¸º0
+		float total_score = 0;                                            //æ€»æˆç»©åˆå§‹åŒ–ä¸º0
+		int total_credit = 0;                                             //æ€»å­¦åˆ†åˆå§‹ä¸º0
+		if (p[i].Get_bool())                                              //å¦‚æœæ­¤å­¦å·ä¹‹å‰æ²¡æœ‰è®¡ç®—è¿‡GPA
 		{
-			num_of_stu++;                                                 //Ñ§ÉúÈËÊı+1
+			num_of_stu++;                                                 //å­¦ç”Ÿäººæ•°+1
 			for (int j = i; j < stu_num; j++)
 			{
-				if (p[j].GetNumber() == p[i].GetNumber())                 //ÕÒµ½´ËÑ§ºÅ
+				if (p[j].GetNumber() == p[i].GetNumber())                 //æ‰¾åˆ°æ­¤å­¦å·
 				{
 					total_score += p[j].GetScore()*p[j].GetCredit();
-					total_credit += p[j].GetCredit();                     //¼ÆËã×ÜÑ§·Ö
-					n[time] = j;                                          //´æ·Å¸ÃÑ§ºÅ¶ÔÓ¦µÄÔÚÊı×éÖĞµÄÎ»ÖÃ
-					time++;                                               //³öÏÖ´ÎÊı+1
-					p[j].Set_bool(false);                                 //²¼¶û±äÁ¿ÉèÖÃÎª¼Ù£¬ÏÂ´Î²»»áÖØ¸´¼ÆËãÕâ¸öÑ§ºÅ
+					total_credit += p[j].GetCredit();                     //è®¡ç®—æ€»å­¦åˆ†
+					n[time] = j;                                          //å­˜æ”¾è¯¥å­¦å·å¯¹åº”çš„åœ¨æ•°ç»„ä¸­çš„ä½ç½®
+					time++;                                               //å‡ºç°æ¬¡æ•°+1
+					p[j].Set_bool(false);                                 //å¸ƒå°”å˜é‡è®¾ç½®ä¸ºå‡ï¼Œä¸‹æ¬¡ä¸ä¼šé‡å¤è®¡ç®—è¿™ä¸ªå­¦å·
 				}
 			}
-			p[n[0]].Set_bool(true);                                       //µÚÒ»¸öµÄ²¼¶û±äÁ¿ÉèÖÃÎªÕæ
-			for (int k = 0; k < time; k++)                                //ÉèÖÃGPA
+			p[n[0]].Set_bool(true);                                       //ç¬¬ä¸€ä¸ªçš„å¸ƒå°”å˜é‡è®¾ç½®ä¸ºçœŸ
+			for (int k = 0; k < time; k++)                                //è®¾ç½®GPA
 			{
 				p[n[k]].Set_GPA(total_score / total_credit);
 			}
 		}
-		else                                                              //Èç¹û´ËÑ§ºÅÖ®Ç°ÒÑ¾­¼ÆËã¹ıGPA
+		else                                                              //å¦‚æœæ­¤å­¦å·ä¹‹å‰å·²ç»è®¡ç®—è¿‡GPA
 		{
 			for (int j = i; j >= 0; j--)
 			{
-				if (p[j].GetNumber() == p[i].GetNumber())                 //ÕÒµ½´ËÑ§ºÅ
+				if (p[j].GetNumber() == p[i].GetNumber())                 //æ‰¾åˆ°æ­¤å­¦å·
 				{
-					p[i].Set_GPA(p[j].GetGPA());                          //Ñ§ºÅÏàÍ¬µÄGPAÉèÖÃÎªÏàÍ¬
+					p[i].Set_GPA(p[j].GetGPA());                          //å­¦å·ç›¸åŒçš„GPAè®¾ç½®ä¸ºç›¸åŒ
 				}
 			}
 		}
 	}
-	delete n;                                                             //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-	return num_of_stu;                                                    //·µ»ØÑ§ÉúÈËÊı£¬²»¼ÆÖØ¸´
+	delete n;                                                             //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+	return num_of_stu;                                                    //è¿”å›å­¦ç”Ÿäººæ•°ï¼Œä¸è®¡é‡å¤
 }
-//²éÑ¯GPAº¯Êı
+//æŸ¥è¯¢GPAå‡½æ•°
 void Search_GPA()
 {
 	int stu_num;
-	Read_Stu_num("²éÑ¯GPA", stu_num);                                     //¶ÁÈ¡Ñ§ÉúÈË´Î
-	Information *p = new Information[stu_num];                           //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("²éÑ¯GPA", stu_num, p);                              //±£´æÑ§ÉúĞÅÏ¢ÖÁ¶¯Ì¬ÉêÇë¿Õ¼ä
-	bool Judge_title_number = true;                                      //ÅĞ¶ÏÓÃ»§ÊäÈëµÄÕıÈ·ĞÔ
-	Calculate_GPA(stu_num, p);                                           //¼ÆËãGPA
-	long long numb;                                                      //ÓÃ»§ÊäÈëÑ§ºÅ
-	bool times = true;                                                   //ÅĞ¶ÏÊÇ·ñÊä³öÁËÒ»´Î
-	bool input_num = true;                                               //ÅĞ¶ÏÊÇ·ñ´æÔÚ´ËÑ§ºÅ
-	int Judge_num = 1;                                                   //ÓÃ»§Ñ¡Ôñ¼ÌĞø»¹ÊÇ·µ»ØÖ÷²Ëµ¥
+	Read_Stu_num("æŸ¥è¯¢GPA", stu_num);                                     //è¯»å–å­¦ç”Ÿäººæ¬¡
+	Information *p = new Information[stu_num];                           //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("æŸ¥è¯¢GPA", stu_num, p);                              //ä¿å­˜å­¦ç”Ÿä¿¡æ¯è‡³åŠ¨æ€ç”³è¯·ç©ºé—´
+	bool Judge_title_number = true;                                      //åˆ¤æ–­ç”¨æˆ·è¾“å…¥çš„æ­£ç¡®æ€§
+	Calculate_GPA(stu_num, p);                                           //è®¡ç®—GPA
+	long long numb;                                                      //ç”¨æˆ·è¾“å…¥å­¦å·
+	bool times = true;                                                   //åˆ¤æ–­æ˜¯å¦è¾“å‡ºäº†ä¸€æ¬¡
+	bool input_num = true;                                               //åˆ¤æ–­æ˜¯å¦å­˜åœ¨æ­¤å­¦å·
+	int Judge_num = 1;                                                   //ç”¨æˆ·é€‰æ‹©ç»§ç»­è¿˜æ˜¯è¿”å›ä¸»èœå•
 	for (int i = 0; Judge_num; i++)
 	{
-		cout << "ÇëÊäÈëÄúÒª²éÑ¯µÄÑ§ºÅ£º";
+		cout << "è¯·è¾“å…¥æ‚¨è¦æŸ¥è¯¢çš„å­¦å·ï¼š";
 		cin >> numb;
 		int j;
 		for (j = 0,times=true; j<stu_num&&times; j++)
 		{
-			if (p[j].GetNumber() == numb)                                //ÕÒµ½¸ÃÑ§ºÅ£¬Ö»Êä³öÒ»´Î
+			if (p[j].GetNumber() == numb)                                //æ‰¾åˆ°è¯¥å­¦å·ï¼Œåªè¾“å‡ºä¸€æ¬¡
 			{
-				cout << "²éÑ¯½á¹ûÎª£º" << endl;
-				cout << "|Ñ§ÉúĞÕÃû|" << "    Ñ§ºÅ    |" << "  GPA  |"  << endl;
+				cout << "æŸ¥è¯¢ç»“æœä¸ºï¼š" << endl;
+				cout << "|å­¦ç”Ÿå§“å|" << "    å­¦å·    |" << "  GPA  |"  << endl;
 				cout << "|  " << setw(4) << p[j].GetName() << "  | " << setw(10) << p[j].GetNumber() << " |" << setw(7) << p[j].GetGPA() << "|" << endl;
 				times = false;
 			}
 		}
-		if (j==stu_num&&times==true)                                    //²»´æÔÚ¸ÃÑ§ºÅ
+		if (j==stu_num&&times==true)                                    //ä¸å­˜åœ¨è¯¥å­¦å·
 		{
-			cout << "¶Ô²»Æğ >o< ÏµÍ³ÖĞÃ»ÓĞÕâ¸öÑ§ºÅ£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë£º";
+			cout << "å¯¹ä¸èµ· >o< ç³»ç»Ÿä¸­æ²¡æœ‰è¿™ä¸ªå­¦å·ï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥ï¼š";
 			cin >> Judge_num;
 		}
-		else                                                            //´æÔÚ¸ÃÑ§ºÅ
+		else                                                            //å­˜åœ¨è¯¥å­¦å·
 		{
-			cout << "ÊÇ·ñ¼ÌĞø²éÑ¯£¿°´0·µ»ØÖ÷²Ëµ¥£¬°´ÆäËûÊı×Ö¼ü¼ÌĞø²éÑ¯£º";
+			cout << "æ˜¯å¦ç»§ç»­æŸ¥è¯¢ï¼ŸæŒ‰0è¿”å›ä¸»èœå•ï¼ŒæŒ‰å…¶ä»–æ•°å­—é”®ç»§ç»­æŸ¥è¯¢ï¼š";
 			cin >>Judge_num;
 		}
 	}
-	delete p;                                                           //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
+	delete p;                                                           //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
 	if (Judge_num == 0)
-		Choose_Function();                                              //·µ»ØÖ÷²Ëµ¥
+		Choose_Function();                                              //è¿”å›ä¸»èœå•
 }
-//Í³¼ÆGPAÅÅÃûº¯Êı
+//ç»Ÿè®¡GPAæ’åå‡½æ•°
 void Statistics_GPA()
 {
 	int stu_num;
-	Read_Stu_num("Í³¼ÆGPAÅÅÃû", stu_num);                               //¶ÁÈ¡Ñ§ÉúÈË´Î
-	Information *p = new Information[stu_num];                         //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("Í³¼ÆGPAÅÅÃû", stu_num, p);                         //½«Ñ§ÉúĞÅÏ¢±£´æÖÁ¶¯Ì¬ÉêÇë¿Õ¼ä
-	bool Judge_title_number = true;                                    //ÅĞ¶ÏÓÃ»§ÊäÈëµÄÕıÈ·ĞÔ
-	int num_of_stu=Calculate_GPA(stu_num, p);                          //¼ÆËãGPA²¢·µ»ØÑ§ÉúÈËÊı
-	int *pp = new int[num_of_stu];                                     //¶¯Ì¬ÉêÇë¿Õ¼ä
+	Read_Stu_num("ç»Ÿè®¡GPAæ’å", stu_num);                               //è¯»å–å­¦ç”Ÿäººæ¬¡
+	Information *p = new Information[stu_num];                         //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("ç»Ÿè®¡GPAæ’å", stu_num, p);                         //å°†å­¦ç”Ÿä¿¡æ¯ä¿å­˜è‡³åŠ¨æ€ç”³è¯·ç©ºé—´
+	bool Judge_title_number = true;                                    //åˆ¤æ–­ç”¨æˆ·è¾“å…¥çš„æ­£ç¡®æ€§
+	int num_of_stu=Calculate_GPA(stu_num, p);                          //è®¡ç®—GPAå¹¶è¿”å›å­¦ç”Ÿäººæ•°
+	int *pp = new int[num_of_stu];                                     //åŠ¨æ€ç”³è¯·ç©ºé—´
 	for (int i = 0,j=0; i < stu_num; i++)
 	{
 		if (p[i].Get_bool())
 		{
-			pp[j] = i;                                                 //´æ·ÅÓÃÀ´ÅÅĞòµÄÑ§ºÅ¶ÔÓ¦µÄÔÚÊı×éÖĞµÄÎ»ÖÃ
+			pp[j] = i;                                                 //å­˜æ”¾ç”¨æ¥æ’åºçš„å­¦å·å¯¹åº”çš„åœ¨æ•°ç»„ä¸­çš„ä½ç½®
 			j++;
 		}
 	}
@@ -1109,9 +1109,9 @@ void Statistics_GPA()
 		k = i;
 		for (j = i + 1; j < num_of_stu; j++)
 		{
-			if (p[pp[j]].GetGPA() > p[pp[k]].GetGPA())                //°´GPA´Ó¸ßµ½µÍÅÅĞò
+			if (p[pp[j]].GetGPA() > p[pp[k]].GetGPA())                //æŒ‰GPAä»é«˜åˆ°ä½æ’åº
 				k = j;
-			else if (p[pp[j]].GetGPA() == p[pp[k]].GetGPA())          //GPAÏàÍ¬µÄ°´Ñ§ºÅ´ÓĞ¡µ½´óÅÅĞò
+			else if (p[pp[j]].GetGPA() == p[pp[k]].GetGPA())          //GPAç›¸åŒçš„æŒ‰å­¦å·ä»å°åˆ°å¤§æ’åº
 				if (p[pp[j]].GetNumber() < p[pp[k]].GetNumber())
 					k = j;
 		}
@@ -1119,91 +1119,91 @@ void Statistics_GPA()
 		pp[k] = pp[i];
 		pp[i] = t;
 	}
-	for (i = 0; i < num_of_stu; i++)                                  //ÉèÖÃGPAÅÅÃû
+	for (i = 0; i < num_of_stu; i++)                                  //è®¾ç½®GPAæ’å
 	{
-		p[pp[0]].SetGPA_ranking(1);                                   //µÚÒ»¸öGPA×î¸ß£¬ÅÅÃûÉèÖÃÎª1
+		p[pp[0]].SetGPA_ranking(1);                                   //ç¬¬ä¸€ä¸ªGPAæœ€é«˜ï¼Œæ’åè®¾ç½®ä¸º1
 		if (i >= 1)
 		{
-			if (p[pp[i]].GetGPA() == p[pp[i - 1]].GetGPA())           //GPAÏàÍ¬ÔòÅÅÃûÏàÍ¬
+			if (p[pp[i]].GetGPA() == p[pp[i - 1]].GetGPA())           //GPAç›¸åŒåˆ™æ’åç›¸åŒ
 				p[pp[i]].SetGPA_ranking(p[pp[i - 1]].GetGPA_ranking());
 			else
 				p[pp[i]].SetGPA_ranking(i + 1);
 		}
 	}
-	if (num_of_stu > 0)                                               //ÏµÍ³ÖĞÓĞÑ§ÉúĞÅÏ¢
+	if (num_of_stu > 0)                                               //ç³»ç»Ÿä¸­æœ‰å­¦ç”Ÿä¿¡æ¯
 	{
-		cout << "GPAÅÅÃûÈçÏÂ£º" << endl;
-		cout <<  "|"<<setw(6)<<" Ñ§ÉúĞÕÃû"<<setw(2)<<"|" <<setw(8)<< "Ñ§ºÅ"<<setw(5)<<"|" << setw(5) << "GPA" << setw(3)<<"|" << setw(8) << "GPAÅÅÃû"<<setw(2)<<"|" << endl;
+		cout << "GPAæ’åå¦‚ä¸‹ï¼š" << endl;
+		cout <<  "|"<<setw(6)<<" å­¦ç”Ÿå§“å"<<setw(2)<<"|" <<setw(8)<< "å­¦å·"<<setw(5)<<"|" << setw(5) << "GPA" << setw(3)<<"|" << setw(8) << "GPAæ’å"<<setw(2)<<"|" << endl;
 		for (i = 0; i < num_of_stu; i++)
 		{
 			cout <<  "|" << setw(7) << p[pp[i]].GetName() <<setw(4)<< "|" << setw(11) << p[pp[i]].GetNumber() <<setw(2)<< "|" << setw(7) << p[pp[i]].GetGPA() << "|" <<setw(5)<< p[pp[i]].GetGPA_ranking() <<setw(5)<<"|"<< endl;
 		}
 	}
-	else                                                              //ÏµÍ³ÖĞÎŞÑ§ÉúĞÅÏ¢
-		cout << "¶Ô²»Æğ >o< ÏµÍ³ÖĞÔİÎŞÑ§ÉúĞÅÏ¢" << endl;
-	cout << "Çë°´ÈÎÒâ¼ü·µ»ØÖ÷²Ëµ¥ ^.^ :";
-	delete pp;//É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-	delete p;                                                         //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
+	else                                                              //ç³»ç»Ÿä¸­æ— å­¦ç”Ÿä¿¡æ¯
+		cout << "å¯¹ä¸èµ· >o< ç³»ç»Ÿä¸­æš‚æ— å­¦ç”Ÿä¿¡æ¯" << endl;
+	cout << "è¯·æŒ‰ä»»æ„é”®è¿”å›ä¸»èœå• ^.^ :";
+	delete pp;//åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+	delete p;                                                         //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
 	if (getchar() != -1)
 	{
 		getchar();
-		Choose_Function();                                            //·µ»ØÖ÷²Ëµ¥
+		Choose_Function();                                            //è¿”å›ä¸»èœå•
 	}
 }
-//²éÑ¯Ä³¸öÑ§ÉúÎ´Í¨¹ı¿Î³ÌÇé¿öº¯Êı
+//æŸ¥è¯¢æŸä¸ªå­¦ç”Ÿæœªé€šè¿‡è¯¾ç¨‹æƒ…å†µå‡½æ•°
 void Fall_of_stu()
 {
 	int stu_num;
-	Read_Stu_num("Í³¼ÆGPAÅÅÃû", stu_num);                              //¶ÁÈ¡Ñ§ÉúÈË´Î
-	Information *p = new Information[stu_num];                        //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("Í³¼ÆGPAÅÅÃû", stu_num, p);                        //½«Ñ§ÉúĞÅÏ¢±£´æÖÁ¶¯Ì¬ÉêÇë¿Õ¼ä
-	long long num;                                                    //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈëÑ§ÉúÑ§ºÅ
-	int *pp = new int[stu_num];                                       //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·Å²éÕÒµ½µÄÑ§ÉúÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
-	int choose_input_number = 1;                                      //ÏµÍ³ÖĞÎŞ¸ÃÑ§ºÅµÄÑ§ÉúÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈëÑ§ÉúÃû³Æ
+	Read_Stu_num("ç»Ÿè®¡GPAæ’å", stu_num);                              //è¯»å–å­¦ç”Ÿäººæ¬¡
+	Information *p = new Information[stu_num];                        //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("ç»Ÿè®¡GPAæ’å", stu_num, p);                        //å°†å­¦ç”Ÿä¿¡æ¯ä¿å­˜è‡³åŠ¨æ€ç”³è¯·ç©ºé—´
+	long long num;                                                    //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥å­¦ç”Ÿå­¦å·
+	int *pp = new int[stu_num];                                       //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾æŸ¥æ‰¾åˆ°çš„å­¦ç”Ÿåœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
+	int choose_input_number = 1;                                      //ç³»ç»Ÿä¸­æ— è¯¥å­¦å·çš„å­¦ç”Ÿæ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥å­¦ç”Ÿåç§°
 	for (int i = 0; choose_input_number; i++)
 	{
-		cout << "ÇëÊäÈëÑ§ÉúÑ§ºÅ£º" << endl;
+		cout << "è¯·è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š" << endl;
 		cin >> num;
-		int Judge_existence = 0;                                      //±äÁ¿Judge_existenceÅĞ¶Ï¸ÃÑ§ÉúÊÇ·ñ´æÔÚ
+		int Judge_existence = 0;                                      //å˜é‡Judge_existenceåˆ¤æ–­è¯¥å­¦ç”Ÿæ˜¯å¦å­˜åœ¨
 		for (int j = 0; j < stu_num; j++)
 		{
-			if (p[j].GetNumber() == num)                              //²éÕÒµ½¸ÃÑ§Éú
+			if (p[j].GetNumber() == num)                              //æŸ¥æ‰¾åˆ°è¯¥å­¦ç”Ÿ
 			{
-				Judge_existence++;                                    //´æÔÚ¸ÃÑ§ÉúÔò±äÁ¿Judge_existence+1
-				pp[Judge_existence - 1] = j;                          //´æ·Å²éÕÒµ½µÄÑ§ÉúÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+				Judge_existence++;                                    //å­˜åœ¨è¯¥å­¦ç”Ÿåˆ™å˜é‡Judge_existence+1
+				pp[Judge_existence - 1] = j;                          //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„å­¦ç”Ÿåœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 			}
 		}
-		if (Judge_existence == 0)                                     //²»´æÔÚ¸ÃÑ§Éú
+		if (Judge_existence == 0)                                     //ä¸å­˜åœ¨è¯¥å­¦ç”Ÿ
 		{
-			cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸ÃÑ§Éú£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈëÑ§ÉúÑ§ºÅ£º";
+			cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥å­¦ç”Ÿï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥å­¦ç”Ÿå­¦å·ï¼š";
 			cin >> choose_input_number;
 		}
 		else
 		{
-			cout << "ÄúËù²éÑ¯µÄÑ§ÉúÊÇ£º" << p[pp[0]].GetName() << " (Ñ§ºÅ£º" << p[pp[0]].GetNumber() << ")" << endl;
+			cout << "æ‚¨æ‰€æŸ¥è¯¢çš„å­¦ç”Ÿæ˜¯ï¼š" << p[pp[0]].GetName() << " (å­¦å·ï¼š" << p[pp[0]].GetNumber() << ")" << endl;
 			int i, j, k, t, no_pass = 0;
-			for (int i = 0; i < Judge_existence; i++)                //¼ÆËãÎ´Í¨¹ı¿Î³ÌÊı
+			for (int i = 0; i < Judge_existence; i++)                //è®¡ç®—æœªé€šè¿‡è¯¾ç¨‹æ•°
 			{
 				if (p[pp[i]].GetPass_or_not() == 'N')
 				{
-					pp[no_pass] = pp[i];                             //¼ÇÂ¼¸ÃÃûÑ§ÉúÎ´Í¨¹ı¿Î³Ì¶ÔÓ¦µÄÔÚÊı×éÖĞµÄÎ»ÖÃ
+					pp[no_pass] = pp[i];                             //è®°å½•è¯¥åå­¦ç”Ÿæœªé€šè¿‡è¯¾ç¨‹å¯¹åº”çš„åœ¨æ•°ç»„ä¸­çš„ä½ç½®
 					no_pass++;
 				}
 			}
-			if (no_pass > 0)                                         //ÓĞÎ´Í¨¹ı¿Î³Ì
+			if (no_pass > 0)                                         //æœ‰æœªé€šè¿‡è¯¾ç¨‹
 			{
 				for (i = 0; i < no_pass; i++)
 				{
 					p[pp[i]].SetFall_num(no_pass);
 				}
-				for (i = 0; i < no_pass - 1; i++)                    //ÓÃÑ¡Ôñ·¨ÅÅĞò
+				for (i = 0; i < no_pass - 1; i++)                    //ç”¨é€‰æ‹©æ³•æ’åº
 				{
 					k = i;
 					for (j = i + 1; j < no_pass; j++)
 					{
-						if (p[pp[j]].GetScore() > p[pp[k]].GetScore())        //°´·ÖÊı´Ó¸ßµ½µÍÅÅĞò
+						if (p[pp[j]].GetScore() > p[pp[k]].GetScore())        //æŒ‰åˆ†æ•°ä»é«˜åˆ°ä½æ’åº
 							k = j;
-						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())  //·ÖÊıÏàÍ¬µÄ°´¿Î³ÌºÅ´ÓĞ¡µ½´óÅÅĞò
+						else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())  //åˆ†æ•°ç›¸åŒçš„æŒ‰è¯¾ç¨‹å·ä»å°åˆ°å¤§æ’åº
 							if (p[pp[j]].GetCourse_number() < p[pp[k]].GetCourse_number())
 								k = j;
 					}
@@ -1211,128 +1211,128 @@ void Fall_of_stu()
 					pp[k] = pp[i];
 					pp[i] = t;
 				}
-				cout << "Ò»¹²ÓĞ" << p[pp[0]].GetFall_num() << "ÃÅ¿Î³ÌÎ´Í¨¹ı£¬¾ßÌåÇé¿öÈçÏÂ£º" << endl;
-				cout << "|" << setw(7) << "¿Î³ÌÃû³Æ" << setw(2) << "|" << setw(5) << "·ÖÊı" << setw(2) << "|" << endl;
+				cout << "ä¸€å…±æœ‰" << p[pp[0]].GetFall_num() << "é—¨è¯¾ç¨‹æœªé€šè¿‡ï¼Œå…·ä½“æƒ…å†µå¦‚ä¸‹ï¼š" << endl;
+				cout << "|" << setw(7) << "è¯¾ç¨‹åç§°" << setw(2) << "|" << setw(5) << "åˆ†æ•°" << setw(2) << "|" << endl;
 				for (int i = 0; i < no_pass; i++)
 				{
 					cout << "|" << setw(8) << p[pp[i]].GetCourse_title() << setw(2) << "|" << setw(5) << p[pp[i]].GetScore() << setw(2) << "|" << endl;
 				}
-				Continue_or_not("²éÑ¯", choose_input_number);        //ÅĞ¶ÏÊÇ·ñ¼ÌĞø²éÑ¯
+				Continue_or_not("æŸ¥è¯¢", choose_input_number);        //åˆ¤æ–­æ˜¯å¦ç»§ç»­æŸ¥è¯¢
 			}
-			else                                                    //Ã»ÓĞÎ´Í¨¹ı¿Î³Ì
+			else                                                    //æ²¡æœ‰æœªé€šè¿‡è¯¾ç¨‹
 			{
-				cout << "¸ÃÃûÑ§ÉúÃ»ÓĞÎ´Í¨¹ı¿Î³Ì¼ÇÂ¼ ^_^ " << endl;
-				cout << "Çë°´0·µ»ØÖ÷²Ëµ¥»òÆäËûÊı×Ö¼ü¼ÌĞøÊäÈëÑ§ºÅ£º";
+				cout << "è¯¥åå­¦ç”Ÿæ²¡æœ‰æœªé€šè¿‡è¯¾ç¨‹è®°å½• ^_^ " << endl;
+				cout << "è¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥å­¦å·ï¼š";
 				cin >> choose_input_number;
 			}
 		}
 	}
-	delete pp;                                                      //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-	delete p;                                                       //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-	if (choose_input_number == 0)                                   //·µ»ØÖ÷²Ëµ¥
+	delete pp;                                                      //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+	delete p;                                                       //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+	if (choose_input_number == 0)                                   //è¿”å›ä¸»èœå•
 		Choose_Function();
 }
-//Í¨¹ı¿Î³ÌÃû³Æ¼ÆËãÆ½¾ù·Öº¯Êı
+//é€šè¿‡è¯¾ç¨‹åç§°è®¡ç®—å¹³å‡åˆ†å‡½æ•°
 float Average_score(char *title, int stu_num, Information *p)
 {
-	float total_score = 0;                                         //×Ü·Ö
-	int total_stu = 0;                                             //×ÜÈËÊı
+	float total_score = 0;                                         //æ€»åˆ†
+	int total_stu = 0;                                             //æ€»äººæ•°
 	for (int i = 0; i < stu_num; i++)
 	{
 		if (strcmp(p[i].GetCourse_title(), title) == 0)
 		{
-			total_score += p[i].GetScore();                        //½«ÆäÖĞ·ÖÊıÏà¼ÓµÃµ½×Ü·Ö
-			total_stu++;                                           //×ÜÈËÊı¼Ó1
+			total_score += p[i].GetScore();                        //å°†å…¶ä¸­åˆ†æ•°ç›¸åŠ å¾—åˆ°æ€»åˆ†
+			total_stu++;                                           //æ€»äººæ•°åŠ 1
 		}
 	}
-	if (total_stu != 0)                                            //´æÔÚ¸Ã¿Î³ÌÃû
-		return (total_score / total_stu);                          //·µ»ØÆ½¾ù·Ö
-	else                                                           //²»´æÔÚ¸Ã¿Î³ÌÃû
-		return -1;                                                 //·µ»Ø-1
+	if (total_stu != 0)                                            //å­˜åœ¨è¯¥è¯¾ç¨‹å
+		return (total_score / total_stu);                          //è¿”å›å¹³å‡åˆ†
+	else                                                           //ä¸å­˜åœ¨è¯¥è¯¾ç¨‹å
+		return -1;                                                 //è¿”å›-1
 }
-//Í¨¹ı¿Î³ÌĞòºÅ¼ÆËãÆ½¾ù·Öº¯Êı
+//é€šè¿‡è¯¾ç¨‹åºå·è®¡ç®—å¹³å‡åˆ†å‡½æ•°
 float Average_score(int cour_num, int stu_num, Information *p)
 {
-	float total_score = 0;                                         //×Ü·Ö
-	int total_stu = 0;                                             //×ÜÈËÊı
+	float total_score = 0;                                         //æ€»åˆ†
+	int total_stu = 0;                                             //æ€»äººæ•°
 	for (int i = 0; i < stu_num; i++)
 	{
 		if (p[i].GetCourse_number() == cour_num)
 		{
-			total_score += p[i].GetScore();                        //½«ÆäÖĞ·ÖÊıÏà¼ÓµÃµ½×Ü·Ö
-			total_stu++;                                           //×ÜÈËÊı¼Ó1
+			total_score += p[i].GetScore();                        //å°†å…¶ä¸­åˆ†æ•°ç›¸åŠ å¾—åˆ°æ€»åˆ†
+			total_stu++;                                           //æ€»äººæ•°åŠ 1
 		}
 	}
-	if (total_stu != 0)                                            //´æÔÚ¸Ã¿Î³ÌÃû
-		return (total_score / total_stu);                          //·µ»ØÆ½¾ù·Ö
-	else                                                           //²»´æÔÚ¸Ã¿Î³ÌÃû
-		return -1;                                                 //·µ»Ø-1
+	if (total_stu != 0)                                            //å­˜åœ¨è¯¥è¯¾ç¨‹å
+		return (total_score / total_stu);                          //è¿”å›å¹³å‡åˆ†
+	else                                                           //ä¸å­˜åœ¨è¯¥è¯¾ç¨‹å
+		return -1;                                                 //è¿”å›-1
 }
-//²éÑ¯¿Î³ÌÆ½¾ù·Ö¼°Î´Í¨¹ıÇé¿öº¯Êı
+//æŸ¥è¯¢è¯¾ç¨‹å¹³å‡åˆ†åŠæœªé€šè¿‡æƒ…å†µå‡½æ•°
 void Search_aver_fall()
 {
 	int stu_num;
-	Read_Stu_num("Í³¼ÆGPAÅÅÃû", stu_num);                           //¶ÁÈ¡Ñ§ÉúÈË´Î
-	Information *p = new Information[stu_num];                     //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÑ§ÉúĞÅÏ¢
-	Save_to_dynamic("Í³¼ÆGPAÅÅÃû", stu_num, p);                     //½«Ñ§ÉúĞÅÏ¢±£´æÖÁ¶¯Ì¬ÉêÇë¿Õ¼ä
-	int *pp = new int[stu_num];                                    //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·Å²éÕÒµ½µÄ¿Î³ÌÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+	Read_Stu_num("ç»Ÿè®¡GPAæ’å", stu_num);                           //è¯»å–å­¦ç”Ÿäººæ¬¡
+	Information *p = new Information[stu_num];                     //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾å­¦ç”Ÿä¿¡æ¯
+	Save_to_dynamic("ç»Ÿè®¡GPAæ’å", stu_num, p);                     //å°†å­¦ç”Ÿä¿¡æ¯ä¿å­˜è‡³åŠ¨æ€ç”³è¯·ç©ºé—´
+	int *pp = new int[stu_num];                                    //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 	int choose_title_number;
 	bool Judge_title_number = true;
 	for (int i = 0; Judge_title_number; i++)
 	{
-		cout << "ÇëÎÊÄúÏëÒªÍ¨¹ı¿Î³ÌÃû³Æ»òÕßÊÇ¿Î³ÌĞòºÅ²éÑ¯£¿ÊäÈë1±íÊ¾¿Î³ÌÃû³Æ£¬ÊäÈë2±íÊ¾¿Î³ÌĞòºÅ:";
+		cout << "è¯·é—®æ‚¨æƒ³è¦é€šè¿‡è¯¾ç¨‹åç§°æˆ–è€…æ˜¯è¯¾ç¨‹åºå·æŸ¥è¯¢ï¼Ÿè¾“å…¥1è¡¨ç¤ºè¯¾ç¨‹åç§°ï¼Œè¾“å…¥2è¡¨ç¤ºè¯¾ç¨‹åºå·:";
 		cin >> choose_title_number;
 		if (choose_title_number == 1 || choose_title_number == 2)
 			Judge_title_number = false;
 	}
 	if (choose_title_number == 1)
 	{
-		char title[10];                                            //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈë¿Î³ÌÃû³Æ
-		int choose_input_title = 1;                                //ÏµÍ³ÖĞÎŞ¸Ã¿Î³ÌÃû³ÆÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈë¿Î³ÌÃû³Æ
+		char title[10];                                            //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥è¯¾ç¨‹åç§°
+		int choose_input_title = 1;                                //ç³»ç»Ÿä¸­æ— è¯¥è¯¾ç¨‹åç§°æ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥è¯¾ç¨‹åç§°
 		for (int i = 0; choose_input_title; i++)
 		{
-			cout << "ÇëÊäÈë¿Î³ÌÃû³Æ£º" ;
+			cout << "è¯·è¾“å…¥è¯¾ç¨‹åç§°ï¼š" ;
 			cin >> title;
-			int Judge_existence = 0;                               //±äÁ¿Judge_existenceÅĞ¶Ï¸Ã¿Î³ÌÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                               //å˜é‡Judge_existenceåˆ¤æ–­è¯¥è¯¾ç¨‹æ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (strcmp(p[j].GetCourse_title(), title) == 0)    //²éÕÒµ½¸Ã¿Î³Ì
+				if (strcmp(p[j].GetCourse_title(), title) == 0)    //æŸ¥æ‰¾åˆ°è¯¥è¯¾ç¨‹
 				{
-					Judge_existence++;                             //´æÔÚ¸Ã¿Î³ÌÔò±äÁ¿Judge_existence+1
-					pp[Judge_existence - 1] = j;                   //´æ·Å²éÕÒµ½µÄ¿Î³ÌÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+					Judge_existence++;                             //å­˜åœ¨è¯¥è¯¾ç¨‹åˆ™å˜é‡Judge_existence+1
+					pp[Judge_existence - 1] = j;                   //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 				}
 			}
-			if (Judge_existence == 0)                              //²»´æÔÚ¸Ã¿Î³Ì
+			if (Judge_existence == 0)                              //ä¸å­˜åœ¨è¯¥è¯¾ç¨‹
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸Ã¿Î³ÌÃû³Æ£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë¿Î³ÌÃû³Æ£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥è¯¾ç¨‹åç§°ï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥è¯¾ç¨‹åç§°ï¼š";
 				cin >> choose_input_title;
 			}
 			else
 			{
-				cout << "ÕâÃÅ¿Î³Ì--" << p[pp[0]].GetCourse_title() << "µÄÆ½¾ù·ÖÎª£º" << Average_score(title, stu_num, p) << endl;
+				cout << "è¿™é—¨è¯¾ç¨‹--" << p[pp[0]].GetCourse_title() << "çš„å¹³å‡åˆ†ä¸ºï¼š" << Average_score(title, stu_num, p) << endl;
 				int i, j, k, t, no_pass = 0;
-				for (int i = 0; i < Judge_existence; i++)          //¼ÆËãÎ´Í¨¹ı¿Î³ÌÊı
+				for (int i = 0; i < Judge_existence; i++)          //è®¡ç®—æœªé€šè¿‡è¯¾ç¨‹æ•°
 				{
 					if (p[pp[i]].GetPass_or_not() == 'N')
 					{
-						pp[no_pass] = pp[i];                       //¼ÇÂ¼¸Ã¿Î³ÌÎ´Í¨¹ıµÄÑ§Éú¶ÔÓ¦µÄÔÚÊı×éÖĞµÄÎ»ÖÃ
+						pp[no_pass] = pp[i];                       //è®°å½•è¯¥è¯¾ç¨‹æœªé€šè¿‡çš„å­¦ç”Ÿå¯¹åº”çš„åœ¨æ•°ç»„ä¸­çš„ä½ç½®
 						no_pass++;
 					}
 				}
-				if (no_pass > 0)                                   //ÓĞÎ´Í¨¹ı¿Î³Ì
+				if (no_pass > 0)                                   //æœ‰æœªé€šè¿‡è¯¾ç¨‹
 				{
 					for (i = 0; i < no_pass; i++)
 					{
 						p[pp[i]].SetFall_course(no_pass);
 					}
-					for (i = 0; i < no_pass - 1; i++)              //ÓÃÑ¡Ôñ·¨ÅÅĞò
+					for (i = 0; i < no_pass - 1; i++)              //ç”¨é€‰æ‹©æ³•æ’åº
 					{
 						k = i;
 						for (j = i + 1; j < no_pass; j++)
 						{
-							if (p[pp[j]].GetScore() > p[pp[k]].GetScore())           //°´·ÖÊı´Ó¸ßµ½µÍÅÅĞò
+							if (p[pp[j]].GetScore() > p[pp[k]].GetScore())           //æŒ‰åˆ†æ•°ä»é«˜åˆ°ä½æ’åº
 								k = j;
-							else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())     //·ÖÊıÏàÍ¬µÄ°´Ñ§ºÅ´ÓĞ¡µ½´óÅÅĞò
+							else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())     //åˆ†æ•°ç›¸åŒçš„æŒ‰å­¦å·ä»å°åˆ°å¤§æ’åº
 								if (p[pp[j]].GetNumber() < p[pp[k]].GetNumber())
 									k = j;
 						}
@@ -1340,75 +1340,75 @@ void Search_aver_fall()
 						pp[k] = pp[i];
 						pp[i] = t;
 					}
-					cout << "Ò»¹²ÓĞ" << p[pp[0]].GetFall_course() << "¸öÑ§ÉúÎ´Í¨¹ı£¬¾ßÌåÇé¿öÈçÏÂ£º" << endl;
-					cout << "|" << setw(8) << "Ñ§ÉúĞÕÃû" << setw(2) << "|" << setw(8) << "Ñ§ºÅ" << setw(5) << "|" << setw(5) << "·ÖÊı" << setw(2) << "|" << endl;
+					cout << "ä¸€å…±æœ‰" << p[pp[0]].GetFall_course() << "ä¸ªå­¦ç”Ÿæœªé€šè¿‡ï¼Œå…·ä½“æƒ…å†µå¦‚ä¸‹ï¼š" << endl;
+					cout << "|" << setw(8) << "å­¦ç”Ÿå§“å" << setw(2) << "|" << setw(8) << "å­¦å·" << setw(5) << "|" << setw(5) << "åˆ†æ•°" << setw(2) << "|" << endl;
 					for (int i = 0; i < no_pass; i++)
 					{
 						cout << "|" << setw(8) << p[pp[i]].GetName() << setw(2) << "|" << setw(11) << p[pp[i]].GetNumber() << setw(2) << "|" << setw(4) << p[pp[i]].GetScore() << setw(3) << "|" << endl;
 					}
-					Continue_or_not("²éÑ¯", choose_input_title);                   //ÅĞ¶ÏÊÇ·ñ¼ÌĞø²éÑ¯
+					Continue_or_not("æŸ¥è¯¢", choose_input_title);                   //åˆ¤æ–­æ˜¯å¦ç»§ç»­æŸ¥è¯¢
 				}
-				else                                                              //Ã»ÓĞÎ´Í¨¹ı¿Î³Ì
+				else                                                              //æ²¡æœ‰æœªé€šè¿‡è¯¾ç¨‹
 				{
-					cout << "¸ÃÃÅ¿Î³ÌÃ»ÓĞÎ´Í¨¹ıÑ§Éú ^_^ " << endl;
-					cout << "Çë°´0·µ»ØÖ÷²Ëµ¥»òÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë¿Î³ÌÃû³Æ£º";
+					cout << "è¯¥é—¨è¯¾ç¨‹æ²¡æœ‰æœªé€šè¿‡å­¦ç”Ÿ ^_^ " << endl;
+					cout << "è¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥è¯¾ç¨‹åç§°ï¼š";
 					cin >> choose_input_title;
 				}
 			}
 		}
-		delete pp;                                                                //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		delete p;                                                                 //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		if (choose_input_title == 0)                                              //·µ»ØÖ÷²Ëµ¥
+		delete pp;                                                                //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		delete p;                                                                 //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		if (choose_input_title == 0)                                              //è¿”å›ä¸»èœå•
 			Choose_Function();
 	}
 	else if (choose_title_number == 2)
 	{
-		int cour_num;                                                             //¾Ö²¿±äÁ¿ÓÃÒÔÁÙÊ±ÊäÈë¿Î³ÌĞòºÅ
-		int choose_input_number = 1;                                              //ÏµÍ³ÖĞÎŞ¸Ã¿Î³ÌĞòºÅÊ±ÓÃ»§Ñ¡ÔñµÄÊı×Ö£¬·Ç0´ú±í¼ÌĞøÊäÈë¿Î³ÌĞòºÅ
+		int cour_num;                                                             //å±€éƒ¨å˜é‡ç”¨ä»¥ä¸´æ—¶è¾“å…¥è¯¾ç¨‹åºå·
+		int choose_input_number = 1;                                              //ç³»ç»Ÿä¸­æ— è¯¥è¯¾ç¨‹åºå·æ—¶ç”¨æˆ·é€‰æ‹©çš„æ•°å­—ï¼Œé0ä»£è¡¨ç»§ç»­è¾“å…¥è¯¾ç¨‹åºå·
 		for (int i = 0; choose_input_number; i++)
 		{
-			cout << "ÇëÊäÈë¿Î³ÌĞòºÅ£º";
+			cout << "è¯·è¾“å…¥è¯¾ç¨‹åºå·ï¼š";
 			cin >> cour_num;
-			int Judge_existence = 0;                                              //±äÁ¿Judge_existenceÅĞ¶Ï¸Ã¿Î³ÌÊÇ·ñ´æÔÚ
+			int Judge_existence = 0;                                              //å˜é‡Judge_existenceåˆ¤æ–­è¯¥è¯¾ç¨‹æ˜¯å¦å­˜åœ¨
 			for (int j = 0; j < stu_num; j++)
 			{
-				if (p[j].GetCourse_number() == cour_num)                          //²éÕÒµ½¸Ã¿Î³Ì
+				if (p[j].GetCourse_number() == cour_num)                          //æŸ¥æ‰¾åˆ°è¯¥è¯¾ç¨‹
 				{
-					Judge_existence++;                                            //´æÔÚ¸Ã¿Î³ÌÔò±äÁ¿Judge_existence+1
-					pp[Judge_existence - 1] = j;                                  //´æ·Å²éÕÒµ½µÄ¿Î³ÌÔÚ¶ÔÏóÊı×éÖĞµÄÎ»ÖÃ
+					Judge_existence++;                                            //å­˜åœ¨è¯¥è¯¾ç¨‹åˆ™å˜é‡Judge_existence+1
+					pp[Judge_existence - 1] = j;                                  //å­˜æ”¾æŸ¥æ‰¾åˆ°çš„è¯¾ç¨‹åœ¨å¯¹è±¡æ•°ç»„ä¸­çš„ä½ç½®
 				}
 			}
-			if (Judge_existence == 0)                                             //²»´æÔÚ¸Ã¿Î³Ì
+			if (Judge_existence == 0)                                             //ä¸å­˜åœ¨è¯¥è¯¾ç¨‹
 			{
-				cout << "¶Ô²»Æğ >~< ²»´æÔÚ¸Ã¿Î³ÌĞòºÅ£¬Çë°´0·µ»ØÖ÷²Ëµ¥»òÕßÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë¿Î³ÌĞòºÅ£º";
+				cout << "å¯¹ä¸èµ· >~< ä¸å­˜åœ¨è¯¥è¯¾ç¨‹åºå·ï¼Œè¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–è€…å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥è¯¾ç¨‹åºå·ï¼š";
 				cin >> choose_input_number;
 			}
 			else
 			{
-				cout << "ÕâÃÅ¿Î³Ì--" << p[pp[0]].GetCourse_title() << "µÄÆ½¾ù·ÖÎª£º" << Average_score(cour_num, stu_num, p) << endl;
+				cout << "è¿™é—¨è¯¾ç¨‹--" << p[pp[0]].GetCourse_title() << "çš„å¹³å‡åˆ†ä¸ºï¼š" << Average_score(cour_num, stu_num, p) << endl;
 				int i, j, k, t, no_pass = 0;
-				for (int i = 0; i < Judge_existence; i++)                         //¼ÆËãÎ´Í¨¹ı¿Î³ÌÊı
+				for (int i = 0; i < Judge_existence; i++)                         //è®¡ç®—æœªé€šè¿‡è¯¾ç¨‹æ•°
 				{
 					if (p[pp[i]].GetPass_or_not() == 'N')
 					{
-						pp[no_pass] = pp[i];                                      //¼ÇÂ¼¸Ã¿Î³ÌÎ´Í¨¹ıµÄÑ§Éú¶ÔÓ¦µÄÔÚÊı×éÖĞµÄÎ»ÖÃ
+						pp[no_pass] = pp[i];                                      //è®°å½•è¯¥è¯¾ç¨‹æœªé€šè¿‡çš„å­¦ç”Ÿå¯¹åº”çš„åœ¨æ•°ç»„ä¸­çš„ä½ç½®
 						no_pass++;
 					}
 				}
-				if (no_pass > 0)                                                  //ÓĞÎ´Í¨¹ı¿Î³Ì
+				if (no_pass > 0)                                                  //æœ‰æœªé€šè¿‡è¯¾ç¨‹
 				{
 					for (i = 0; i < no_pass; i++)
 					{
 						p[pp[i]].SetFall_course(no_pass);
 					}
-					for (i = 0; i < no_pass - 1; i++)                             //ÓÃÑ¡Ôñ·¨ÅÅĞò
+					for (i = 0; i < no_pass - 1; i++)                             //ç”¨é€‰æ‹©æ³•æ’åº
 					{
 						k = i;
 						for (j = i + 1; j < no_pass; j++)
 						{
-							if (p[pp[j]].GetScore() > p[pp[k]].GetScore())        //°´·ÖÊı´Ó¸ßµ½µÍÅÅĞò
+							if (p[pp[j]].GetScore() > p[pp[k]].GetScore())        //æŒ‰åˆ†æ•°ä»é«˜åˆ°ä½æ’åº
 								k = j;
-							else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())  //·ÖÊıÏàÍ¬µÄ°´Ñ§ºÅ´ÓĞ¡µ½´óÅÅĞò
+							else if (p[pp[j]].GetScore() == p[pp[k]].GetScore())  //åˆ†æ•°ç›¸åŒçš„æŒ‰å­¦å·ä»å°åˆ°å¤§æ’åº
 								if (p[pp[j]].GetNumber() < p[pp[k]].GetNumber())
 									k = j;
 						}
@@ -1416,25 +1416,25 @@ void Search_aver_fall()
 						pp[k] = pp[i];
 						pp[i] = t;
 					}
-					cout << "Ò»¹²ÓĞ" << p[pp[0]].GetFall_course() << "¸öÑ§ÉúÎ´Í¨¹ı£¬¾ßÌåÇé¿öÈçÏÂ£º" << endl;
-					cout << "|" << setw(8) << "Ñ§ÉúĞÕÃû" << setw(2) << "|" << setw(8) << "Ñ§ºÅ" << setw(5) << "|" << setw(5) << "·ÖÊı" << setw(2) << "|" << endl;
+					cout << "ä¸€å…±æœ‰" << p[pp[0]].GetFall_course() << "ä¸ªå­¦ç”Ÿæœªé€šè¿‡ï¼Œå…·ä½“æƒ…å†µå¦‚ä¸‹ï¼š" << endl;
+					cout << "|" << setw(8) << "å­¦ç”Ÿå§“å" << setw(2) << "|" << setw(8) << "å­¦å·" << setw(5) << "|" << setw(5) << "åˆ†æ•°" << setw(2) << "|" << endl;
 					for (int i = 0; i < no_pass; i++)
 					{
 						cout << "|" << setw(8) << p[pp[i]].GetName() << setw(2) << "|" << setw(11) << p[pp[i]].GetNumber() << setw(2) << "|" << setw(4) << p[pp[i]].GetScore() << setw(3) << "|" << endl;
 					}
-					Continue_or_not("²éÑ¯", choose_input_number);                    //ÅĞ¶ÏÊÇ·ñ¼ÌĞø²éÑ¯
+					Continue_or_not("æŸ¥è¯¢", choose_input_number);                    //åˆ¤æ–­æ˜¯å¦ç»§ç»­æŸ¥è¯¢
 				}
-				else                                                                //Ã»ÓĞÎ´Í¨¹ı¿Î³Ì
+				else                                                                //æ²¡æœ‰æœªé€šè¿‡è¯¾ç¨‹
 				{
-					cout << "¸ÃÃÅ¿Î³ÌÃ»ÓĞÎ´Í¨¹ıÑ§Éú ^_^ " << endl;
-					cout << "Çë°´0·µ»ØÖ÷²Ëµ¥»òÆäËûÊı×Ö¼ü¼ÌĞøÊäÈë¿Î³ÌĞòºÅ£º";
+					cout << "è¯¥é—¨è¯¾ç¨‹æ²¡æœ‰æœªé€šè¿‡å­¦ç”Ÿ ^_^ " << endl;
+					cout << "è¯·æŒ‰0è¿”å›ä¸»èœå•æˆ–å…¶ä»–æ•°å­—é”®ç»§ç»­è¾“å…¥è¯¾ç¨‹åºå·ï¼š";
 					cin >> choose_input_number;
 				}
 			}
 		}
-		delete pp;                                                                   //É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		delete p;                                                                    //·µ»ØÖ÷²Ëµ¥Ö®Ç°É¾³ı¶¯Ì¬ÉêÇë¿Õ¼ä
-		if (choose_input_number == 0)                                                //·µ»ØÖ÷²Ëµ¥
+		delete pp;                                                                   //åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		delete p;                                                                    //è¿”å›ä¸»èœå•ä¹‹å‰åˆ é™¤åŠ¨æ€ç”³è¯·ç©ºé—´
+		if (choose_input_number == 0)                                                //è¿”å›ä¸»èœå•
 			Choose_Function();
 	}
 }

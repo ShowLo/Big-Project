@@ -1,4 +1,4 @@
-//Ö÷³ÌĞòÎÄ¼şmain.cpp
+ï»¿//ä¸»ç¨‹åºæ–‡ä»¶main.cpp
 #include <iostream>
 #include <Windows.h>
 #include <stdio.h>
@@ -6,13 +6,13 @@
 #include "Score_Managment.h"
 #include "User_Interface.h"
 using namespace std;
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 int main()
 {
-	PlaySound(TEXT("Ìì¿ÕÖ®³Ç.wav"), NULL, SND_FILENAME | SND_ASYNC|SND_LOOP);         //ÎªÊ¹µÃÊ¹ÓÃÕßÓĞºÃµÄÊ¹ÓÃĞÄÇé£¬Ñ­»·²¥·ÅÒôÀÖ
-	SetColor();                                                                                                                        //ÉèÖÃ±³¾°É«¼°Ç°¾°É«
-	Display_Interface();                                                             //´òÓ¡·âÃæ
-	Choose_Function();                                                               //Ñ¡Ôñ¹¦ÄÜ
+	PlaySound(TEXT("å¤©ç©ºä¹‹åŸ.wav"), NULL, SND_FILENAME | SND_ASYNC|SND_LOOP);         //ä¸ºä½¿å¾—ä½¿ç”¨è€…æœ‰å¥½çš„ä½¿ç”¨å¿ƒæƒ…ï¼Œå¾ªç¯æ’­æ”¾éŸ³ä¹
+	SetColor();                                                                                                                        //è®¾ç½®èƒŒæ™¯è‰²åŠå‰æ™¯è‰²
+	Display_Interface();                                                             //æ‰“å°å°é¢
+	Choose_Function();                                                               //é€‰æ‹©åŠŸèƒ½
 	cout << endl;
 	system("pause 0");
 	return 0;
