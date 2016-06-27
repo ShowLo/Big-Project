@@ -1,0 +1,1 @@
+CreateObject("SAPI.SpVoice").Speak"Dear Johnson, today is Tom's birthday, please remember to send him your present"
