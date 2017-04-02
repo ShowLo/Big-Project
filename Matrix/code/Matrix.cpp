@@ -1,4 +1,4 @@
-//Matrix.cpp´æ·Å¸÷Àà·½·¨µÄÊµÏÖ¼°¸÷ÖÖº¯ÊıµÄ¶¨Òå
+ï»¿//Matrix.cppå­˜æ”¾å„ç±»æ–¹æ³•çš„å®ç°åŠå„ç§å‡½æ•°çš„å®šä¹‰
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -8,36 +8,36 @@
 #include "Matrix.h"
 using namespace std;
 
-//NumberÀà³ÉÔ±º¯Êı¶¨Òå
+//Numberç±»æˆå‘˜å‡½æ•°å®šä¹‰
 Number::Number(int row, int col) :row(row), column(col){}
 
-//ArrayÀà³ÉÔ±º¯Êı¶¨Òå
+//Arrayç±»æˆå‘˜å‡½æ•°å®šä¹‰
 Array::Array(int row, int col) : Number(row, col)
 {
-	if (row == col)                                                    //ÅĞ¶ÏÊÇ·ñ·½Õó
+	if (row == col)                                                    //åˆ¤æ–­æ˜¯å¦æ–¹é˜µ
 		square_or_not = true;
 	else
 		square_or_not = false;
-	array = new double*[row];                                          //¶¯Ì¬ÉêÇë¶şÎ¬Êı×é
+	array = new double*[row];                                          //åŠ¨æ€ç”³è¯·äºŒç»´æ•°ç»„
 	for (int i = 0; i < row; i++)
 		array[i] = new double[col];
 }
 Array::~Array()
 {
-	for (int i = 0; i < row; i++)                                      //É¾³ı¶¯Ì¬ÉêÇëµÄ¶şÎ¬Êı×é
+	for (int i = 0; i < row; i++)                                      //åˆ é™¤åŠ¨æ€ç”³è¯·çš„äºŒç»´æ•°ç»„
 	{
 		delete[] array[i];
 	}
 	delete[] array;
 }
-//¶ÁÈ¡¶şÎ¬Êı×éµÚi+1ĞĞµÚj+1ÁĞµÄÔªËØ
+//è¯»å–äºŒç»´æ•°ç»„ç¬¬i+1è¡Œç¬¬j+1åˆ—çš„å…ƒç´ 
 double Array::GetArray(int i, int j) const                             
 {
 	assert(i >= 0 && i < row && j >= 0 && j < column);
 
 	return array[i][j];
 }
-//´òÓ¡¶şÎ¬Êı×éËùÓĞÔªËØ
+//æ‰“å°äºŒç»´æ•°ç»„æ‰€æœ‰å…ƒç´ 
 void Array::display() const                                            
 {
 	for (int i = 0; i < row; i++)
@@ -49,132 +49,132 @@ void Array::display() const
 		cout << endl;
 	}
 }
-//ÉèÖÃ¶şÎ¬Êı×éÔªËØ,²ÉÓÃ¿É±ä²ÎÊı
+//è®¾ç½®äºŒç»´æ•°ç»„å…ƒç´ ,é‡‡ç”¨å¯å˜å‚æ•°
 void Array::SetArray(double a, ...)                                    
 {
 	array[0][0] = a;
 	va_list argptr;
-	va_start(argptr, a);                                              //³õÊ¼»¯±äÔªÖ¸Õë
+	va_start(argptr, a);                                              //åˆå§‹åŒ–å˜å…ƒæŒ‡é’ˆ
 	for (int i = 0; i < row; i++)
 		for (int j = 0; j < column; j++)
 		{
 			if (!(i == 0 && j == 0))
-				array[i][j] = va_arg(argptr, double);                 //·µ»ØÏÂÒ»¸ö²ÎÊı
+				array[i][j] = va_arg(argptr, double);                 //è¿”å›ä¸‹ä¸€ä¸ªå‚æ•°
 		}
-	va_end(argptr);                                                   //ÊÍ·Åargptr
+	va_end(argptr);                                                   //é‡Šæ”¾argptr
 }
 
-//MatrixÀà³ÉÔ±º¯Êı¶¨Òå
+//Matrixç±»æˆå‘˜å‡½æ•°å®šä¹‰
 Matrix::Matrix(int row, int col) :Array(row, col){}
-//ÉèÖÃ¾ØÕóÔªËØ,²ÉÓÃ¿É±ä²ÎÊı
+//è®¾ç½®çŸ©é˜µå…ƒç´ ,é‡‡ç”¨å¯å˜å‚æ•°
 void Matrix::SetArray(double a, ...)
 {
 	array[0][0] = a;
 	va_list argptr;
-	va_start(argptr, a);                                              //³õÊ¼»¯±äÔªÖ¸Õë
+	va_start(argptr, a);                                              //åˆå§‹åŒ–å˜å…ƒæŒ‡é’ˆ
 	for (int i = 0; i < row; i++)
 		for (int j = 0; j < column; j++)
 		{
 			if (!(i == 0 && j == 0))
-				array[i][j] = va_arg(argptr, double);                 //·µ»ØÏÂÒ»¸ö²ÎÊı
+				array[i][j] = va_arg(argptr, double);                 //è¿”å›ä¸‹ä¸€ä¸ªå‚æ•°
 		}
-	va_end(argptr);                                                   //ÊÍ·Åargptr
+	va_end(argptr);                                                   //é‡Šæ”¾argptr
 	if (row == column)
-		determinant = det(*this);                                     //¼ÆËãĞĞÁĞÊ½
+		determinant = det(*this);                                     //è®¡ç®—è¡Œåˆ—å¼
 }
-//·µ»ØĞĞÁĞÊ½
+//è¿”å›è¡Œåˆ—å¼
 double Matrix::GetDet()                                              
 {
 	return determinant;
 }
-//Éî¿½±´¹¹Ôìº¯Êı
+//æ·±æ‹·è´æ„é€ å‡½æ•°
 Matrix::Matrix(Matrix &M)                                             
 {
 	int former_row = row;
-	row = M.row;                                                      //¿½±´³£¹æ³ÉÔ±
+	row = M.row;                                                      //æ‹·è´å¸¸è§„æˆå‘˜
 	column = M.column;
-	for (int i = 0; i < former_row; i++)                              //ÊÍ·ÅÔ­ÓĞµÄÄÚ´æ×ÊÔ´
+	for (int i = 0; i < former_row; i++)                              //é‡Šæ”¾åŸæœ‰çš„å†…å­˜èµ„æº
 	{
 		delete[] array[i];
 	}
 	delete[] array;
-	array = new double*[M.row];                                       //·ÖÅäĞÂµÄÄÚ´æ×ÊÔ´
+	array = new double*[M.row];                                       //åˆ†é…æ–°çš„å†…å­˜èµ„æº
 	for (int i = 0; i < M.row; i++)
 		array[i] = new double[M.column];
-	for (int i = 0; i < M.row; i++)                                   //¸´ÖÆÊı×éÔªËØ
+	for (int i = 0; i < M.row; i++)                                   //å¤åˆ¶æ•°ç»„å…ƒç´ 
 		for (int j = 0; j < M.column; j++)
 			array[i][j] = M.array[i][j];
 }
-//ÖØÔØÔËËã·û¡°=¡±
+//é‡è½½è¿ç®—ç¬¦â€œ=â€
 Matrix& Matrix::operator =(const Matrix& M)                           
 {
-	assert(row == M.row);                                             //¼ìÑéÁ½¾ØÕó´óĞ¡ÏàÍ¬Óë·ñ
+	assert(row == M.row);                                             //æ£€éªŒä¸¤çŸ©é˜µå¤§å°ç›¸åŒä¸å¦
 	assert(column == M.column);
 
-	if (this == &M)                                                   //¼ì²é×Ô¸´ÖÆ
+	if (this == &M)                                                   //æ£€æŸ¥è‡ªå¤åˆ¶
 		return *this;
-	for (int i = 0; i < row; i++)                                     //ÊÍ·ÅÔ­ÓĞµÄÄÚ´æ×ÊÔ´
+	for (int i = 0; i < row; i++)                                     //é‡Šæ”¾åŸæœ‰çš„å†…å­˜èµ„æº
 	{
 		delete[] array[i];
 	}
 	delete[] array;
-	array = new double*[M.row];                                       //·ÖÅäĞÂµÄÄÚ´æ×ÊÔ´
+	array = new double*[M.row];                                       //åˆ†é…æ–°çš„å†…å­˜èµ„æº
 	for (int i = 0; i < row; i++)
 		array[i] = new double[M.column];
-	for (int i = 0; i < M.row; i++)                                   //¸´ÖÆÊı×éÔªËØ
+	for (int i = 0; i < M.row; i++)                                   //å¤åˆ¶æ•°ç»„å…ƒç´ 
 		for (int j = 0; j < M.column; j++)
 			array[i][j] = M.array[i][j];
 	return *this;
 }
-//ÖØÔØÔËËã·û¡°+¡±
+//é‡è½½è¿ç®—ç¬¦â€œ+â€
 Matrix Matrix::operator +(const Matrix &M2)                           
 {
-	assert(row == M2.row);                                            //¼ìÑéÁ½¾ØÕó´óĞ¡ÏàÍ¬Óë·ñ
+	assert(row == M2.row);                                            //æ£€éªŒä¸¤çŸ©é˜µå¤§å°ç›¸åŒä¸å¦
 	assert(column == M2.column);
 
-	Matrix M(M2.row, M2.column);                                      //½¨Á¢¾Ö²¿¶ÔÏó
+	Matrix M(M2.row, M2.column);                                      //å»ºç«‹å±€éƒ¨å¯¹è±¡
 	for (int i = 0; i < M2.row; i++)
 		for (int j = 0; j < M2.column; j++)
 			M.array[i][j] = array[i][j] + M2.array[i][j];
 	return M;
 }
-//ÖØÔØÔËËã·û¡°-¡±
+//é‡è½½è¿ç®—ç¬¦â€œ-â€
 Matrix Matrix::operator -(const Matrix &M2)                           
 {
-	assert(row == M2.row);                                            //¼ìÑéÁ½¾ØÕó´óĞ¡ÏàÍ¬Óë·ñ
+	assert(row == M2.row);                                            //æ£€éªŒä¸¤çŸ©é˜µå¤§å°ç›¸åŒä¸å¦
 	assert(column == M2.column);
 
-	Matrix M(M2.row, M2.column);                                      //½¨Á¢¾Ö²¿¶ÔÏó
+	Matrix M(M2.row, M2.column);                                      //å»ºç«‹å±€éƒ¨å¯¹è±¡
 	for (int i = 0; i < M2.row; i++)
 		for (int j = 0; j < M2.column; j++)
 			M.array[i][j] = array[i][j] - M2.array[i][j];
 	return M;
 }
-//ÖØÔØÔËËã·û¡°*¡±
+//é‡è½½è¿ç®—ç¬¦â€œ*â€
 Matrix Matrix::operator *(const Matrix &M2)                           
 {
-	assert(column == M2.row);                                         //¼ìÑéÁ½¾ØÕóÄÜ·ñÏà³Ë
+	assert(column == M2.row);                                         //æ£€éªŒä¸¤çŸ©é˜µèƒ½å¦ç›¸ä¹˜
 
-	Matrix M(row, M2.column);                                         //½¨Á¢¾Ö²¿¶ÔÏó
-	for (int i = 0; i < row; i++)                                     //ËùÓĞÔªËØ³õÊ¼»¯Îª0
+	Matrix M(row, M2.column);                                         //å»ºç«‹å±€éƒ¨å¯¹è±¡
+	for (int i = 0; i < row; i++)                                     //æ‰€æœ‰å…ƒç´ åˆå§‹åŒ–ä¸º0
 		for (int j = 0; j < M2.column; j++)
 			M.array[i][j] = 0;
-	for (int i = 0; i < row; i++)                                     //Ò»ĞĞÒ»ĞĞµØ¼ÆËã³öËùÓĞÔªËØ
+	for (int i = 0; i < row; i++)                                     //ä¸€è¡Œä¸€è¡Œåœ°è®¡ç®—å‡ºæ‰€æœ‰å…ƒç´ 
 		for (int k = 0; k < column; k++)
-			if (array[i][k])                                          //array[i][j]Îª0Ê±²»ÓÃ½øĞĞÏà³Ë²Ù×÷
+			if (array[i][k])                                          //array[i][j]ä¸º0æ—¶ä¸ç”¨è¿›è¡Œç›¸ä¹˜æ“ä½œ
 				for (int j = 0; j < M2.column; j++)
 					M.array[i][j] += array[i][k] * M2.array[k][j];
 	return M;
 }
-//ÖØÔØÔËËã·û¡°()¡±£¬ÊµÏÖ¾ØÕóÀà¶àÖØÏÂ±ê·ÃÎÊ
+//é‡è½½è¿ç®—ç¬¦â€œ()â€ï¼Œå®ç°çŸ©é˜µç±»å¤šé‡ä¸‹æ ‡è®¿é—®
 double & Matrix::operator()(int ROW, int COL)
 {
-	assert(ROW >= 0 && ROW < row);                                    //¼ìÑéÏÂ±êÊÇ·ñÔ½½ç
+	assert(ROW >= 0 && ROW < row);                                    //æ£€éªŒä¸‹æ ‡æ˜¯å¦è¶Šç•Œ
 	assert(COL >= 0 && COL < column);
 
 	return array[ROW][COL];
 }
-//ÖØÔØÁ÷²åÈëÔËËã·û¡°<<¡±
+//é‡è½½æµæ’å…¥è¿ç®—ç¬¦â€œ<<â€
 ostream& operator <<(ostream& output, Matrix& M)                      
 { 
 	for (int i = 0; i < M.row; i++)
@@ -187,21 +187,21 @@ ostream& operator <<(ostream& output, Matrix& M)
 	}
 	return output;
 }
-void Save_Matrix(const Matrix &M)                                     //±£´æ¾ØÕóº¯Êı
+void Save_Matrix(const Matrix &M)                                     //ä¿å­˜çŸ©é˜µå‡½æ•°
 {
-	ofstream outfile("Matrix.dat", ios::out | ios::app);              //´ò¿ªÎÄ¼ş
+	ofstream outfile("Matrix.dat", ios::out | ios::app);              //æ‰“å¼€æ–‡ä»¶
 	if (!outfile)
 	{
-		cerr << "±£´æ¾ØÕóÊ±´ò¿ªÎÄ¼şÊ§°Ü£¡" << endl;
+		cerr << "ä¿å­˜çŸ©é˜µæ—¶æ‰“å¼€æ–‡ä»¶å¤±è´¥ï¼" << endl;
 		exit(1);
 	}
-	for (int i = 0; i < M.row; i++)                                   //±£´æ¾ØÕóÔªËØ
+	for (int i = 0; i < M.row; i++)                                   //ä¿å­˜çŸ©é˜µå…ƒç´ 
 		for (int j = 0; j < M.column; j++)
 			outfile << M.GetArray(i, j) << " ";
-	outfile << "#"<<" ";                                              //²»Í¬¾ØÕóÖ®¼äµÄ·Ö¸ô·û
+	outfile << "#"<<" ";                                              //ä¸åŒçŸ©é˜µä¹‹é—´çš„åˆ†éš”ç¬¦
 	outfile.close();
 }
-//¶¨Òå×ªÖÃº¯Êı
+//å®šä¹‰è½¬ç½®å‡½æ•°
 Matrix Matrix::transposition()                                        
 {
 	Matrix M(column, row);
@@ -210,15 +210,15 @@ Matrix Matrix::transposition()
 			M.array[i][j] = array[j][i];
 	return M;
 }
-//Çó´úÊıÓà×ÓÊ½º¯Êı
+//æ±‚ä»£æ•°ä½™å­å¼å‡½æ•°
 double cofactor(const Matrix &M, int x, int y)                        
 {
-	assert(M.square_or_not);                                          //Ö»ÓĞ¾ØÕóÎª·½ÕóÊ±½øĞĞ¼ÆËã²ÅÓĞÒâÒå
+	assert(M.square_or_not);                                          //åªæœ‰çŸ©é˜µä¸ºæ–¹é˜µæ—¶è¿›è¡Œè®¡ç®—æ‰æœ‰æ„ä¹‰
 
-	int order = M.row;                                                //¾ØÕóµÄ½×Êı
+	int order = M.row;                                                //çŸ©é˜µçš„é˜¶æ•°
 	int i = 0, j = 0;
 	int ROW, COL;
-	Matrix *p = new Matrix(order - 1, order - 1);                     //ĞÂ½¨Ò»¸ö¾ØÕó£¬´æ·Å³ıÈ¥M.array[x][y]ÔªËØËùÔÚµÄĞĞÓëÁĞºóÊ£ÏÂµÄÔªËØ
+	Matrix *p = new Matrix(order - 1, order - 1);                     //æ–°å»ºä¸€ä¸ªçŸ©é˜µï¼Œå­˜æ”¾é™¤å»M.array[x][y]å…ƒç´ æ‰€åœ¨çš„è¡Œä¸åˆ—åå‰©ä¸‹çš„å…ƒç´ 
 	for (i = 0, ROW = 0; i < order; i++)
 		if (i != x)
 		{
@@ -227,16 +227,16 @@ double cofactor(const Matrix &M, int x, int y)
 					p->array[ROW][COL++] = M.array[i][j];
 			ROW++;
 		}
-	double cofactor = pow(-1, x + y)*det(*p);                         //¼ÆËã´úÊıÓà×ÓÊ½
+	double cofactor = pow(-1, x + y)*det(*p);                         //è®¡ç®—ä»£æ•°ä½™å­å¼
 	delete p;
 	return cofactor;
 }
-//¶¨ÒåÇóĞĞÁĞÊ½º¯Êı
+//å®šä¹‰æ±‚è¡Œåˆ—å¼å‡½æ•°
 double det(const Matrix &M)
 {
-	assert(M.square_or_not);                                          //·½Õó²ÅÓĞĞĞÁĞÊ½
+	assert(M.square_or_not);                                          //æ–¹é˜µæ‰æœ‰è¡Œåˆ—å¼
 
-	int order = M.row;                                                //·½Õó½×Êı
+	int order = M.row;                                                //æ–¹é˜µé˜¶æ•°
 	switch (order)
 	{
 	case 1:return M.array[0][0]; break;
@@ -246,80 +246,80 @@ double det(const Matrix &M)
 		double determinant = 0;
 		for (int i = 0; i < order; i++)
 			if (M.array[0][i])
-				determinant += M.array[0][i] * cofactor(M, 0, i);     //ÓëÇóĞĞÁĞÊ½º¯ÊıÏà»¥µİ¹éµ÷ÓÃ
+				determinant += M.array[0][i] * cofactor(M, 0, i);     //ä¸æ±‚è¡Œåˆ—å¼å‡½æ•°ç›¸äº’é€’å½’è°ƒç”¨
 		return determinant;
 	}
 	}
 }
-//·½ÕóÇóÄæº¯Êı,Ñ¡ÓÃÈ«Ñ¡Ö÷Ôª¸ßË¹-Èô¶ûµ±ÏûÈ¥·¨
+//æ–¹é˜µæ±‚é€†å‡½æ•°,é€‰ç”¨å…¨é€‰ä¸»å…ƒé«˜æ–¯-è‹¥å°”å½“æ¶ˆå»æ³•
 void inv(const Matrix &M)
 {
-	assert(M.square_or_not);                                          //Ö»ÊÊºÏÓÚ·½ÕóµÄÇóÄæ
+	assert(M.square_or_not);                                          //åªé€‚åˆäºæ–¹é˜µçš„æ±‚é€†
 
 	if (M.determinant == 0)
 	{
-		cerr << "¾ØÕó²»¿ÉÄæ£¡" << endl;
+		cerr << "çŸ©é˜µä¸å¯é€†ï¼" << endl;
 	}
 	else
 	{
 		int order = M.row;
 		Matrix *A = new Matrix(order, order);
 		*A = M;
-		int *change_col = new int[order];                             //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÁĞ½»»»ĞÅÏ¢
-		int *change_row = new int[order];                             //¼ÇÒäĞĞ½»»»ĞÅÏ¢
+		int *change_col = new int[order];                             //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾åˆ—äº¤æ¢ä¿¡æ¯
+		int *change_row = new int[order];                             //è®°å¿†è¡Œäº¤æ¢ä¿¡æ¯
 		int i, j, k;
 		double pivot, tmp;
 		for (k = 0; k < order; k++)
 		{
 			pivot = 0.0;
-			for (i = k; i < order; i++)                               //È«Ñ¡Ö÷Ôª
+			for (i = k; i < order; i++)                               //å…¨é€‰ä¸»å…ƒ
 				for (j = k; j < order; j++)
 				{
 					tmp = fabs((*A)(i, j));
 					if (tmp > pivot)
 					{
 						pivot = tmp;
-						change_row[k] = i;                            //¼ÇÒäĞĞ½»»»ĞÅÏ¢
-						change_col[k] = j;                            //¼ÇÒäÁĞ½»»»ĞÅÏ¢
+						change_row[k] = i;                            //è®°å¿†è¡Œäº¤æ¢ä¿¡æ¯
+						change_col[k] = j;                            //è®°å¿†åˆ—äº¤æ¢ä¿¡æ¯
 					}
 				}
 			if (change_row[k] != k)
-				for (j = 0; j < order; j++)                           //½øĞĞĞĞ½»»»
+				for (j = 0; j < order; j++)                           //è¿›è¡Œè¡Œäº¤æ¢
 				{
 					tmp = (*A)(k, j);
 					A->array[k][j] = (*A)(change_row[k], j);
 					A->array[change_row[k]][j] = tmp;
 				}
 			if (change_col[k] != k)
-				for (i = 0; i < order; i++)                           //½øĞĞÁĞ½»»»
+				for (i = 0; i < order; i++)                           //è¿›è¡Œåˆ—äº¤æ¢
 				{
 					tmp = (*A)(i, k);
 					A->array[i][k] = (*A)(i, change_col[k]);
 					A->array[i][change_col[k]] = tmp;
 				}
-			A->array[k][k] = 1.0 / (*A)(k, k);                        //¹éÒ»»¯¼ÆËã
-			for (j = 0; j < order; j++)                               //¹éÒ»»¯¼ÆËã
+			A->array[k][k] = 1.0 / (*A)(k, k);                        //å½’ä¸€åŒ–è®¡ç®—
+			for (j = 0; j < order; j++)                               //å½’ä¸€åŒ–è®¡ç®—
 				if (j != k)
 					A->array[k][j] = ((*A)(k, j))*((*A)(k, k));
-			for (i = 0; i < order; i++)                               //ÏûÔª¼ÆËã
+			for (i = 0; i < order; i++)                               //æ¶ˆå…ƒè®¡ç®—
 				if (i != k)
 					for (j = 0; j < order; j++)
 						if (j != k)
 							A->array[i][j] = (*A)(i, j) - ((*A)(i, k))*((*A)(k, j));
-			for (i = 0; i < order; i++)                               //ÏûÔª¼ÆËã
+			for (i = 0; i < order; i++)                               //æ¶ˆå…ƒè®¡ç®—
 				if (i != k)
 					A->array[i][k] = -((*A)(i, k))*((*A)(k, k));
 		}
-		for (k = order - 1; k >= 0; k--)                              //»Ö¸´ËùµÃµÄÄæÕó
+		for (k = order - 1; k >= 0; k--)                              //æ¢å¤æ‰€å¾—çš„é€†é˜µ
 		{
-			if (change_col[k] != k)                                   //»Ö¸´ĞĞ£¬½øĞĞĞĞ½»»»
+			if (change_col[k] != k)                                   //æ¢å¤è¡Œï¼Œè¿›è¡Œè¡Œäº¤æ¢
 				for (j = 0; j < order; j++)
 				{
 					tmp = (*A)(k, j);
 					A->array[k][j] = (*A)(change_col[k], j);
 					A->array[change_col[k]][j] = tmp;
 				}
-			if (change_row[k] != k)                                   //»Ö¸´ÁĞ£¬½øĞĞÁĞ½»»»
+			if (change_row[k] != k)                                   //æ¢å¤åˆ—ï¼Œè¿›è¡Œåˆ—äº¤æ¢
 				for (i = 0; i < order; i++)
 				{
 					tmp = (*A)(i, k);
@@ -327,40 +327,40 @@ void inv(const Matrix &M)
 					A->array[i][change_row[k]] = tmp;
 				}
 		}
-		cout << "·½ÕóµÄÄæÎª£º" << endl;
+		cout << "æ–¹é˜µçš„é€†ä¸ºï¼š" << endl;
 		cout << *A;
 		delete A;
 		delete[] change_col;
 		delete[] change_row;
 	}
 }
-//¶¨ÒåĞ¡¾ØÕóµÄÇóÄæº¯Êı
+//å®šä¹‰å°çŸ©é˜µçš„æ±‚é€†å‡½æ•°
 void inv_small_matrix(const Matrix &M)
 {
-	assert(M.square_or_not);                                          //Ö»ÊÊºÏÓÚ·½ÕóµÄÇóÄæ
+	assert(M.square_or_not);                                          //åªé€‚åˆäºæ–¹é˜µçš„æ±‚é€†
 
 	if (M.determinant == 0)
 	{
-		cerr << "¾ØÕó²»¿ÉÄæ£¡" << endl;
+		cerr << "çŸ©é˜µä¸å¯é€†ï¼" << endl;
 	}
 	else
 	{
 		int order = M.row;
 		Matrix *inv_M = new Matrix(order, order);
-		for (int i = 0; i < order; i++)                               //²ÉÓÃ°éËæ¾ØÕóµÄ·½·¨ÇóÄæ
+		for (int i = 0; i < order; i++)                               //é‡‡ç”¨ä¼´éšçŸ©é˜µçš„æ–¹æ³•æ±‚é€†
 			for (int j = 0; j < order; j++)
 				inv_M->array[i][j] = cofactor(M, j, i) / M.determinant;
-		cout << "¾ØÕóµÄÄæÎª£º" << endl;
+		cout << "çŸ©é˜µçš„é€†ä¸ºï¼š" << endl;
 		cout<<*inv_M;
 		delete inv_M;
 	}
 }
-//ÀûÓÃÈ«Ñ¡Ö÷Ôª¸ßË¹ÏûÈ¥·¨Çó½âÊµÏµÊıÏßĞÔ´úÊı·½³Ì×é
+//åˆ©ç”¨å…¨é€‰ä¸»å…ƒé«˜æ–¯æ¶ˆå»æ³•æ±‚è§£å®ç³»æ•°çº¿æ€§ä»£æ•°æ–¹ç¨‹ç»„
 int gauss_solve(const Matrix &M, double *b)
 {
 	if (M.square_or_not == false)
 	{
-		cerr << "Çó½âÊ§°Ü£¬´Ë¾ØÕó²»ÊÇ·½Õó¡£" << endl;
+		cerr << "æ±‚è§£å¤±è´¥ï¼Œæ­¤çŸ©é˜µä¸æ˜¯æ–¹é˜µã€‚" << endl;
 		return 0;
 	}
 	else
@@ -368,31 +368,31 @@ int gauss_solve(const Matrix &M, double *b)
 		int order = M.row;
 		Matrix *A = new Matrix(order, order);
 		*A = M;
-		int *change_col = new int[order];                         //¶¯Ì¬ÉêÇë¿Õ¼äÒÔ´æ·ÅÁĞ½»»»ĞÅÏ¢
-		int change_row;                                           //¼ÇÒäĞĞ½»»»
+		int *change_col = new int[order];                         //åŠ¨æ€ç”³è¯·ç©ºé—´ä»¥å­˜æ”¾åˆ—äº¤æ¢ä¿¡æ¯
+		int change_row;                                           //è®°å¿†è¡Œäº¤æ¢
 		int i, j, k;
-		int judge_singular = 1;                                   //·½ÕóÆæÒìÓë·ñ±êÖ¾
+		int judge_singular = 1;                                   //æ–¹é˜µå¥‡å¼‚ä¸å¦æ ‡å¿—
 		double pivot, tmp;
 		for (k = 0; k < order - 1; k++)
 		{
 			pivot = 0.0;
-			for (i = k; i < order; i++)                           //È«Ñ¡Ö÷Ôª
+			for (i = k; i < order; i++)                           //å…¨é€‰ä¸»å…ƒ
 				for (j = k; j < order; j++)
 				{
 					tmp = fabs((*A)(i, j));
 					if (tmp > pivot)
 					{
 						pivot = tmp;
-						change_col[k] = j;                        //¼ÇÒäÁĞ½»»»ĞÅÏ¢
-						change_row = i;                           //¼ÇÒäĞĞ½»»»ĞÅÏ¢
+						change_col[k] = j;                        //è®°å¿†åˆ—äº¤æ¢ä¿¡æ¯
+						change_row = i;                           //è®°å¿†è¡Œäº¤æ¢ä¿¡æ¯
 					}
 				}
-			if (pivot == 0.0)                                     //·½ÕóÆæÒì
+			if (pivot == 0.0)                                     //æ–¹é˜µå¥‡å¼‚
 				judge_singular = 0;
 			else
 			{
 				if (change_col[k] != k)
-					for (i = 0; i < order; i++)                   //½øĞĞÁĞ½»»»
+					for (i = 0; i < order; i++)                   //è¿›è¡Œåˆ—äº¤æ¢
 					{
 						tmp = (*A)(i, k);
 						A->array[i][k] = (*A)(i, change_col[k]);
@@ -400,7 +400,7 @@ int gauss_solve(const Matrix &M, double *b)
 					}
 				if (change_row != k)
 				{
-					for (j = k; j < order; j++)                   //½øĞĞĞĞ½»»»
+					for (j = k; j < order; j++)                   //è¿›è¡Œè¡Œäº¤æ¢
 					{
 						tmp = (*A)(k, j);
 						A->array[k][j] = (*A)(change_row, j);
@@ -411,20 +411,20 @@ int gauss_solve(const Matrix &M, double *b)
 					b[change_row] = tmp;
 				}
 			}
-			if (judge_singular == 0)                              //·½ÕóÆæÒì
+			if (judge_singular == 0)                              //æ–¹é˜µå¥‡å¼‚
 			{
 				delete A;
 				delete[] change_col;
-				cerr << "Çó½âÊ§°Ü£¬·½Õó²»¿ÉÄæ¡£" << endl;
+				cerr << "æ±‚è§£å¤±è´¥ï¼Œæ–¹é˜µä¸å¯é€†ã€‚" << endl;
 				return 0;
 			}
 			else
 			{
 				pivot = (*A)(k, k);
-				for (j = k + 1; j < order; j++)                   //¹éÒ»»¯²Ù×÷
+				for (j = k + 1; j < order; j++)                   //å½’ä¸€åŒ–æ“ä½œ
 					A->array[k][j] = (*A)(k, j) / pivot;
 				b[k] = b[k] / pivot;
-				for (i = k + 1; i < order; i++)                   //ÏûÔª²Ù×÷
+				for (i = k + 1; i < order; i++)                   //æ¶ˆå…ƒæ“ä½œ
 				{
 					for (j = k + 1; j < order; j++)
 						A->array[i][j] = (*A)(i, j) - ((*A)(i, k))*((*A)(k, j));
@@ -433,15 +433,15 @@ int gauss_solve(const Matrix &M, double *b)
 			}
 		}
 		pivot = (*A)(order - 1, order - 1);
-		if (fabs(pivot) == 0.0)                                   //·½ÕóÆæÒì
+		if (fabs(pivot) == 0.0)                                   //æ–¹é˜µå¥‡å¼‚
 		{
 			delete A;
 			delete[] change_col;
-			cerr << "Çó½âÊ§°Ü£¬·½Õó²»¿ÉÄæ¡£" << endl;
+			cerr << "æ±‚è§£å¤±è´¥ï¼Œæ–¹é˜µä¸å¯é€†ã€‚" << endl;
 			return 0;
 		}
-		b[order - 1] = b[order - 1] / pivot;                      //½âÏòÁ¿µÄ×îºóÒ»¸öÔªËØ
-		for (i = order - 2; i >= 0; i--)                          //»Ø´ú²Ù×÷
+		b[order - 1] = b[order - 1] / pivot;                      //è§£å‘é‡çš„æœ€åä¸€ä¸ªå…ƒç´ 
+		for (i = order - 2; i >= 0; i--)                          //å›ä»£æ“ä½œ
 		{
 			tmp = 0.0;
 			for (j = i + 1; j < order; j++)
@@ -449,8 +449,8 @@ int gauss_solve(const Matrix &M, double *b)
 			b[i] = b[i] - tmp;
 		}
 		change_col[order - 1] = order - 1;
-		for (k = order - 1; k >= 0; k--)                          //»Ö¸´½âÏòÁ¿
-			if (change_col[k] != k)                               //½øĞĞĞĞ½»»»
+		for (k = order - 1; k >= 0; k--)                          //æ¢å¤è§£å‘é‡
+			if (change_col[k] != k)                               //è¿›è¡Œè¡Œäº¤æ¢
 			{
 				tmp = b[k];
 				b[k] = b[change_col[k]];
@@ -458,6 +458,6 @@ int gauss_solve(const Matrix &M, double *b)
 			}
 		delete A;
 		delete[] change_col;
-		return 1;                                                 //Õı³£·µ»Ø
+		return 1;                                                 //æ­£å¸¸è¿”å›
 	}
 }

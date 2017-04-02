@@ -1,4 +1,4 @@
-//Ö÷³ÌĞòÎÄ¼şMain.cpp£¬½øĞĞ²âÊÔ
+ï»¿//ä¸»ç¨‹åºæ–‡ä»¶Main.cppï¼Œè¿›è¡Œæµ‹è¯•
 #include <iostream>
 #include <stdio.h>
 #include "Matrix.h"
@@ -8,15 +8,15 @@ int main()
 	system("color 5F");
 	Matrix A(3, 4);
 	A.SetArray(9.0, 7.8, 7.0, 5.6, 4.5, 3.4, 2.3, 1.2, 0.1, 3.4, 5.2, 1.6);
-	cout << "¾ØÕóA=" << endl;
+	cout << "çŸ©é˜µA=" << endl;
 	A.display();
 	Matrix B(3,4);
 	B.SetArray(1.0, 2.2, 3.0, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 6.6, 4.8, 8.4);
-	cout << "¾ØÕóB=" << endl;
+	cout << "çŸ©é˜µB=" << endl;
 	B.display();
 	Matrix C(4, 3);
 	C.SetArray(3.3, 4.0, 5.2, 1.0, 5.0, 6.3, 2.2, 1.1, 5.5, 4.0, 9.8, 7.5);
-	cout << "¾ØÕóC=" << endl;
+	cout << "çŸ©é˜µC=" << endl;
 	C.display();
 	Matrix D(3, 4);
 	D = A + B;
@@ -31,13 +31,13 @@ int main()
 	cout << "A^T=" << endl<<AT;
 	Matrix F(3, 3);
 	F.SetArray(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-	cout << "¾ØÕóF=" << endl << F;
-	cout << "¶ÔĞ¡¾ØÕóFÇóÄæ£¬½á¹ûÎª£º" << endl;
+	cout << "çŸ©é˜µF=" << endl << F;
+	cout << "å¯¹å°çŸ©é˜µFæ±‚é€†ï¼Œç»“æœä¸ºï¼š" << endl;
 	inv_small_matrix(F);
 	Matrix G(3, 3);
 	G.SetArray(2.0, 5.0, 3.0, 5.0, 1.0, 3.0, 8.0, 9.0, 7.0);
-	cout << "¾ØÕóG=" << endl << G;
-	cout << "¶ÔĞ¡¾ØÕóGÇóÄæ£¬½á¹ûÎª£º" << endl;
+	cout << "çŸ©é˜µG=" << endl << G;
+	cout << "å¯¹å°çŸ©é˜µGæ±‚é€†ï¼Œç»“æœä¸ºï¼š" << endl;
 	inv_small_matrix(G);
 	Matrix M(5, 5);
 	M.SetArray(1., 2., 3., 4., 5., 
@@ -45,19 +45,19 @@ int main()
 		0.,0.,4.,5.,6.,
 		0.,0.,0.,5.,6.,
 		0.,0.,0.,0.,2.);
-	cout << "¾ØÕóM=" << endl<<M;
-	cout << "¾ØÕóMµÄĞĞÁĞÊ½Îª£º"<< det(M) << endl;
-	cout << "¶Ô¾ØÕóMÇóÄæ£¬½á¹ûÎª£º" << endl;
+	cout << "çŸ©é˜µM=" << endl<<M;
+	cout << "çŸ©é˜µMçš„è¡Œåˆ—å¼ä¸ºï¼š"<< det(M) << endl;
+	cout << "å¯¹çŸ©é˜µMæ±‚é€†ï¼Œç»“æœä¸ºï¼š" << endl;
 	inv(M);
 	Save_Matrix(M);
 	double b[5] = { 3., 5., 4., 5.5, 7.3 };
-	cout << "³£ÊıÏòÁ¿b=(";
+	cout << "å¸¸æ•°å‘é‡b=(";
 	for (int i = 0; i < sizeof(b) / sizeof(b[0]) - 1; i++)
 		cout << b[i] << ",";
 	cout << b[sizeof(b) / sizeof(b[0]) - 1] << ")" << endl;
 	if (gauss_solve(M, b) != 0)
 	{
-		cout << "Mx=bµÄ½âÏòÁ¿Îª:x=(";
+		cout << "Mx=bçš„è§£å‘é‡ä¸º:x=(";
 		for (int i = 0; i < sizeof(b) / sizeof(b[0]) - 1; i++)
 			cout << b[i] << ",";
 		cout << b[sizeof(b) / sizeof(b[0])-1] << ")" << endl;

@@ -1,54 +1,54 @@
-//Í·ÎÄ¼şMatrix.h´æ·Å¸÷ÀàµÄÉùÃ÷
+ï»¿//å¤´æ–‡ä»¶Matrix.hå­˜æ”¾å„ç±»çš„å£°æ˜
 #pragma once
 #include <iostream>
 using namespace std;
-//³éÏó»ùÀàNumberÀà
+//æŠ½è±¡åŸºç±»Numberç±»
 class Number
 {
 public:
 	Number(int row = 0, int col = 0);
-	virtual void display() const = 0;                      //´¿Ğéº¯Êı
+	virtual void display() const = 0;                      //çº¯è™šå‡½æ•°
 	virtual void SetArray(double a, ...) = 0;
 protected:
 	int row;
 	int column;
 };
 
-//ÅÉÉúÀàArrayÀà
+//æ´¾ç”Ÿç±»Arrayç±»
 class Array :public Number
 {
 public:
 	Array(int row = 1, int col = 1);
 	~Array();
-	double GetArray(int row, int col) const;	           //¶ÁÈ¡Êı×éÔªËØº¯Êı
+	double GetArray(int row, int col) const;	           //è¯»å–æ•°ç»„å…ƒç´ å‡½æ•°
 	virtual void display() const;
-	virtual void SetArray(double a, ...);                  //¿É±ä²ÎÊıº¯Êı
+	virtual void SetArray(double a, ...);                  //å¯å˜å‚æ•°å‡½æ•°
 protected:
 	double **array;
 	bool square_or_not;
 };
 
-//ÅÉÉúÀàMatrixÀà
+//æ´¾ç”Ÿç±»Matrixç±»
 class Matrix :public Array
 {
 public:
 	Matrix(int row = 1, int col = 1);
 	virtual void SetArray(double a, ...);
 	double GetDet();
-	Matrix(Matrix &M);                                     //¿½±´¹¹Ôìº¯Êı
-	Matrix &operator =(const Matrix& M);                   //ÖØÔØÔËËã·ûº¯ÊıÉùÃ÷
+	Matrix(Matrix &M);                                     //æ‹·è´æ„é€ å‡½æ•°
+	Matrix &operator =(const Matrix& M);                   //é‡è½½è¿ç®—ç¬¦å‡½æ•°å£°æ˜
 	Matrix operator +(const Matrix &M2);
 	Matrix operator -(const Matrix &M2);
 	Matrix operator *(const Matrix &M2);
 	double & operator()(int ROW, int COL);
 	friend ostream& operator <<(ostream&, Matrix&);
-	friend void Save_Matrix(const Matrix &M);              //±£´æ¾ØÕóº¯Êı
-	Matrix transposition();                                //ÉùÃ÷×ªÖÃº¯Êı
-	friend double cofactor(const Matrix &M, int x, int y); //ÉùÃ÷Çó´úÊıÓà×ÓÊ½º¯Êı
-	friend double det(const Matrix &M);                    //ÉùÃ÷ÇóĞĞÁĞÊ½º¯Êı
-	friend void inv(const Matrix &M);                      //ÉùÃ÷ÇóÄæº¯Êı
-	friend void inv_small_matrix(const Matrix &M);         //ÉùÃ÷Ğ¡·½ÕóµÄÇóÄæº¯Êı
-	friend int gauss_solve(const Matrix &M, double *b);    //ÉùÃ÷Çó½âÏòÁ¿º¯Êı
+	friend void Save_Matrix(const Matrix &M);              //ä¿å­˜çŸ©é˜µå‡½æ•°
+	Matrix transposition();                                //å£°æ˜è½¬ç½®å‡½æ•°
+	friend double cofactor(const Matrix &M, int x, int y); //å£°æ˜æ±‚ä»£æ•°ä½™å­å¼å‡½æ•°
+	friend double det(const Matrix &M);                    //å£°æ˜æ±‚è¡Œåˆ—å¼å‡½æ•°
+	friend void inv(const Matrix &M);                      //å£°æ˜æ±‚é€†å‡½æ•°
+	friend void inv_small_matrix(const Matrix &M);         //å£°æ˜å°æ–¹é˜µçš„æ±‚é€†å‡½æ•°
+	friend int gauss_solve(const Matrix &M, double *b);    //å£°æ˜æ±‚è§£å‘é‡å‡½æ•°
 protected:
 	double determinant;
 };
