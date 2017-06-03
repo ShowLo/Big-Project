@@ -1,4 +1,4 @@
-clear;close all;clc;
+ï»¿clear;close all;clc;
 carrier = double(imread('images/Girl.bmp'));
 toHide = double(imread('images/Couple.bmp'));
 [height, width] = size(carrier);
@@ -12,54 +12,54 @@ figure;
 for i = iter
     mixPic = toHide;
     for j = 1 : i
-        %iÖØµü´ú»ìºÏ
+        %ié‡è¿­ä»£æ··åˆ
         mixPic = alpha * carrier + (1 - alpha) * mixPic;
     end
-    mixPic = uint8(mixPic);                                   %iÖØµü´ú»ìºÏÍê³É£¬×ªÎª¿ÉÒÔÏÔÊ¾µÄÍ¼Ïñ
+    mixPic = uint8(mixPic);                                   %ié‡è¿­ä»£æ··åˆå®Œæˆï¼Œè½¬ä¸ºå¯ä»¥æ˜¾ç¤ºçš„å›¾åƒ
     subplot(2, iterationNum, i);
     imshow(mixPic);
-    title([int2str(i), 'ÖØµü´ú»ìºÏÍ¼Ïñ'])
-    recoverPic = double(mixPic);                          %¶ÁÈëiÖØµü´ú»ìºÏÍ¼Ïñ
+    title([int2str(i), 'é‡è¿­ä»£æ··åˆå›¾åƒ'])
+    recoverPic = double(mixPic);                          %è¯»å…¥ié‡è¿­ä»£æ··åˆå›¾åƒ
     for k = 1 : i
-        %»Ö¸´Í¼Ïñ
+        %æ¢å¤å›¾åƒ
         recoverPic = (recoverPic - alpha * carrier)./(1 - alpha);
     end
-    recoverPic = uint8(recoverPic);                       %»Ö¸´Íê³É£¬×ªÎª¿ÉÒÔÏÔÊ¾µÄÍ¼Ïñ
+    recoverPic = uint8(recoverPic);                       %æ¢å¤å®Œæˆï¼Œè½¬ä¸ºå¯ä»¥æ˜¾ç¤ºçš„å›¾åƒ
     subplot(2, iterationNum, i + iterationNum);
     imshow(recoverPic);
-    title([int2str(i), 'ÖØµü´ú»Ö¸´Í¼Ïñ']);
-    %¼ÆËã»Ö¸´Í¼ÏñºÍÒş²ØÍ¼ÏñµÄ¾ù·½¸ùÎó²î
+    title([int2str(i), 'é‡è¿­ä»£æ¢å¤å›¾åƒ']);
+    %è®¡ç®—æ¢å¤å›¾åƒå’Œéšè—å›¾åƒçš„å‡æ–¹æ ¹è¯¯å·®
     MSE(i) = sqrt(sum(sum((double(recoverPic) - toHide).^2))/N);
-    %disp([int2str(i),'ÖØµü´ú»Ö¸´Í¼ÏñµÄ¾ù·½¸ùÎó²îÎª',num2str(MSE)]);
+    %disp([int2str(i),'é‡è¿­ä»£æ¢å¤å›¾åƒçš„å‡æ–¹æ ¹è¯¯å·®ä¸º',num2str(MSE)]);
 end
 
 figure;
 plot(iter, MSE);
-title('»Ö¸´Í¼ÏñµÄ¾ù·½¸ùÎó²îËæµü´ú´ÎÊı±ä»¯Çé¿ö');
-xlabel('µü´ú´ÎÊı');
-ylabel('¾ù·½¸ùÎó²î');
+title('æ¢å¤å›¾åƒçš„å‡æ–¹æ ¹è¯¯å·®éšè¿­ä»£æ¬¡æ•°å˜åŒ–æƒ…å†µ');
+xlabel('è¿­ä»£æ¬¡æ•°');
+ylabel('å‡æ–¹æ ¹è¯¯å·®');
 
 alpha = 0 : 0.01 : 1;
 MSE_carrier = zeros(size(alpha));
 MSE_recover = zeros(size(alpha));
 for i = 1 : length(alpha)
-    %»ìºÏÍ¼Ïñ
+    %æ··åˆå›¾åƒ
     mixPic = uint8(alpha(i) * carrier + (1 - alpha(i)) * toHide);
-    %»Ö¸´Í¼Ïñ
+    %æ¢å¤å›¾åƒ
     recoverPic = (double(mixPic) - alpha(i) * carrier)./(1 - alpha(i));
-    %¼ÆËãÔØÌåÍ¼Ïñ¾ù·½¸ùÎó²î
+    %è®¡ç®—è½½ä½“å›¾åƒå‡æ–¹æ ¹è¯¯å·®
     MSE_carrier(i) = sqrt(sum(sum((double(mixPic) - carrier).^2))/N);
-    %¼ÆËã»Ö¸´Í¼Ïñ¾ù·½¸ùÎó²î
+    %è®¡ç®—æ¢å¤å›¾åƒå‡æ–¹æ ¹è¯¯å·®
     MSE_recover(i) = sqrt(sum(sum((double(recoverPic) - toHide).^2))/N);
 end
 figure;
 subplot(1, 2, 1);
 plot(alpha, MSE_carrier);
-title('ÔØÌåÍ¼Ïñ¾ù·½¸ùÎó²î');
+title('è½½ä½“å›¾åƒå‡æ–¹æ ¹è¯¯å·®');
 subplot(1, 2, 2);
 plot(alpha, MSE_recover);
-title('»Ö¸´Í¼Ïñ¾ù·½¸ùÎó²î');
+title('æ¢å¤å›¾åƒå‡æ–¹æ ¹è¯¯å·®');
 
 figure;
 plot(alpha, MSE_carrier + MSE_recover);
-title('»ìºÏÍ¼ÏñÓë»Ö¸´Í¼ÏñµÄ¾ù·½¸ùÎó²îºÍ');
+title('æ··åˆå›¾åƒä¸æ¢å¤å›¾åƒçš„å‡æ–¹æ ¹è¯¯å·®å’Œ');

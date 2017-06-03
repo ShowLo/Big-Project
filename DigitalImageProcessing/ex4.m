@@ -1,20 +1,20 @@
-clear;close all;clc;
+ï»¿clear;close all;clc;
 lena = imread('images/Lena.bmp');
 [height, width] = size(lena);
 xLen = height * 2;
 yLen = width * 2;
-lenaWithAxis = zeros(xLen, yLen, 'uint8');                              %½¨Á¢×ø±êÖá,¸ß¶È·½ÏòÎªxÖá,¿í¶È·½ÏòÎªyÖá
+lenaWithAxis = zeros(xLen, yLen, 'uint8');                              %å»ºç«‹åæ ‡è½´,é«˜åº¦æ–¹å‘ä¸ºxè½´,å®½åº¦æ–¹å‘ä¸ºyè½´
 lena_x = 0.5 * height : 1.5 * height - 1;
 lena_y = 0.5 * width : 1.5 * width - 1;
-lenaWithAxis(lena_x, lena_y) = lena;                                      %°ÑlenaÍ¼·Åµ½×ø±êÖáÉÏÈ¥
+lenaWithAxis(lena_x, lena_y) = lena;                                      %æŠŠlenaå›¾æ”¾åˆ°åæ ‡è½´ä¸ŠåŽ»
 
-%%Æ½ÒÆ
+%%å¹³ç§»
 lena_T = zeros(xLen, yLen, 'uint8');
 Tx = -100;
 Ty = -50;
-T = [1, 0, Tx; 0, 1, Ty; 0, 0, 1];                                                 %Æ½ÒÆ±ä»»¾ØÕó
+T = [1, 0, Tx; 0, 1, Ty; 0, 0, 1];                                                 %å¹³ç§»å˜æ¢çŸ©é˜µ
 
-% Ì«ÂýÁË»¹²»ÈçÑ­»·¿ì¡£¡£¡£
+% å¤ªæ…¢äº†è¿˜ä¸å¦‚å¾ªçŽ¯å¿«ã€‚ã€‚ã€‚
 % x_before = reshape(repmat(x, width, 1), 1, height * width);
 % y_before = repmat(y, 1, height);
 % xy_after = T * [x_before; y_before; ones(1, height * width)];
@@ -22,23 +22,23 @@ T = [1, 0, Tx; 0, 1, Ty; 0, 0, 1];                                              
 
 for x = lena_x
     for y = lena_y
-        newAxis = T * [x; y; 1];                                                      %±ä»»ºóµÄ×ø±ê
-        lena_T(newAxis(1), newAxis(2)) = lenaWithAxis(x, y);       %½«Í¼ÏñÒÆ¶¯µ½±ä»»ºóµÄ×ø±ê´¦
+        newAxis = T * [x; y; 1];                                                      %å˜æ¢åŽçš„åæ ‡
+        lena_T(newAxis(1), newAxis(2)) = lenaWithAxis(x, y);       %å°†å›¾åƒç§»åŠ¨åˆ°å˜æ¢åŽçš„åæ ‡å¤„
     end
 end
 
 figure;
 subplot(1, 2, 1);
 imshow(lenaWithAxis);
-title('Æ½ÒÆÖ®Ç°');
+title('å¹³ç§»ä¹‹å‰');
 subplot(1, 2, 2);
 imshow(lena_T);
-title('Æ½ÒÆÖ®ºó');
+title('å¹³ç§»ä¹‹åŽ');
 
-%%·ÅËõ
+%%æ”¾ç¼©
 Sx = 1.25;
 Sy = 1.25;
-S = [Sx, 0, 0; 0, Sy, 0; 0, 0, 1];                                                 %·ÅËõ¾ØÕó
+S = [Sx, 0, 0; 0, Sy, 0; 0, 0, 1];                                                 %æ”¾ç¼©çŸ©é˜µ
 S_inv = S^(-1);
 xMin = lena_x(1);
 xMax = lena_x(end);
@@ -48,14 +48,14 @@ lena_S_nearest = zeros(xLen, yLen, 'uint8');
 lena_S_bilinear = zeros(xLen, yLen, 'uint8');
 for x = 1 : xLen
     for y = 1 : yLen
-        xy_before = S_inv * [x; y; 1];                                             %ºóÏòÓ³Éä
+        xy_before = S_inv * [x; y; 1];                                             %åŽå‘æ˜ å°„
         x_before = xy_before(1);
         y_before = xy_before(2);
-        %ÅÐ¶ÏºóÏòÓ³ÉäÖ®ºóµÄµãÊÇ·ñÎ»ÓÚÍ¼ÏñÖÐ
+        %åˆ¤æ–­åŽå‘æ˜ å°„ä¹‹åŽçš„ç‚¹æ˜¯å¦ä½äºŽå›¾åƒä¸­
         if(x_before >= xMin && x_before <= xMax && y_before >= yMin && y_before <= yMax)
-            %²ÉÓÃ×î½üÁÚ²åÖµ
+            %é‡‡ç”¨æœ€è¿‘é‚»æ’å€¼
             lena_S_nearest(x, y) = lenaWithAxis(round(x_before), round(y_before));
-            %²ÉÓÃË«ÏßÐÔ²åÖµ
+            %é‡‡ç”¨åŒçº¿æ€§æ’å€¼
             A = lenaWithAxis(floor(x_before), floor(y_before));
             B = lenaWithAxis(ceil(x_before), floor(y_before));
             C = lenaWithAxis(floor(x_before), ceil(y_before));
@@ -70,31 +70,31 @@ end
 figure;
 % subplot(1, 3, 1);
 % imshow(lenaWithAxis);
-% title('·ÅËõÖ®Ç°');
+% title('æ”¾ç¼©ä¹‹å‰');
 subplot(1, 2, 1);
 imshow(lena_S_nearest);
-title('·ÅËõ²¢²ÉÓÃ×î½üÁÚ²åÖµ');
+title('æ”¾ç¼©å¹¶é‡‡ç”¨æœ€è¿‘é‚»æ’å€¼');
 subplot(1, 2, 2);
 imshow(lena_S_bilinear);
-title('·ÅËõ²¢²ÉÓÃË«ÏßÐÔ²åÖµ');
+title('æ”¾ç¼©å¹¶é‡‡ç”¨åŒçº¿æ€§æ’å€¼');
 
-%%Ðý×ª
+%%æ—‹è½¬
 gamma = -pi/10;
-%Ðý×ª¾ØÕó
+%æ—‹è½¬çŸ©é˜µ
 R = [cos(gamma), sin(gamma), 0; -sin(gamma), cos(gamma), 0; 0, 0, 1];
 R_inv = R^(-1);
 lena_R_nearest = zeros(xLen, yLen, 'uint8');
 lena_R_bilinear = zeros(xLen, yLen, 'uint8');
 for x = 1 : xLen
     for y = 1 : yLen
-        xy_before = R_inv * [x; y; 1];                                             %ºóÏòÓ³Éä
+        xy_before = R_inv * [x; y; 1];                                             %åŽå‘æ˜ å°„
         x_before = xy_before(1);
         y_before = xy_before(2);
-        %ÅÐ¶ÏºóÏòÓ³ÉäÖ®ºóµÄµãÊÇ·ñÎ»ÓÚÍ¼ÏñÖÐ
+        %åˆ¤æ–­åŽå‘æ˜ å°„ä¹‹åŽçš„ç‚¹æ˜¯å¦ä½äºŽå›¾åƒä¸­
         if(x_before >= xMin && x_before <= xMax && y_before >= yMin && y_before <= yMax)
-            %²ÉÓÃ×î½üÁÚ²åÖµ
+            %é‡‡ç”¨æœ€è¿‘é‚»æ’å€¼
             lena_R_nearest(x, y) = lenaWithAxis(round(x_before), round(y_before));
-            %²ÉÓÃË«ÏßÐÔ²åÖµ
+            %é‡‡ç”¨åŒçº¿æ€§æ’å€¼
             A = lenaWithAxis(floor(x_before), floor(y_before));
             B = lenaWithAxis(ceil(x_before), floor(y_before));
             C = lenaWithAxis(floor(x_before), ceil(y_before));
@@ -108,10 +108,10 @@ end
 figure;
 % subplot(1, 3, 1);
 % imshow(lenaWithAxis);
-% title('·ÅËõÖ®Ç°');
+% title('æ”¾ç¼©ä¹‹å‰');
 subplot(1, 2, 1);
 imshow(lena_R_nearest);
-title('Ðý×ª²¢²ÉÓÃ×î½üÁÚ²åÖµ');
+title('æ—‹è½¬å¹¶é‡‡ç”¨æœ€è¿‘é‚»æ’å€¼');
 subplot(1, 2, 2);
 imshow(lena_R_bilinear);
-title('Ðý×ª²¢²ÉÓÃË«ÏßÐÔ²åÖµ');
+title('æ—‹è½¬å¹¶é‡‡ç”¨åŒçº¿æ€§æ’å€¼');
