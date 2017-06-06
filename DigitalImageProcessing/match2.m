@@ -1,10 +1,10 @@
 ﻿function sortedId = match2(left, right, leftId, rightId)
-%匹配函数
+%利用误差平方和为匹配程度度量方法的碎片重排
 %输入参数
 %left: 碎片左边缘
 %right: 碎片右边缘
-%leftId: 左碎片序号
-%rightId: 右碎片序号
+%leftId: 最左碎片序号
+%rightId: 最右碎片序号
 %输出参数
 %sortedId: 正确排列的碎片序号
 [~, photoNum] = size(left);

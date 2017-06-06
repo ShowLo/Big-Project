@@ -1,7 +1,7 @@
 ﻿function newList = supplement(numList, len0, len1, error)
-%补全数组使其连0和连1呈周期性
+%补足文字出现模型
 %输入参数
-%numList: 需要进行补全的数组
+%numList: 需要进行补足的文字出现模型数组
 %len0: 连0个数
 %len1: 连1个数
 %error: 允许的误差
@@ -38,7 +38,7 @@ if(abs(num0 - len0) > error)                               %如果在此之前�
     numList(max(1, i - len0 - len1) : i - len0) = 1;
 end
 
-%补中部及底部缺失的文字
+%补中部及底部缺失的文字及可能出现的空隙
 num1 = 1;
 while(i <= numLen)
     if(numList(i) == 0)                                          %当前为0

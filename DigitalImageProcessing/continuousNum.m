@@ -1,7 +1,7 @@
 ﻿function [max0num, max1num] = continuousNum(numList)
 %计算二值化数组中连0和连1的最大次数
 %输入参数
-%numList: 要统计的数组
+%numList: 二值化数组
 %输出参数
 %max0num: 0在数组中连续出现的最多次数
 %max1num: 1在数组中连续出现的最多次数
